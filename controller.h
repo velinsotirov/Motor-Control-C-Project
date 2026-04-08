@@ -1,17 +1,22 @@
-#include <math.h>
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
-void controller_update(float, float);
+#include "fixed_point.h"
 
-typedef float (*GetMotorSpeed) (void);
+void controller_update(q10_6_t, q8_8_t);
 
-typedef void (*SetDuty) (float);
+typedef q10_6_t (*GetMotorSpeed) (void);
+
+typedef void (*SetDuty) (q8_8_t);
 
 void attach_controller(GetMotorSpeed, SetDuty);
 
 void detach_controller(void);
 
-void set_motor_duty(float);
+void set_motor_duty(q8_8_t);
 
-float get_motor_duty(void);
+q8_8_t get_motor_duty(void);
 
 void reset_duty(void);
+
+#endif // CONTROLLER_H

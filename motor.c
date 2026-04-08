@@ -1,5 +1,6 @@
 #include "global.h"
 #include "controller.h"
+#include "fixed_point.h"
 
 #include <math.h>
 
@@ -19,8 +20,8 @@ static float current = 0.0f;
 void step_motor(float uBat) {
 
     // get controller duty cycle and calculate motor voltage
-    float duty = get_motor_duty();
-    float voltage = duty * uBat;
+    q8_8_t duty_discrete = get_motor_duty();
+    float voltage = Q8_8_TO_FLOAT(duty_discrete) * uBat;
 
     // calculate motor driving voltage
     float U_ind = K*psi*motor_speed;

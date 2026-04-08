@@ -3,10 +3,11 @@
 #include "controller.h"
 #include "motor.h"
 #include "global.h"
+#include "fixed_point.h"
 
 static controller_state_t controller_state;
 
-void run_system(float speed_ref, float uBat) {
+void run_system(q10_6_t speed_ref, q8_8_t uBat_discrete) {
     static int idle_counter = 0;
     static unsigned char run_counter = 1u;
     switch (controller_state) {
@@ -18,7 +19,7 @@ void run_system(float speed_ref, float uBat) {
                 controller_state = STATE_RUNNING;
 
                 // attach controller to motor
-                attach_controller(get_motor_speed_est,set_motor_duty);
+                attach_controller(get_motor_speed_est_discrete,set_motor_duty);
                 idle_counter = 0;
             }
             break;
@@ -29,13 +30,13 @@ void run_system(float speed_ref, float uBat) {
 
             // run controller at 100Hz
             if (run_counter == controller_run_ticks) {
-                controller_update(speed_ref,uBat);
+                controller_update(speed_ref,uBat_discrete);
                 run_counter = 0;
             }
             run_counter++;
 
             // check for error conditions
-            if (get_motor_speed_est() > max_speed || get_motor_current() > max_current) {
+            if (get_motor_speed_est_discrete() > max_speed) {
                 controller_state = STATE_ERROR;
                 detach_controller();
             }
