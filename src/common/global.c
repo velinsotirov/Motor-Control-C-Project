@@ -14,8 +14,8 @@ const q10_6_t max_speed = FLOAT_TO_Q10_6(100.0f);
 const q8_8_t one_q8_8 = FLOAT_TO_Q8_8(1.0f);
 const q8_8_t zero_q8_8 = FLOAT_TO_Q8_8(0.0f);
 const q10_6_t zero_q10_6 = FLOAT_TO_Q10_6(0.0f);
-const q10_6_t speed_jump = FLOAT_TO_Q10_6( (M_PI / 3.0f) / Ts_encoder);
-const q10_6_t speed_jump_scaled = FLOAT_TO_Q10_6( (M_PI / 3.0f) / Ts_encoder * encoder_LP_float);
+const q10_6_t speed_jump = FLOAT_TO_Q10_6((M_PI / 3.0f) / Ts_encoder);
+const q10_6_t speed_jump_scaled = FLOAT_TO_Q10_6((M_PI / 3.0f) / Ts_encoder * encoder_LP_float);
 
 //char testchar = 0u;
 //int testint = 0;

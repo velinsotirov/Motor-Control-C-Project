@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 
+// fixed point type for 8.8 format, data range -128 to 127.99609375, LSB 0.00390625
 typedef short int q8_8_t;
+
+// fixed point type for 10.6 format, data range -512 to 511.984375, LSB 0.015625
 typedef short int q10_6_t;
 
 #define Q8_8_SHIFT 8
