@@ -7,13 +7,15 @@
 
 extern int8_t duty;
 
-void controller_update(int16_t);
+void speed_controller_step();
+void torque_controller_step();
 
 typedef int16_t (*GetMotorSpeed) (void);
-
+typedef q4_12_t (*GetMotorCurrent) (void);
 typedef void (*SetDuty) (int8_t);
+typedef void (*ControllerRun) (void);
 
-void attach_controller(GetMotorSpeed, SetDuty);
+void attach_controller(GetMotorSpeed, GetMotorCurrent, SetDuty);
 
 void detach_controller(void);
 

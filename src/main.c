@@ -31,7 +31,8 @@ const float shuntR = 0.5f;
 const float voltageGain = (float) 5 / (float) 1023;
 
 // user inputs
-int16_t desiredSpeed_rpm = 100;
+int16_t desiredSpeed_rpm = 1000;
+q4_12_t desiredTorque = FLOAT_TO_Q4_12(0.01f); // approx. half of max torque
 
 // measurements
 int16_t measuredSpeed_rpm = 0;
@@ -55,7 +56,7 @@ int main()
     if (t_runtime - t_lastcycle > t_step) {
       
       // step system logic
-      run_system(desiredSpeed_rpm);
+      run_system(false,desiredSpeed_rpm);
 
       // measure current
       /*

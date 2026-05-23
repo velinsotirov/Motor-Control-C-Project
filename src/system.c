@@ -1,5 +1,6 @@
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "system.h"
 #include "controller.h"
@@ -11,19 +12,22 @@
 #include "test_abstraction.h"
 #else
 #include "encoder.h"
+#include "current.h"
 #endif
 
+// states are hidden from other modules
 static controller_state_t controller_state = STATE_IDLE;
 static controller_state_t controller_prev_state = STATE_IDLE;
+static controller_mode_t controller_mode = STATE_TORQUE;
+static controller_mode_t controller_prev_mode = STATE_TORQUE;
 
+// internal counter
 static uint8_t idle_counter = 0;
 
-// run entire FSM
-void run_system(int16_t speed_ref) {
-    check_transitions();
-    entry_actions();
-    state_actions(speed_ref);
-}
+// controllers need access to this
+bool speed_mode = false;
+q4_12_t torque_ref = 0;
+int16_t speed_ref = 0;
 
 void check_transitions() {
     switch (controller_state) {
@@ -59,7 +63,7 @@ void entry_actions() {
                 break;
             case STATE_RUNNING:
                 // attach controller to motor and reset idle counter
-                attach_controller(calculateSpeed, set_motor_duty);
+                attach_controller(calculateSpeed, measureCurrent, set_motor_duty);
                 idle_counter = 0;
                 break;
             case STATE_ERROR:
@@ -70,23 +74,75 @@ void entry_actions() {
     }
 }
 
-void state_actions(int16_t speed_ref) {
+void check_subtransitions() {
+    switch (controller_mode) {
+        case STATE_TORQUE:
+            if (speed_mode) {
+                controller_mode = STATE_SPEED;
+            }
+            break;
+        case STATE_SPEED:
+            if (!speed_mode) {
+                controller_mode = STATE_TORQUE;
+            }
+            break;
+    }
+}
+
+void entry_subactions() {
+    if (controller_mode != controller_prev_mode) {
+        switch (controller_mode) {
+            case STATE_TORQUE:
+                // actions for torque mode
+                break;
+            case STATE_SPEED:
+                // actions for speed mode
+                break;
+        }
+    }
+}
+
+void state_subactions() {
+    switch (controller_mode) {
+        // run controller
+        case STATE_SPEED:
+            speed_controller_step();
+            break;
+        case STATE_TORQUE:
+            torque_controller_step();
+            break;
+    }
+}
+
+void state_actions() {
     switch (controller_state) {
         case STATE_IDLE:
             // increment counter so we can transition to running when time expires
             idle_counter++;
             break;
         case STATE_RUNNING:
-            // run controller
-            // controller fetches current speed estimate by itself, so no encoder call necessary
-            controller_update(speed_ref);
-            break;
+            // transition between torque and speed mode
+            check_subtransitions();
+            entry_subactions();
+
+            // running controller in torque or speed mode
+            state_subactions();
         case STATE_ERROR:
             // do nothing for now
             break;
         default:
             break;
     }
+}
+
+// run entire FSM
+void run_system(bool speedMode, q4_12_t torqueRef, int16_t speedRef) {
+    speed_mode = speedMode;
+    torque_ref = torqueRef;
+    speed_ref = speedRef;
+    check_transitions();
+    entry_actions();
+    state_actions();
 }
 
 controller_state_t get_controller_state() {

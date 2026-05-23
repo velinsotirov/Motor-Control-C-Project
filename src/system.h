@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "fixed_point.h"
 
@@ -8,9 +9,15 @@ typedef enum {
     STATE_ERROR
 } controller_state_t;
 
-void state_actions(int16_t speed_ref);
-void check_transitions(void);
-void entry_actions(void);
-void run_system(int16_t speed_ref);
+typedef enum {
+    STATE_SPEED,
+    STATE_TORQUE
+} controller_mode_t;
+
+extern bool speed_mode;
+extern q4_12_t torque_ref;
+extern int16_t speed_ref;
+
+void run_system(bool speedMode, q4_12_t torqueRef, int16_t speedRef);
 
 controller_state_t get_controller_state(void);
