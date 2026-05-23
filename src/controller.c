@@ -1,17 +1,20 @@
 #include <stddef.h>
+#include <stdint.h>
 #include <math.h>
 #include "global.h"
 #include "controller.h"
-#include "encoder.h"
 #include "fixed_point.h"
 
+// duty output from PI controller, with initial condition
+int8_t duty = 0;
+
 // constants
-static q8_8_t Kp = FLOAT_TO_Q8_8(0.033f);
-static q8_8_t Ki = FLOAT_TO_Q8_8(0.5f);
+static const float Ki_float = 0.5f;
+static const q16_16_t Kp = FLOAT_TO_Q16_16(0.01f);
+static const q16_16_t Ki = FLOAT_TO_Q16_16(Ki_float);
 
 // states
-static q8_8_t integrator = 0;
-static q8_8_t duty_cycle = 0;
+static q16_16_t integrator = 0;
 
 static GetMotorSpeed motorSpeed_get = NULL;
 static SetDuty dutyCycle_set = NULL;
@@ -25,43 +28,47 @@ void detach_controller(void) {
     motorSpeed_get = NULL;
     dutyCycle_set = NULL;
     reset_duty();
-    integrator = FLOAT_TO_Q8_8(0.0f);
+    integrator = FLOAT_TO_Q16_16(0.0f);
 }
 
-void controller_update(q10_6_t speed_ref, q8_8_t uBat) {
+void controller_update(int16_t speed_ref) {
     if (motorSpeed_get == NULL || dutyCycle_set == NULL) return;
 
     // get encoder speed estimate
-    q10_6_t speed_meas = motorSpeed_get();
+    int16_t speed_meas = motorSpeed_get();
 
     // calculate control error
-    q10_6_t speed_error = speed_ref - speed_meas;
+    int16_t speed_error = speed_ref - speed_meas;
 
-    q8_8_t speed_error_q8_8 = Q10_6_TO_Q8_8(speed_error);
+    q16_16_t speed_error_q16_16 = INT_TO_Q16_16(speed_error);
 
     // calculate PI control
-    q8_8_t controller_P = q8_8_mul(speed_error_q8_8,Kp);
-    integrator += q8_8_mul(speed_error_q8_8,Ts_controller);
-    q8_8_t controller_I = q8_8_mul(integrator,Ki);
-    q8_8_t controller = controller_P + controller_I;
+    q16_16_t controller_P = q16_16_mul(speed_error_q16_16,Kp);
+    integrator += q16_16_mul(speed_error_q16_16,Ts_controller);
+    q16_16_t controller_I = q16_16_mul(integrator,Ki);
+    int16_t duty_unlim = Q16_16_TO_INT(controller_P + controller_I);
 
-    // limit duty cycle to [0,1]
-    q8_8_t duty_unlim = q8_8_div(controller,uBat);
-    q8_8_t duty_lim = fmaxf(duty_unlim,zero_q8_8);
-    duty_lim = fminf(duty_lim,one_q8_8);
+    // limit duty cycle
+    if (duty_unlim > duty_max) {
+        duty_unlim = duty_max;
+    }
+    else if (duty_unlim < duty_min) {
+        duty_unlim = duty_min;
+    }
+    int8_t duty_lim = (int8_t) duty_unlim;
 
     // set duty cycle
-    dutyCycle_set(duty_lim);
+    dutyCycle_set(duty_lim); //duty_lim
 }
 
-void set_motor_duty(q8_8_t duty) {
-    duty_cycle = duty;
+void set_motor_duty(int8_t duty_cycle) {
+    duty = duty_cycle;
 }
 
-q8_8_t get_motor_duty(void) {
-    return duty_cycle;
+int8_t get_motor_duty(void) {
+    return duty;
 }
 
 void reset_duty(void) {
-    duty_cycle = zero_q8_8;
+    duty = 0u;
 }

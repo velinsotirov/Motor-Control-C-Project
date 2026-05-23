@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #include "fixed_point.h"
 
 typedef enum {
@@ -6,6 +8,6 @@ typedef enum {
     STATE_ERROR
 } controller_state_t;
 
-void run_system(q10_6_t speed_ref, q8_8_t uBat_discrete);
+void run_system(int16_t speed_ref);
 
 controller_state_t get_controller_state(void);

@@ -2,42 +2,27 @@
 #define FIXED_POINT_H
 
 #include <stdio.h>
+#include <stdint.h>
 
-// fixed point type for 8.8 format, data range -128 to 127.99609375, LSB 0.00390625
-typedef short int q8_8_t;
+// fixed point type for 16.16 format, data range -32768 to 32767.9999, resolution 0.0000000152
+typedef int32_t q16_16_t;
 
-// fixed point type for 10.6 format, data range -512 to 511.984375, LSB 0.015625
-typedef short int q10_6_t;
+#define Q16_16_SHIFT 16
+#define Q16_16_SCALE (1 << Q16_16_SHIFT)
 
-#define Q8_8_SHIFT 8
-#define Q8_8_SCALE (1 << Q8_8_SHIFT)
+#define FLOAT_TO_Q16_16(x) ((q16_16_t) ((x) * Q16_16_SCALE))
+#define Q16_16_TO_FLOAT(x) (((float) (x)) / Q16_16_SCALE)
 
-#define Q10_6_SHIFT 6
-#define Q10_6_SCALE (1 << Q10_6_SHIFT)
+#define INT_TO_Q16_16(x) ((x) << Q16_16_SHIFT)
+#define Q16_16_TO_INT(x) ((x) >> Q16_16_SHIFT)
 
-#define FLOAT_TO_Q8_8(x) ((q8_8_t) ((x) * Q8_8_SCALE))
-#define Q8_8_TO_FLOAT(x) (((float) (x)) / Q8_8_SCALE)
 
-#define FLOAT_TO_Q10_6(x) ((q10_6_t) ((x) * Q10_6_SCALE))
-#define Q10_6_TO_FLOAT(x) (((float) (x)) / Q10_6_SCALE)
-
-#define Q8_8_TO_Q10_6(x) ((q10_6_t) ((x) >> 2))
-#define Q10_6_TO_Q8_8(x) ((q8_8_t) ((x) << 2))
-
-static inline q8_8_t q8_8_mul(q8_8_t x, q8_8_t y) {
-    return (q8_8_t) ((((int) (x)) * y) >> Q8_8_SHIFT);
+static inline q16_16_t q16_16_mul(q16_16_t x, q16_16_t y) {
+    return (q16_16_t) ((((int64_t) (x)) * y) >> Q16_16_SHIFT);
 }
 
-static inline q8_8_t q8_8_div(q8_8_t x, q8_8_t y) {
-    return (q8_8_t) ((((int) (x)) << Q8_8_SHIFT) / y);
-}
-
-static inline q10_6_t q10_6_mul(q10_6_t x, q10_6_t y) {
-    return (q10_6_t) ((((int) (x)) * y) >> Q10_6_SHIFT);
-}
-
-static inline q10_6_t q10_6_div(q10_6_t x, q10_6_t y) {
-    return (q10_6_t) ((((int) (x)) << Q10_6_SHIFT) / y);
+static inline q16_16_t q16_16_div(q16_16_t x, q16_16_t y) {
+    return (q16_16_t) ((((int64_t) (x)) << Q16_16_SHIFT) / y);
 }
 
 #endif // FIXED_POINT_H

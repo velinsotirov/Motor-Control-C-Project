@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdint.h>
 
 #include "controller.h"
 #include "global.h"
 #include "motor.h"
-#include "encoder.h"
+#include "test_abstraction.h"
 #include "system.h"
 #include "fixed_point.h"
 
@@ -11,9 +12,8 @@ int main() {
 
     // parameters for simulation
     float uBat = 12.0f;
-    float speed_ref = 50.0f;
-    q10_6_t speed_ref_discrete = FLOAT_TO_Q10_6(speed_ref);
-    q8_8_t uBat_discrete = FLOAT_TO_Q8_8(uBat);
+    int16_t speed_ref = 1000u;
+    //q16_16_t uBat_discrete = FLOAT_TO_Q16_16(uBat);
 
     // prepare file for logging
     FILE *fptr;
@@ -22,32 +22,31 @@ int main() {
         printf("file could not be opened!\n");
         return 1;
     }
-    fprintf(fptr,"time,speed,speed_est,motor_angle,current,duty,state\n");
+    fprintf(fptr,"time,speed,motor_angle,current,duty,state\n");
 
-    // test sizes
-    //printf("%zu\n", sizeof(testchar));
-    //printf("%zu\n", sizeof(testint));
-    //printf("%zu\n", sizeof(testshort));
+    // run simulation for 1s, time step 1ms
+    uint16_t count_controller = 10u;
+    for(uint16_t i=0;i<1000;i++) {
 
-    // run simulation for 1s
-    for(unsigned int i=0;i<1001;i++) {
-
-        // step controller at 1kHz
-        run_system(speed_ref_discrete, uBat_discrete);
-
+        // step controller at 100Hz
+        if (count_controller == 10u) {
+            run_system(speed_ref);
+            count_controller = 0u;
+        }
         // simulate motor
         step_motor(uBat);
 
+        // increment counter
+        count_controller += 1u;
+
         // log data to csv
-        float time = Ts_encoder * (float) i;
-        float speed = get_motor_speed();
-        float speed_est = Q10_6_TO_FLOAT(get_motor_speed_est_discrete());
+        float time = Ts * (float) i;
+        float speed = get_motor_speed_rpm();
         float motor_angle = get_motor_angle();
         float current = get_motor_current();
-        q8_8_t duty_discrete = get_motor_duty();
-        float duty = Q8_8_TO_FLOAT(duty_discrete);
+        int8_t duty_discrete = get_motor_duty();
         controller_state_t state = get_controller_state();
-        fprintf(fptr,"%f,%f,%f,%f,%f,%f,%d\n",time,speed,speed_est,motor_angle,current,duty,state);
+        fprintf(fptr,"%f,%f,%f,%f,%d,%d\n",time,speed,motor_angle,current,duty_discrete,state);
     }
     fclose(fptr);
 
