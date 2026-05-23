@@ -12,8 +12,8 @@ int main() {
 
     // parameters for simulation
     float uBat = 12.0f;
-    int16_t speed_ref = 1000u;
-    //q16_16_t uBat_discrete = FLOAT_TO_Q16_16(uBat);
+    int16_t speed_ref = 1000;
+    //q22_10_t uBat_discrete = FLOAT_TO_Q22_10(uBat);
 
     // prepare file for logging
     FILE *fptr;

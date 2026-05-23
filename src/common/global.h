@@ -6,11 +6,13 @@
 
 extern const uint8_t init_ticks;
 
-extern const q16_16_t Ts_controller;
+extern const q22_10_t Ts_controller;
 extern const int16_t max_speed;
 
-extern const q16_16_t one_q16_16;
-extern const q16_16_t zero_q16_16;
+extern const uint8_t max_current;
+
+extern const q22_10_t one_q16_16;
+extern const q22_10_t zero_q16_16;
 
 // duty parameters
 extern const int8_t duty_count;
@@ -18,7 +20,9 @@ extern const int8_t duty_mean;
 extern const int8_t duty_min;
 extern const int8_t duty_max;
 
-// dead time
-extern const uint16_t tdead_us;
+// bit operations
+#define MASK(x) (0b1 << (x))
+#define SET(p,m) ((p) |= (m))
+#define RESET(p,m) ((p) &= ~(m))
 
 #endif // GLOBAL_H

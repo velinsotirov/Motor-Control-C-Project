@@ -1,15 +1,24 @@
 
+#include <stdint.h>
+#include <stdbool.h>
+
 // duty which is read by PWM interrupt
-volatile int duty_compa = 0;
+volatile uint8_t duty_compa = 0;
 
 // pwm counter
-volatile int pwmCounter = 0;
-
-// duty commands to all 4 MOSFETs (LH, duty high and low, RH, duty high and low)
-volatile char FET_cmd = 0b0000;
-
-void pwmCommands(void);
+volatile uint8_t pwmCounter = 0;
 
 void pwmCount(void);
 
 void setPWMTimerInterrupt(void);
+
+// 7 cycles * 62.5ns = 437.5ns (more than 400ns)
+#define DELAY_0_4US() __asm__ __volatile__ ( \
+    "nop\n\t" \
+    "nop\n\t" \
+    "nop\n\t" \
+    "nop\n\t" \
+    "nop\n\t" \
+    "nop\n\t" \
+    "nop\n\t" \
+)

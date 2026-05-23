@@ -4,25 +4,25 @@
 #include <stdio.h>
 #include <stdint.h>
 
-// fixed point type for 16.16 format, data range -32768 to 32767.9999, resolution 0.0000000152
-typedef int32_t q16_16_t;
+// fixed point type for 22.10 format
+typedef int32_t q22_10_t;
 
-#define Q16_16_SHIFT 16
-#define Q16_16_SCALE (1 << Q16_16_SHIFT)
+#define Q22_10_SHIFT 10
+#define Q22_10_SCALE (1 << Q22_10_SHIFT)
 
-#define FLOAT_TO_Q16_16(x) ((q16_16_t) ((x) * Q16_16_SCALE))
-#define Q16_16_TO_FLOAT(x) (((float) (x)) / Q16_16_SCALE)
+#define FLOAT_TO_Q22_10(x) ((q22_10_t) ((x) * Q22_10_SCALE))
+#define Q22_10_TO_FLOAT(x) (((float) (x)) / Q22_10_SCALE)
 
-#define INT_TO_Q16_16(x) ((x) << Q16_16_SHIFT)
-#define Q16_16_TO_INT(x) ((x) >> Q16_16_SHIFT)
+#define INT_TO_Q22_10(x) ((x) << Q22_10_SHIFT)
+#define Q22_10_TO_INT(x) ((x) >> Q22_10_SHIFT)
 
 
-static inline q16_16_t q16_16_mul(q16_16_t x, q16_16_t y) {
-    return (q16_16_t) ((((int64_t) (x)) * y) >> Q16_16_SHIFT);
+static inline q22_10_t q22_10_mul(q22_10_t x, q22_10_t y) {
+    return (q22_10_t) ((((int32_t) (x)) * y) >> Q22_10_SHIFT);
 }
 
-static inline q16_16_t q16_16_div(q16_16_t x, q16_16_t y) {
-    return (q16_16_t) ((((int64_t) (x)) << Q16_16_SHIFT) / y);
+static inline q22_10_t q22_10_div(q22_10_t x, q22_10_t y) {
+    return (q22_10_t) ((((int32_t) (x)) << Q22_10_SHIFT) / y);
 }
 
 #endif // FIXED_POINT_H

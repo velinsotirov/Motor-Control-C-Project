@@ -10,11 +10,11 @@ int8_t duty = 0;
 
 // constants
 static const float Ki_float = 0.5f;
-static const q16_16_t Kp = FLOAT_TO_Q16_16(0.01f);
-static const q16_16_t Ki = FLOAT_TO_Q16_16(Ki_float);
+static const q22_10_t Kp = FLOAT_TO_Q22_10(0.01f);
+static const q22_10_t Ki = FLOAT_TO_Q22_10(Ki_float);
 
 // states
-static q16_16_t integrator = 0;
+static q22_10_t integrator = 0;
 
 static GetMotorSpeed motorSpeed_get = NULL;
 static SetDuty dutyCycle_set = NULL;
@@ -28,7 +28,7 @@ void detach_controller(void) {
     motorSpeed_get = NULL;
     dutyCycle_set = NULL;
     reset_duty();
-    integrator = FLOAT_TO_Q16_16(0.0f);
+    integrator = FLOAT_TO_Q22_10(0.0f);
 }
 
 void controller_update(int16_t speed_ref) {
@@ -40,13 +40,13 @@ void controller_update(int16_t speed_ref) {
     // calculate control error
     int16_t speed_error = speed_ref - speed_meas;
 
-    q16_16_t speed_error_q16_16 = INT_TO_Q16_16(speed_error);
+    q22_10_t speed_error_q16_16 = INT_TO_Q22_10(speed_error);
 
     // calculate PI control
-    q16_16_t controller_P = q16_16_mul(speed_error_q16_16,Kp);
-    integrator += q16_16_mul(speed_error_q16_16,Ts_controller);
-    q16_16_t controller_I = q16_16_mul(integrator,Ki);
-    int16_t duty_unlim = Q16_16_TO_INT(controller_P + controller_I);
+    q22_10_t controller_P = q22_10_mul(speed_error_q16_16,Kp);
+    integrator += q22_10_mul(speed_error_q16_16,Ts_controller);
+    q22_10_t controller_I = q22_10_mul(integrator,Ki);
+    int16_t duty_unlim = Q22_10_TO_INT(controller_P + controller_I);
 
     // limit duty cycle
     if (duty_unlim > duty_max) {

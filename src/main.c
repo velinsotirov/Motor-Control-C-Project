@@ -1,8 +1,13 @@
+
 #include <stdbool.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 #include "pwm.h"
 #include "system.h"
 #include "encoder.h"
+#include "global.h"
+#include "controller.h"
 
 #define LB_HS 4
 #define LB_LS 5
@@ -21,9 +26,9 @@ int16_t t_lastcycle = 0;
 const int16_t t_step = 99;
 
 // current measurement constants
-const float ampGain = 18.0;
-const float shuntR = 0.5;
-const float voltageGain = float(5)/float(1023);
+const float ampGain = 18.0f;
+const float shuntR = 0.5f;
+const float voltageGain = (float) 5 / (float) 1023;
 
 // user inputs
 int16_t desiredSpeed_rpm = 100;
@@ -32,6 +37,9 @@ int16_t desiredSpeed_rpm = 100;
 int16_t measuredSpeed_rpm = 0;
 volatile uint16_t currentADCticks = 0;
 float measuredCurrent = 0.0;
+
+// setup function exists
+void setup(void);
 
 // main function
 int main()
@@ -50,19 +58,23 @@ int main()
       run_system(desiredSpeed_rpm);
 
       // measure current
+      /*
       if (duty >= 0)
         currentADCticks = analogRead(shuntMeasR);
       else
         currentADCticks = -analogRead(shuntMeasL);
       measuredCurrent = (float) (currentADCticks*voltageGain/(ampGain*shuntR));
+      */
       
-      // print runtime, speed, duty and current
+      // print runtime (inactive for now), speed, duty and current
+      /*
       Serial.print("\nSpeed: ");
       Serial.print(measuredSpeed_rpm);
       Serial.print("\nDuty: ");
       Serial.print(duty);
       Serial.print("\nCurrent: ");
       Serial.print(measuredCurrent);
+      */
       t_lastcycle = t_runtime;
     }
   }
@@ -71,40 +83,38 @@ int main()
 // setup everything
 void setup() {
   // setup pins
-  pinMode(encoderA, INPUT);
-  pinMode(encoderB, INPUT);
-  pinMode(shuntMeasR, INPUT);
-  pinMode(shuntMeasL, INPUT);
-  pinMode(LB_HS, OUTPUT);
-  pinMode(LB_LS, OUTPUT); 
-  pinMode(RB_HS, OUTPUT);
-  pinMode(RB_LS, OUTPUT);
+  DDRD = 0b0;
+
+  // PWM pins are outputs, encoderA and encoderB are inputs
+  SET(DDRD, MASK(LB_HS) | MASK(LB_LS) | MASK(RB_HS) | MASK(RB_LS));
+
+  // current measurement disabled for now
+  //pinMode(shuntMeasR, INPUT);
+  //pinMode(shuntMeasL, INPUT);
   
   // HS: LOW is floating, HIGH is pulled to 12V
   // LS: LOW is floating, HIGH is pulled to GND
   // high impedance MCU pin state causes LS pulled to GND, HS floating
   
   // start with LS grounded to charge bootstrap caps
-  digitalWrite(LB_HS, LOW);
-  digitalWrite(RB_HS, LOW);
-  digitalWrite(LB_LS, HIGH); 
-  digitalWrite(RB_LS, HIGH);
+  RESET(DDRD, MASK(LB_HS) | MASK(RB_HS)); // HS floating
+  SET(DDRD, MASK(LB_LS) | MASK(RB_LS)); // LW grounded
 
   // PWM interrupt
   setPWMTimerInterrupt();
   
-  // encoder interrupt
-  attachInterrupt(digitalPinToInterrupt(encoderA), incrementEncoder, RISING);
+  // encoder interrupt (must be done via registers!)
+  //attachInterrupt(digitalPinToInterrupt(encoderA), incrementEncoder, RISING);
   
-  // show program start
-  Serial.begin(9600);
-  Serial.println("\n---PROGRAM START---");
+  // show program start, inactive for now
+  //Serial.begin(9600);
+  //Serial.println("\n---PROGRAM START---");
   
   // enable interrupts (PWM timer)
   sei();
 }
 
 void setupTimeCounterInterrupt() {
-  // interrupt should count every 100ms
+  // interrupt should count every 10ms so we can run controller at 100Hz
 
 }

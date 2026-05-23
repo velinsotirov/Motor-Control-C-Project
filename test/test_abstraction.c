@@ -3,9 +3,6 @@
 #include "test_abstraction.h"
 #include "motor.h"
 
-void pwmCommands() {
-}
-
 int16_t calculateSpeed() {
     int16_t speed = (int16_t) get_motor_speed_rpm();
     return speed;

@@ -5,36 +5,6 @@
 
 #include <avr/io.h>
 
-// set commands to all 4 MOSFETs based on duty cycle request
-void pwmCommands() {
-
-  // positive duty cycle
-  if (duty >= 0) {
-    // FET commands
-    FET_cmd = 0b1000;
-    duty_compa = duty;
-    // toggle left side only
-    //duty_L_H = 1;
-    //duty_L_L = 0;
-    // positive duty cycle, clamp bottom right to GND
-    //duty_R_H = 0;
-    //duty_R_L = 0;
-  }
-  // negative duty cycle
-  else {
-    // duty_compa is set to -duty since we count from 0, but FET_cmd is different
-    // FET commands
-    FET_cmd = 0b0010;
-    duty_compa = -duty;
-    // left side lower clamped to GND
-    //duty_L_H = 0;
-    //duty_L_L = 0;
-    // negative duty cycle, clamp bottom left to GND
-    //duty_R_H = 1;
-    //duty_R_L = 0;
-  }
-}
-
 // pwm counter
 void pwmCount() {
   // check if powerstage is allowed
@@ -42,35 +12,71 @@ void pwmCount() {
     // increment the counter
     pwmCounter++;
 
-    // turn HIGH at start of duty cycle
+    // compare value is positive
+    if (duty >= 0) {
+      duty_compa = duty;
+    }
+    else {
+      duty_compa = -duty;
+    }
+
+    // if we reach the end of the PWM period, reset counter
     if (pwmCounter >= duty_mean) { // >= duty_count
       pwmCounter = 0;
       // read shunt current
       //currentADCticks = analogRead(shuntMeas);
 
-      // Start with HIGH (UDC -> LoadPos -> GND)
-      if (duty_compa > 0) { // > duty 
-        // previous FET_cmd = 0b0010
-        
-        // closed switches are opened so everything floats
-        digitalWrite(LB_LS, !(FET_cmd & (1 << 3))); //LOW
-        digitalWrite(RB_LS, !(FET_cmd & (1 << 1))); //HIGH
-        // wait for MOSFETs to fully open
-        delayMicroseconds(tdead_us);
-        digitalWrite(LB_HS, FET_cmd & (1 << 3)); //HIGH
-        digitalWrite(RB_HS, FET_cmd & (1 << 1)); //LOW
+      // if duty > 0, we start duty period with HIGH
+      if (duty_compa > 0) {
+
+        // if duty cycle is positive, LB toggles and RB is clamped to GND
+        if (duty >= 0) {
+          // closed are opened
+          RESET(DDRD, MASK(RB_HS)); // RB high is open
+          RESET(DDRD, MASK(LB_LS)); // open LB low
+          // wait for dead time
+          DELAY_0_4US();
+          // opened are closed
+          SET(DDRD, MASK(RB_LS)); // RB low is closed
+          SET(DDRD, MASK(LB_HS)); // close LB high
+        }
+        // if duty cycle is negative, LB is clamped to GND and RB toggles
+        else {
+          // closed are opened
+          RESET(DDRD, MASK(LB_HS)); // LB high is open
+          RESET(DDRD, MASK(RB_LS)); // open RB low
+          // wait for dead time
+          DELAY_0_4US();
+          // opened are closed
+          SET(DDRD, MASK(LB_LS)); // LB low is closed
+          SET(DDRD, MASK(RB_HS)); // close RB high
+        }
       }
     }
     // go to LOW if we reach the desired duty cycle value
-    else if (pwmCounter == duty_compa) { // == duty
-      // closed switches are opened so everything floats
-      digitalWrite(LB_HS, FET_cmd & (1 << 2)); //LOW
-      digitalWrite(RB_HS, FET_cmd & (1 << 0)); //HIGH
-      // wait for MOSFETs to fully open
-      delayMicroseconds(tdead_us);
-      // close the others
-      digitalWrite(LB_LS, !(FET_cmd & (1 << 2))); //HIGH
-      digitalWrite(RB_LS, !(FET_cmd & (1 << 0))); //LOW
+    else if (pwmCounter == duty_compa) {
+      // if duty cycle is negative, LB toggles and RB is clamped to GND
+      if (duty >= 0) {
+        // closed are opened
+          RESET(DDRD, MASK(RB_HS)); // RB high is open
+          RESET(DDRD, MASK(LB_HS)); // open LB high
+          // wait for dead time
+          DELAY_0_4US();
+          // opened are closed
+          SET(DDRD, MASK(RB_LS)); // RB low is closed
+          SET(DDRD, MASK(LB_LS)); // close LB low
+      }
+      // if duty cycle is negative, LB is clamped to GND and RB toggles
+      else {
+        // closed are opened
+        RESET(DDRD, MASK(LB_HS)); // LB high is open
+        RESET(DDRD, MASK(RB_HS)); // open RB high
+        // wait for dead time
+        DELAY_0_4US();
+        // opened are closed
+        SET(DDRD, MASK(LB_LS)); // LB low is closed
+        SET(DDRD, MASK(RB_LS)); // close RB low
+      }
     }
   }
 }
