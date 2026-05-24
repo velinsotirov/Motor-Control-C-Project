@@ -20,9 +20,4 @@ extern const int8_t duty_mean;
 extern const int8_t duty_min;
 extern const int8_t duty_max;
 
-// bit operations
-#define MASK(x) (0b1 << (x))
-#define SET(p,m) ((p) |= (m))
-#define RESET(p,m) ((p) &= ~(m))
-
 #endif // GLOBAL_H

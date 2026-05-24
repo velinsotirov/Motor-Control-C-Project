@@ -5,6 +5,7 @@
 
 #include "pwm.h"
 #include "init.h"
+#include "diag.h"
 #include "system.h"
 #include "encoder.h"
 #include "global.h"

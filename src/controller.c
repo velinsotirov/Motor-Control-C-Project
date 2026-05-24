@@ -28,7 +28,6 @@ static q22_10_t integrator_current = 0;
 static GetMotorSpeed motorSpeed_get = NULL;
 static GetMotorCurrent motorCurrent_get = NULL;
 static SetDuty dutyCycle_set = NULL;
-static ControllerRun runController = NULL;
 
 void attach_controller(GetMotorSpeed s, GetMotorCurrent c, SetDuty d) {
     motorSpeed_get = s;

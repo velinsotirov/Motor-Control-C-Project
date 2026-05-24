@@ -23,9 +23,6 @@ static controller_state_t controller_prev_state = STATE_IDLE;
 static controller_mode_t controller_mode = STATE_TORQUE;
 static controller_mode_t controller_prev_mode = STATE_TORQUE;
 
-// state requests
-static bool speedMode = false;
-
 // internal counter
 static uint8_t idle_counter = 0;
 

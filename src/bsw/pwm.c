@@ -1,4 +1,5 @@
 #include "pwm.h"
+#include "pinmap.h"
 #include "global.h"
 #include "controller.h"
 #include "system.h"

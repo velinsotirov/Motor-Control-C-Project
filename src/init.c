@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#include "init.h"
 #include "pinmap.h"
 
 // setup everything

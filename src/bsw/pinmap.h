@@ -6,3 +6,8 @@
 #define encoderB 8
 #define shuntMeasR A0
 #define shuntMeasL A1
+
+// bit operations
+#define MASK(x) (0b1 << (x))
+#define SET(p,m) ((p) |= (m))
+#define RESET(p,m) ((p) &= ~(m))

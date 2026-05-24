@@ -1,3 +1,5 @@
 #include <stdint.h>
 
-int8_t measureCurrent(void);
+#include "fixed_point.h"
+
+q4_12_t measureCurrent(void);
