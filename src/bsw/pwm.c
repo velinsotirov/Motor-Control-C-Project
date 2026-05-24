@@ -6,6 +6,12 @@
 
 #include <avr/io.h>
 
+// duty which is read by PWM interrupt
+volatile uint8_t duty_compa = 0;
+
+// pwm counter
+volatile uint8_t pwmCounter = 0;
+
 // pwm counter
 void pwmCount() {
   // check if powerstage is allowed

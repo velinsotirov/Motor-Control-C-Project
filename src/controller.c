@@ -3,12 +3,17 @@
 #include <math.h>
 #include "global.h"
 #include "system.h"
-#include "motor.h"
 #include "controller.h"
 #include "fixed_point.h"
 
 // duty output from controller, with initial condition
 int8_t duty = 0;
+
+// time step of controller
+const uint16_t t_step_controller = 624;
+
+// controller and diag previous execution counters
+int16_t controller_lastExec = 0;
 
 // speed controller constants
 static const float Ki_float = 0.5f;

@@ -1,12 +1,8 @@
+#ifndef PWM_H
+#define PWM_H
 
 #include <stdint.h>
 #include <stdbool.h>
-
-// duty which is read by PWM interrupt
-volatile uint8_t duty_compa = 0;
-
-// pwm counter
-volatile uint8_t pwmCounter = 0;
 
 void pwmCount(void);
 
@@ -20,3 +16,5 @@ void pwmCount(void);
     "nop\n\t" \
     "nop\n\t" \
 )
+
+#endif // PWM_H

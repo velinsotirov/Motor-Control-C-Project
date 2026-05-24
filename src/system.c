@@ -4,7 +4,6 @@
 
 #include "system.h"
 #include "controller.h"
-#include "motor.h"
 #include "global.h"
 #include "fixed_point.h"
 

@@ -7,6 +7,9 @@
 
 extern int8_t duty;
 
+extern const uint16_t t_step_controller;
+extern int16_t controller_lastExec;
+
 void speed_controller_step();
 void torque_controller_step();
 

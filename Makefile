@@ -11,7 +11,8 @@ TESTEXE = test/run_simulation.exe
 
 TARGETINCLUDES = -I test -I src/bsw \
 	-I F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/avr/include/
-TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/bsw/pwm.c src/main.c src/init.c
+TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c \
+	src/bsw/pwm.c src/bsw/ringbuffer.c src/bsw/uart.c src/main.c src/init.c
 TARGETEXE = build/main.elf
 
 TARGETFLAGS = -Wall -Wextra -Og -mmcu=atmega328p
@@ -28,4 +29,8 @@ target: $(TARGETEXE)
 $(TARGETEXE) : $(SRC) $(TARGETSRC)
 	$(TARGETCC) $(SRC) $(TARGETSRC) \
 	$(INCLUDES) $(TARGETINCLUDES) \
-	$(TARGETFLAGS) -o $(TARGETEXE)
+	$(TARGETFLAGS) -o $(TARGETEXE) \
+	-fstack-usage \
+	-Wl,-Map=build/main.map
+	avr-objdump -d $(TARGETEXE) > dump.txt
+	avr-size $(TARGETEXE)

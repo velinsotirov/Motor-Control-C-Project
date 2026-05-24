@@ -14,6 +14,9 @@ const uint8_t max_current = 4u;
 const q22_10_t one_q16_16 = FLOAT_TO_Q22_10(1.0f);
 const q22_10_t zero_q16_16 = FLOAT_TO_Q22_10(0.0f);
 
+const float K_times_Psi = 0.01060178378f; // 0.0196133 Nm at 1.85A stall current
+const q4_12_t K_times_Psi_q4_12 = FLOAT_TO_Q4_12(K_times_Psi);
+
 // duty parameters
 const int8_t duty_count = 200u;
 const int8_t duty_mean = 100u;

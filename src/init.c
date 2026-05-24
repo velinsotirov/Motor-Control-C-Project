@@ -3,6 +3,7 @@
 #include <avr/interrupt.h>
 
 #include "init.h"
+#include "uart.h"
 #include "pinmap.h"
 
 // setup everything
@@ -28,6 +29,9 @@ void boardInit() {
   setPWMTimerInterrupt();
   setupTimeCounterInterrupt();
   //attachInterrupt(digitalPinToInterrupt(encoderA), incrementEncoder, RISING);
+
+  // setup uart
+  uart_init();
   
   // show program start, inactive for now
   //Serial.begin(9600);

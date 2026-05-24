@@ -1,3 +1,4 @@
+#include <stdbool.h>
 
 #include "fixed_point.h"
 

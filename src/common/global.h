@@ -14,6 +14,9 @@ extern const uint8_t max_current;
 extern const q22_10_t one_q16_16;
 extern const q22_10_t zero_q16_16;
 
+extern const float K_times_Psi;
+extern const q4_12_t K_times_Psi_q4_12;
+
 // duty parameters
 extern const int8_t duty_count;
 extern const int8_t duty_mean;

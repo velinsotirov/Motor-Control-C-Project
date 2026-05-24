@@ -1,3 +1,4 @@
+
 #include "global.h"
 #include "motor.h"
 #include "stdbool.h"
@@ -18,9 +19,6 @@ static const float R = 4.2f; //4.2
 static const float J = 0.9E-6f; // 0.9E-6 kgm2 rotor inertia
 static const float Ki_times_Psi = 0.01432394487f; // 8000 rpm no load speed at 12V
 static const float L = 0.32e-3f; // stator inductance 0.32 mH
-static const float K_times_Psi = 0.01060178378f; // 0.0196133 Nm at 1.85A stall current
-
-const q4_12_t K_times_Psi_q4_12 = FLOAT_TO_Q4_12(K_times_Psi);
 
 // motor states
 static float motor_speed = 0.0f; // rad/s
