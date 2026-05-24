@@ -10,9 +10,11 @@
 
 #if defined(TEST_BUILD)
 #include "test_abstraction.h"
+#include "run_simulation.h"
 #else
 #include "encoder.h"
 #include "current.h"
+#include "diag.h"
 #endif
 
 // states are hidden from other modules
@@ -21,11 +23,16 @@ static controller_state_t controller_prev_state = STATE_IDLE;
 static controller_mode_t controller_mode = STATE_TORQUE;
 static controller_mode_t controller_prev_mode = STATE_TORQUE;
 
+// state requests
+static bool speedMode = false;
+
 // internal counter
 static uint8_t idle_counter = 0;
 
-// controllers need access to this
+// system state requests, controller accesses them directly
+// changed by diag module when outside requests arrive
 bool speed_mode = false;
+bool powerstage_mode = false;
 q4_12_t torque_ref = 0;
 int16_t speed_ref = 0;
 
@@ -33,8 +40,8 @@ void check_transitions() {
     switch (controller_state) {
         // transitions from idle
         case STATE_IDLE:
-            // go to running after certain time
-            if (idle_counter == init_ticks) {
+            // go to running if powerstage is requested and we have been in idle for some time
+            if (powerstage_mode && idle_counter > 10) {
                 controller_state = STATE_RUNNING;
             }
             break;
@@ -48,6 +55,10 @@ void check_transitions() {
                 controller_state = STATE_ERROR;
             }
             break;
+
+            if (!powerstage_mode) {
+                controller_state = STATE_IDLE;
+            }
         case STATE_ERROR:
             // exit from error requires HW reset
             break;
@@ -58,7 +69,9 @@ void entry_actions() {
     if (controller_state != controller_prev_state) {
         switch (controller_state) {
             case STATE_IDLE:
-                // reset idle counter
+                // reset idle counter and detach controller
+                // duty cycle and integrators are reset within detach function
+                detach_controller();
                 idle_counter = 0;
                 break;
             case STATE_RUNNING:
@@ -67,7 +80,7 @@ void entry_actions() {
                 idle_counter = 0;
                 break;
             case STATE_ERROR:
-                // detach controller, duty cycle is reset within
+                // detach controller, duty cycle and integrators are reset within detach function
                 detach_controller();
                 break;
         }
@@ -93,10 +106,12 @@ void entry_subactions() {
     if (controller_mode != controller_prev_mode) {
         switch (controller_mode) {
             case STATE_TORQUE:
-                // actions for torque mode
+                // when we enter torque, reset speed integrator
+                resetSpeedIntegrator();
                 break;
             case STATE_SPEED:
-                // actions for speed mode
+                // when we enter speed, reset current integrator
+                resetCurrentIntegrator();
                 break;
         }
     }
@@ -136,10 +151,14 @@ void state_actions() {
 }
 
 // run entire FSM
-void run_system(bool speedMode, q4_12_t torqueRef, int16_t speedRef) {
-    speed_mode = speedMode;
-    torque_ref = torqueRef;
-    speed_ref = speedRef;
+void run_system() {
+    // update system requests using diag requests
+    speed_mode = returnDiagModeRequest();
+    powerstage_mode = returnDiagPowerStageRequest();
+    torque_ref = returnDiagTorqueRequest();
+    speed_ref = returnDiagSpeedRequest();
+
+    // run FSM
     check_transitions();
     entry_actions();
     state_actions();
@@ -147,4 +166,7 @@ void run_system(bool speedMode, q4_12_t torqueRef, int16_t speedRef) {
 
 controller_state_t get_controller_state() {
     return controller_state;
+}
+controller_mode_t get_controller_mode() {
+    return controller_mode;
 }

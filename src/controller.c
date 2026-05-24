@@ -16,7 +16,7 @@ static const q22_10_t Kp = FLOAT_TO_Q22_10(0.01f);
 static const q22_10_t Ki = FLOAT_TO_Q22_10(Ki_float);
 
 // torque controller constants
-static const float Kit_float = 500.0f;
+static const float Kit_float = 2500.0f;
 static const q22_10_t Kpt = FLOAT_TO_Q22_10(10.0f);
 static const q22_10_t Kit = FLOAT_TO_Q22_10(Kit_float);
 
@@ -113,7 +113,13 @@ void set_motor_duty(int8_t duty_cycle) {
 int8_t get_motor_duty(void) {
     return duty;
 }
-
 void reset_duty(void) {
     duty = 0u;
+}
+
+void resetSpeedIntegrator() {
+    integrator_speed = INT_TO_Q22_10(0);
+}
+void resetCurrentIntegrator() {
+    integrator_current = INT_TO_Q22_10(0);
 }

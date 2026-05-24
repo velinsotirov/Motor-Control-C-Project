@@ -16,13 +16,11 @@ typedef void (*SetDuty) (int8_t);
 typedef void (*ControllerRun) (void);
 
 void attach_controller(GetMotorSpeed, GetMotorCurrent, SetDuty);
-
 void detach_controller(void);
-
 void set_motor_duty(int8_t);
-
 int8_t get_motor_duty(void);
-
 void reset_duty(void);
+void resetSpeedIntegrator(void);
+void resetCurrentIntegrator(void);
 
 #endif // CONTROLLER_H

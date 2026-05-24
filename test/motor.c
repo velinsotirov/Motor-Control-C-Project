@@ -3,6 +3,7 @@
 #include "stdbool.h"
 #include "controller.h"
 #include "fixed_point.h"
+#include "run_simulation.h"
 
 #include <math.h>
 
@@ -28,12 +29,12 @@ static float motor_angle = 0.0f;
 static float torque = 0.0f;
 static float current = 0.0f;
 
-void step_motor(bool speed_mode, float uBat, float speedSlope) {
+void step_motor(float uBat, float speedSlope) {
     // previous current
     static float i_prev = 0.0f;
 
     // speed is controlled using torque
-    if (speed_mode) {
+    if (speedModeReq) {
         // get controller duty cycle and calculate motor voltage
         int16_t duty_discrete = get_motor_duty();
         float voltage = (float) duty_discrete / (float) duty_mean * uBat;

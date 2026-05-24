@@ -18,6 +18,7 @@ extern bool speed_mode;
 extern q4_12_t torque_ref;
 extern int16_t speed_ref;
 
-void run_system(bool speedMode, q4_12_t torqueRef, int16_t speedRef);
+void run_system();
 
 controller_state_t get_controller_state(void);
+controller_mode_t get_controller_mode(void);

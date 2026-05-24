@@ -80,32 +80,3 @@ void pwmCount() {
     }
   }
 }
-
-// interrupt calls pwm counter
-ISR(TIMER2_COMPA_vect) {
-  pwmCount(); 
-}
-
-// set up interrupt which triggers PWM timer
-void setPWMTimerInterrupt() {
-  // disable interrupts
-  cli();
- 
-  // reset timer count
-  TCNT2 = 0;
-
-  // clear timer on compare mode (WGM21 = 1)
-  TCCR2A = 0b0;
-  TCCR2A = (1 << WGM21); 
-
-  // prescaler = 1 (CS20=1)
-  TCCR2B = 0b0;
-  TCCR2B = (1 << CS20);
-
-  // 16MHz / (1 * (31 + 1)) = 500kHz -> 20kHz PWM when we count to 25
-  OCR2A = 31;
-
-  // enable Timer2 Compare Match A interrupt
-  TIMSK2 = 0b0;
-  TIMSK2 |= (1 << OCIE2A);
-}

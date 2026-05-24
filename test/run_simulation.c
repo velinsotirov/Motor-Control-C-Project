@@ -6,17 +6,35 @@
 #include "global.h"
 #include "motor.h"
 #include "test_abstraction.h"
+#include "run_simulation.h"
 #include "system.h"
 #include "fixed_point.h"
+
+bool speedModeReq = true;
+static bool powerStageReq = false;
+static int16_t speedRef = 0;
+static q4_12_t torqueRef = 0;
+
+static float time = 0.0f;
+
+bool returnDiagModeRequest() {
+    return speedModeReq;
+};
+bool returnDiagPowerStageRequest() {
+    return powerStageReq;
+}
+q4_12_t returnDiagTorqueRequest() {
+    return torqueRef;
+}
+int16_t returnDiagSpeedRequest() {
+    return speedRef;
+}
 
 int main() {
 
     // parameters for simulation
     float uBat = 12.0f;
-    bool speed_mode = false;
-    int16_t speed_ref = 1000;
     float speedSlope = 10000.0f;
-    q4_12_t torque_ref = FLOAT_TO_Q4_12(0.01f); // approx. half of max torque
 
     //q22_10_t uBat_discrete = FLOAT_TO_Q22_10(uBat);
 
@@ -27,7 +45,7 @@ int main() {
         printf("file could not be opened!\n");
         return 1;
     }
-    fprintf(fptr,"time,torque,speed,motor_angle,current,duty,state\n");
+    fprintf(fptr,"time,torque,speed,motor_angle,current,duty,state,mode\n");
 
     // run simulation for 1s, time step 1ms
     uint16_t count_controller = 10u;
@@ -35,24 +53,47 @@ int main() {
 
         // step controller at 100Hz
         if (count_controller == 10u) {
-            run_system(speed_mode, torque_ref, speed_ref);
+            run_system();
             count_controller = 0u;
         }
-        // simulate motor
-        step_motor(speed_mode, uBat, speedSlope);
-
-        // increment counter
         count_controller += 1u;
 
+        // simulate motor
+        step_motor(uBat, speedSlope);
+
+        // update time counter
+        time = Ts * (float) i;
+
+        // if time > 0.1s, activate power stage
+        if (time > 0.1f) {
+            powerStageReq = true;
+        }
+        // if time > 0.2s, set request
+        if (time > 0.2f) {
+            speedRef = 1000;
+        }
+        // if time > 0.4s, reset request
+        if (time > 0.4f) {
+            speedRef = 0;
+        }
+        // if time > 0.6s, go to torque request
+        if (time > 0.6f) {
+            speedModeReq = false;
+        }
+        // if time > 0.8s, set  torque request
+        if (time > 0.8f) {
+            torqueRef = FLOAT_TO_Q4_12(0.01f);
+        }
+
         // log data to csv
-        float time = Ts * (float) i;
         float speed = get_motor_speed_rpm();
         float motor_angle = get_motor_angle();
         float current = get_motor_current();
         float torque = get_motor_torque();
         int8_t duty_discrete = get_motor_duty();
         controller_state_t state = get_controller_state();
-        fprintf(fptr,"%f,%f,%f,%f,%f,%d,%d\n",time,torque,speed,motor_angle,current,duty_discrete,state);
+        controller_mode_t mode = get_controller_mode();
+        fprintf(fptr,"%f,%f,%f,%f,%f,%d,%d,%d\n",time,torque,speed,motor_angle,current,duty_discrete,state,mode);
     }
     fclose(fptr);
 
