@@ -6,6 +6,16 @@
 
 #include "fixed_point.h"
 
+#define RX_PACKET_LEN 3u
+#define TX_PACKET_LEN 8u
+
+extern uint8_t received_msg[RX_PACKET_LEN];
+extern uint8_t outgoing_msg[TX_PACKET_LEN];
+
+extern volatile bool diag_tx_send;
+
+extern const uint16_t t_step_rx;
+
 typedef enum {
     COMMAND_EMPTY, // 0 is not a command since we might interpret empty UART frames as a command
     COMMAND_SPEED_MODE,
@@ -16,13 +26,14 @@ typedef enum {
     COMMAND_STOP
 } diag_command_t;
 
-void diag_step(void);
-
-extern volatile bool diag_Execute;
+void diag_step_100ms(void);
+void diag_step_1000ms(void);
 
 bool returnDiagModeRequest(void);
 bool returnDiagPowerStageRequest(void);
 q4_12_t returnDiagTorqueRequest(void);
 int16_t returnDiagSpeedRequest(void);
+
+void diagTrigger(void);
 
 #endif // DIAG_H

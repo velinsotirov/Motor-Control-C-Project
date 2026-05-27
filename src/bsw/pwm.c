@@ -1,10 +1,8 @@
 #include "pwm.h"
-#include "pinmap.h"
 #include "global.h"
 #include "controller.h"
 #include "system.h"
-
-#include <avr/io.h>
+#include "atmega328p_hal.h"
 
 // duty which is read by PWM interrupt
 volatile uint8_t duty_compa = 0;
@@ -39,24 +37,24 @@ void pwmCount() {
         // if duty cycle is positive, LB toggles and RB is clamped to GND
         if (duty >= 0) {
           // closed are opened
-          RESET(DDRD, MASK(RB_HS)); // RB high is open
-          RESET(DDRD, MASK(LB_LS)); // open LB low
+          HAL_RESET_PIN(PIN_RIGHT_HS); // RB high is open
+          HAL_RESET_PIN(PIN_LEFT_LS); // open LB low
           // wait for dead time
           DELAY_0_4US();
           // opened are closed
-          SET(DDRD, MASK(RB_LS)); // RB low is closed
-          SET(DDRD, MASK(LB_HS)); // close LB high
+          HAL_SET_PIN(PIN_RIGHT_LS); // RB low is closed
+          HAL_SET_PIN(PIN_LEFT_HS); // close LB high
         }
         // if duty cycle is negative, LB is clamped to GND and RB toggles
         else {
           // closed are opened
-          RESET(DDRD, MASK(LB_HS)); // LB high is open
-          RESET(DDRD, MASK(RB_LS)); // open RB low
+          HAL_RESET_PIN(PIN_LEFT_HS); // LB high is open
+          HAL_RESET_PIN(PIN_RIGHT_LS); // open RB low
           // wait for dead time
           DELAY_0_4US();
           // opened are closed
-          SET(DDRD, MASK(LB_LS)); // LB low is closed
-          SET(DDRD, MASK(RB_HS)); // close RB high
+          HAL_SET_PIN(PIN_LEFT_LS); // LB low is closed
+          HAL_SET_PIN(PIN_RIGHT_HS); // close RB high
         }
       }
     }
@@ -65,24 +63,24 @@ void pwmCount() {
       // if duty cycle is negative, LB toggles and RB is clamped to GND
       if (duty >= 0) {
         // closed are opened
-          RESET(DDRD, MASK(RB_HS)); // RB high is open
-          RESET(DDRD, MASK(LB_HS)); // open LB high
+          HAL_RESET_PIN(PIN_RIGHT_HS); // RB high is open
+          HAL_RESET_PIN(PIN_LEFT_HS); // open LB high
           // wait for dead time
           DELAY_0_4US();
           // opened are closed
-          SET(DDRD, MASK(RB_LS)); // RB low is closed
-          SET(DDRD, MASK(LB_LS)); // close LB low
+          HAL_SET_PIN(PIN_RIGHT_LS); // RB low is closed
+          HAL_SET_PIN(PIN_LEFT_LS); // close LB low
       }
       // if duty cycle is negative, LB is clamped to GND and RB toggles
       else {
         // closed are opened
-        RESET(DDRD, MASK(LB_HS)); // LB high is open
-        RESET(DDRD, MASK(RB_HS)); // open RB high
+        HAL_RESET_PIN(PIN_LEFT_HS); // LB high is open
+        HAL_RESET_PIN(PIN_RIGHT_HS); // open RB high
         // wait for dead time
         DELAY_0_4US();
         // opened are closed
-        SET(DDRD, MASK(LB_LS)); // LB low is closed
-        SET(DDRD, MASK(RB_LS)); // close RB low
+        HAL_SET_PIN(PIN_LEFT_LS); // LB low is closed
+        HAL_SET_PIN(PIN_RIGHT_LS); // close RB low
       }
     }
   }

@@ -1,8 +1,8 @@
 #include <stdint.h>
-#include <avr/io.h>
 
-#include "fixed_point.h"
 #include "encoder.h"
+#include "fixed_point.h"
+#include "atmega328p_hal.h"
 
 // tstep 0.1s and 12 PPR
 const uint8_t speed_conv_fact = 50u;
@@ -23,7 +23,7 @@ int16_t calculateSpeed() {
 // encoder counts every time encoder A rises
 // count up if spinning forwards (B is positive), else count down
 void incrementEncoder() {
-  if (PINB & (1 << PD0)) {
+  if (HAL_IS_PIN_HIGH(PIN_ENCODER_B)) {
     encoder_cnt += 1;
   }
   else {
