@@ -3,7 +3,9 @@
 #include <stdint.h>
 
 #include "diag.h"
+#include "global.h"
 #include "system.h"
+#include "current.h"
 #include "ringbuffer.h"
 #include "atmega328p_uart.h"
 
@@ -61,15 +63,29 @@ void diag_step_100ms() {
 }
 
 void diag_step_1000ms() {
-    // dummy data for now
-    uint8_t dummy_byte = 127u;
+    // controller mode and state
+    uint8_t controller_state = (uint8_t) get_controller_state();
+    bool controller_mode = (bool) get_controller_mode();
+    // put into one uint_t frame
+    uint8_t combined_state_var = controller_state | (controller_mode << 7);
 
-    // push tx packet into tx rb
-    for (uint8_t i=1; i < (uint8_t) TX_PACKET_LEN; i++) {
-        ringbuffer_write(&tx_rb, dummy_byte);
-    }
+    // fetch remaining data
+    q4_12_t current = measureCurrent();
+    q4_12_t torque = q4_12_mul(current, K_times_Psi_q4_12);
+    int16_t speed = get_motor_speed_est();
+    int8_t duty = get_motor_duty();
+
+    // push all but 1st tx packets into tx rb
+    ringbuffer_write(&tx_rb, (current >> 8));
+    ringbuffer_write(&tx_rb, (current & 255u));
+    ringbuffer_write(&tx_rb, (torque >> 8));
+    ringbuffer_write(&tx_rb, (torque & 255u));
+    ringbuffer_write(&tx_rb, (speed >> 8));
+    ringbuffer_write(&tx_rb, (speed & 255u));
+    ringbuffer_write(&tx_rb, duty);
+
     // load first byte into register and enable tx interrupt
-    writeToUSART(&dummy_byte);
+    writeToUSART(&combined_state_var);
     enableTxInterrupt();
 }
 
