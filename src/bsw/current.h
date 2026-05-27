@@ -7,4 +7,9 @@
 
 q4_12_t measureCurrent(void);
 
+void setupADC(void);
+void setupADCCounterInterrupt(void);
+
+extern volatile uint16_t currentADCticks; 
+
 #endif // CURRENT_H

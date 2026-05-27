@@ -28,8 +28,6 @@ void pwmCount() {
     // if we reach the end of the PWM period, reset counter
     if (pwmCounter >= duty_mean) { // >= duty_count
       pwmCounter = 0;
-      // read shunt current
-      //currentADCticks = analogRead(shuntMeas);
 
       // if duty > 0, we start duty period with HIGH
       if (duty_compa > 0) {

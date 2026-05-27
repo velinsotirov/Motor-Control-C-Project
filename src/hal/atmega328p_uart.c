@@ -52,11 +52,11 @@ ISR(USART_RX_vect)
 // interrupt when uart buffer is empty so we can send our byte
 // this interrupt is enabled when we have a tx packet ready
 // and immediately disables itself once the entire packet has been sent out
-ISR(USART_UDRE_vect) // instead use USART_TX_vect?
+ISR(USART_UDRE_vect)
 {
     // check if ring buffer has the data
     uint8_t oldest_byte = 0u;
-    if (ringbuffer_read(&tx_rb, &oldest_byte, 1u)) { // TODO: no pointer once we pass an array of data here
+    if (ringbuffer_read(&tx_rb, &oldest_byte, 1u)) {
         // we removed the byte from the rb and we send it out
         writeToUSART(&oldest_byte);
     }

@@ -99,7 +99,9 @@ typedef enum {
     PIN_RIGHT_HS = IO_10,
     PIN_RIGHT_LS = IO_11,
     PIN_SHUNT_L = IO_23,
-    PIN_SHUNT_R = IO_24
+    PIN_SHUNT_R = IO_24,
+    PIN_UART_RX = IO_30,
+    PIN_UART_TX = IO_31
 } active_pins_en;
 
 // bit mask of which pins are currently used
@@ -108,7 +110,8 @@ typedef enum {
 #define USED_PINS_PORTC (PIN_LOCAL_MASK(PIN_SHUNT_L) | PIN_LOCAL_MASK(PIN_SHUNT_R))
 #define USED_PINS_PORTD (PIN_LOCAL_MASK(PIN_ENCODER_A) | PIN_LOCAL_MASK(PIN_LEFT_HS) \
                         | PIN_LOCAL_MASK(PIN_LEFT_LS) | PIN_LOCAL_MASK(PIN_RIGHT_HS) \
-                        | PIN_LOCAL_MASK(PIN_RIGHT_LS))
+                        | PIN_LOCAL_MASK(PIN_RIGHT_LS) | PIN_LOCAL_MASK(PIN_UART_RX) \
+                        | PIN_LOCAL_MASK(PIN_UART_TX))
 
 uint8_t disableInterrupts(void);
 

@@ -11,15 +11,8 @@
 #include "atmega328p_init.h"
 #include "atmega328p_hal.h"
 
-// current measurement constants
-const float ampGain = 18.0f;
-const float shuntR = 0.5f;
-const float voltageGain = (float) 5 / (float) 1023;
-
-// measurements
-int16_t measuredSpeed_rpm = 0;
-volatile uint16_t currentADCticks = 0;
-float measuredCurrent = 0.0;
+// last execution of diag rx
+static uint16_t diag_rx_lastExec = 0u;
 
 // main function
 int main()
@@ -35,13 +28,16 @@ int main()
     RESTORE_SREG(sreg);
 
     // check if controller should be executed
-    if (current_timer_val - controller_lastExec >= t_step_controller) {
-      controller_lastExec = current_timer_val;
+    // flag is set by ADC (which runs at 100Hz) after it has finished converting
+    if (runController) {
+      runController = false;
       run_system();
     }
 
     // check if diag rx should be executed
-    if (current_timer_val - controller_lastExec >= t_step_rx) {
+    // based on slow 1s timer which triggers tx uart
+    if (current_timer_val - diag_rx_lastExec >= t_step_rx) {
+      diag_rx_lastExec = current_timer_val;
       diag_step_100ms();
     }
 
@@ -49,14 +45,5 @@ int main()
       diag_tx_send = false;
       diag_step_1000ms();
     }
-    
-    // measure current
-    /*
-    if (duty >= 0)
-      currentADCticks = analogRead(shuntMeasR);
-    else
-      currentADCticks = -analogRead(shuntMeasL);
-    measuredCurrent = (float) (currentADCticks*voltageGain/(ampGain*shuntR));
-      */
   }
 }

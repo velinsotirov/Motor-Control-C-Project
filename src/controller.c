@@ -9,11 +9,8 @@
 // duty output from controller, with initial condition
 int8_t duty = 0;
 
-// time step of controller
-const uint16_t t_step_controller = 624;
-
-// controller and diag previous execution counters
-int16_t controller_lastExec = 0;
+// controller flag if it should step (triggered when ADC current measurement is complete)
+volatile bool runController = false;
 
 // speed controller constants
 static const float Ki_float = 0.5f;

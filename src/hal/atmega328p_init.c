@@ -6,6 +6,7 @@
 #include "atmega328p_hal.h"
 #include "atmega328p_uart.h"
 #include "atmega328p_init.h"
+#include "atmega328p_adc.h"
 
 // setup encoder interrupt
 void setupEncoderInterrupt() {
@@ -17,7 +18,7 @@ void setupEncoderInterrupt() {
 }
 
 void setupTimeCounterInterrupt() {
-  // interrupt for counting in 1Hz, 10Hz, 100Hz
+  // interrupt for counting to 1s for DIAG TX
  
   // reset timer count
   TCNT1 = 0;
@@ -51,12 +52,34 @@ void setPWMTimerInterrupt() {
   TCCR2B = 0b0;
   TCCR2B = (1 << CS20);
 
-  // 16MHz / (1 * (31 + 1)) = 500kHz -> 20kHz PWM when we count to 25
-  OCR2A = 31;
+  // 16MHz / (1 * (7 + 1)) = 2MHz -> 20kHz PWM when we count to 100
+  OCR2A = 7;
 
   // enable Timer2 Compare Match A interrupt
   TIMSK2 = 0b0;
   TIMSK2 |= (1 << OCIE2A);
+}
+
+void setupADCCounterInterrupt() {
+  // interrupt which triggers every 10ms and triggers ADC conversion
+ 
+  // reset timer count
+  TCNT0 = 0;
+
+  // clear timer on compare mode
+  TCCR0A = 0b0;
+  TCCR0A = (1 << WGM01);
+
+  // prescaler 1024
+  TCCR0B = 0b0;
+  TCCR0B = (1 << CS02) | (1 << CS00);
+
+  // 16MHz / (1024 * (155 + 1)) -> 100Hz approx
+  OCR0A = 155;
+
+  // enable Timer0 Compare Match A interrupt
+  TIMSK0 = 0b0;
+  TIMSK0 |= (1 << OCIE0A);
 }
 
 // setup everything
@@ -90,9 +113,10 @@ void boardInit() {
   HAL_RESET_PIN(PIN_SHUNT_L);
   HAL_RESET_PIN(PIN_SHUNT_R);
 
-  // all unused pins as inputs, no need to reset DDRB/DDRC/DDRD
-  // as theyre inputs by default
-  // all unused pins pulled high
+  // UART pins will be overriden anyways by UART config, so no need to do anything
+
+  // all unused pins as inputs, no need to reset DDRB/DDRC/DDRD as theyre inputs by default
+  // all unused pins pulled high to avoid floating states
   SET(PORTB, (~USED_PINS_PORTB) & VALID_PINS_B);
   SET(PORTC, (~USED_PINS_PORTC) & VALID_PINS_C);
   SET(PORTD, (~USED_PINS_PORTD) & VALID_PINS_D);
@@ -101,8 +125,11 @@ void boardInit() {
   setPWMTimerInterrupt();
   setupTimeCounterInterrupt();
   setupEncoderInterrupt();
+  setupADCCounterInterrupt();
+  //setupADCInterrupt();
 
-  // setup uart
+  // setup uart and adc
+  setupADC();
   uart_init();
   
   // enable interrupts

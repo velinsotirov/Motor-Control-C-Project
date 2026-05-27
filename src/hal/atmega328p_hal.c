@@ -16,6 +16,11 @@ inline uint8_t disableInterrupts() {
   return sreg;
 }
 
+// interrupt for calling the ADC
+ISR(TIMER0_COMPA_vect) {
+  //diagTrigger();
+}
+
 // interrupt for calling tx uart, which also coutns for rx uart and controller execution
 ISR(TIMER1_COMPA_vect) {
   diagTrigger(); 
