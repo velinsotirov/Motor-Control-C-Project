@@ -1,5 +1,6 @@
 TESTCC = gcc
-TARGETCC = avr-gcc
+ATMEGACC = avr-gcc
+STMCC = arm-none-eabi-gcc
 
 COMMONSRC = src/common/global.c src/controller.c src/system.c
 
@@ -9,16 +10,21 @@ TESTINCLUDES = -I test
 TESTSRC = test/run_simulation.c test/motor.c test/test_abstraction.c
 TESTEXE = test/run_simulation.exe
 
-TARGETINCLUDES = -I test -I src/bsw -I src/hal \
-	-I F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/avr/include/
+TARGETINCLUDES = -I test -I src/bsw
+ATMEGAINCLUDES = -I src/hal_atmega328p -I F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/avr/include/
+STMINCLUDES = -I src/hal_stm32 -I F:\Uni\gcc_arn_none_eabi_10_3_2021_10\arm-none-eabi\include
 
 TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/bsw/pwm.c src/main.c \
-	src/bsw/ringbuffer.c src/hal/atmega328p_hal.c src/hal/atmega328p_init.c \
-	src/hal/atmega328p_uart.c src/hal/atmega328p_uart.c src/hal/atmega328p_adc.c
+	src/bsw/ringbuffer.c
+ATMEGASRC = src/hal_atmega328p/atmega328p_hal.c src/hal_atmega328p/atmega328p_init.c \
+	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_adc.c
+STMSRC = src\hal_stm32\stm32_init.c src\hal_stm32\stm32f1xx_hal_msp.c src\hal_stm32\stm32f1xx_it.c \
+	src\hal_stm32\system_stm32f1xx.c
 
-TARGETEXE = build/main.elf
+ATMEGAEXE = build/main_atmega328p.elf
+STMEXE = build/main_stm32.elf
 
-TARGETFLAGS = -Wall -Wextra -Og -mmcu=atmega328p
+TARGETFLAGS = -Wall -Wextra -Og
 
 test: $(TESTEXE)
 
@@ -27,13 +33,23 @@ $(TESTEXE): $(COMMONSRC) $(TESTSRC)
 	$(INCLUDES)	$(TESTINCLUDES) \
 	-o $(TESTEXE) -DTEST_BUILD
 
-target: $(TARGETEXE)
+target_atmega: $(ATMEGAEXE)
 
-$(TARGETEXE) : $(COMMONSRC) $(TARGETSRC)
-	$(TARGETCC) $(COMMONSRC) $(TARGETSRC) \
-	$(INCLUDES) $(TARGETINCLUDES) \
-	$(TARGETFLAGS) -o $(TARGETEXE) \
-	-fstack-usage \
+$(ATMEGAEXE) : $(COMMONSRC) $(TARGETSRC) $(ATMEGASRC)
+	$(ATMEGACC) $(COMMONSRC) $(TARGETSRC) $(ATMEGASRC) \
+	$(INCLUDES) $(TARGETINCLUDES) $(ATMEGAINCLUDES) \
+	$(TARGETFLAGS) -o $(ATMEGAEXE) \
+	-fstack-usage -mmcu=atmega328p \
 	-Wl,-Map=build/main.map
-	avr-objdump -d $(TARGETEXE) > dump.txt
-	avr-size $(TARGETEXE)
+	avr-objdump -d $(ATMEGAEXE) > dump.txt
+	avr-size $(ATMEGAEXE) -D__AVR_ATmega328P__
+
+target_stm: $(STMEXE)
+
+$(STMEXE) : $(COMMONSRC) $(TARGETSRC) $(STMSRC)
+	$(STMCC) $(COMMONSRC) $(TARGETSRC) $(STMSRC) \
+	$(INCLUDES) $(TARGETINCLUDES) $(STMINCLUDES) \
+	$(TARGETFLAGS) -o $(STMEXE) \
+	-fstack-usage -mcpu=cortex-m3 \
+	-Wl,-Map=build/main.map
+ 	-D__ARM_CortexM3__
