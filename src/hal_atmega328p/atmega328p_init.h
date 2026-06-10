@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 void boardInit(void);
-void setPWMTimerInterrupt(void);
-void setupTimeCounterInterrupt(void);
+void setPWMTimer(void);
+void setupTimeCounter(void);
 
 #endif // ATMEGA328P_INIT_H

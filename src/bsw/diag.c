@@ -6,27 +6,27 @@
 #include "global.h"
 #include "system.h"
 #include "current.h"
+#include "encoder.h"
+#include "controller.h"
 #include "ringbuffer.h"
 
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_uart.h"
-// 16MHz / (256 * (6249 + 1)) -> 10Hz
-#define TX_COUNT 6249
+//16MHz / (256 * (124 + 1)) -> 500Hz, we want 10Hz rx so flag is 50
+// we want 2Hz Tx so flag is 250
+#define RX_COUNT 50u
+#define TX_COUNT 250u
 #else
 #include "stm32_uart.h"
 // 72MHz / (7200 * (999 + 1)) -> 10Hz
-#define TX_COUNT 999u
+// TODO: update
+#define RX_COUNT 999u
+#define TX_COUNT 250u
 #endif
 
-const uint16_t t_step_rx = TX_COUNT; // when counter has moved this much, its time to execute rx
-volatile bool diag_tx_send = false;
+const uint16_t t_step_tx = TX_COUNT; // when counter has moved this much, its time to execute tx
+const uint16_t t_step_rx = RX_COUNT; // when counter has moved this much, its time to execute rx
 uint16_t intermediary_ref_value = 0;
-
-// time step of rx read
-// TODO: set timer and prescaler to 1152 so that: 72MHz / (1152 * (624 + 1)) -> 100Hz,
-
-// atmega328p
-
 
 bool diag_speed_mode_req = false;
 bool diag_powerstage_req = false;
@@ -100,11 +100,6 @@ void diag_step_1000ms() {
     // load first byte into register and enable tx interrupt
     writeToUSART(&combined_state_var);
     enableTxInterrupt();
-}
-
-// executes every 1s and triggers diag_Send in main loop
-void diagTrigger() {
-  diag_tx_send = true;
 }
 
 bool returnDiagModeRequest(void) {

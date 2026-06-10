@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "stm32f1xx_hal.h"
+
 uint16_t getTimerVal(void);
 
 uint32_t disableInterrupts(void);

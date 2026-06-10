@@ -17,69 +17,18 @@ void setupEncoderInterrupt() {
   SET(EICRA, MASK(ISC01) | MASK(ISC00));
 }
 
-void setupTimeCounterInterrupt() {
-  // interrupt for counting to 1s for DIAG TX
- 
-  // reset timer count
-  TCNT1 = 0;
-
-  // clear timer on compare mode (WGM21 = 1)
-  TCCR1A = 0b0;
-  TCCR1A = (1 << WGM21); 
-
-  // prescaler = 256 (CS12=1)
-  TCCR1B = 0b0;
-  TCCR1B = (1 << CS12);
-
-  // 16MHz / (256 * (62499 + 1)) -> 1Hz
-  OCR1A = 62499;
-
-  // enable Timer1 Compare Match A interrupt
-  TIMSK1 = 0b0;
-  TIMSK1 |= (1 << OCIE1A);
-}
-
-// set up interrupt which triggers PWM timer
-void setPWMTimerInterrupt() {
-  // reset timer count
-  TCNT2 = 0;
-
-  // clear timer on compare mode (WGM21 = 1)
-  TCCR2A = 0b0;
-  TCCR2A = (1 << WGM21); 
-
-  // prescaler = 1 (CS20=1)
-  TCCR2B = 0b0;
-  TCCR2B = (1 << CS20);
-
-  // 16MHz / (1 * (7 + 1)) = 2MHz -> 20kHz PWM when we count to 100
-  OCR2A = 7;
-
-  // enable Timer2 Compare Match A interrupt
-  TIMSK2 = 0b0;
-  TIMSK2 |= (1 << OCIE2A);
-}
-
-void setupADCCounterInterrupt() {
-  // interrupt which triggers every 10ms and triggers ADC conversion
+void setupTimeCounter() {
+  // interrupt for counting at 500Hz for controller and diag rx/tx timing
  
   // reset timer count
   TCNT0 = 0;
 
-  // clear timer on compare mode
+  // normal mode
   TCCR0A = 0b0;
-  TCCR0A = (1 << WGM01);
 
-  // prescaler 1024
+  // prescaler = 256 (CS02=1)
   TCCR0B = 0b0;
-  TCCR0B = (1 << CS02) | (1 << CS00);
-
-  // 16MHz / (1024 * (155 + 1)) -> 100Hz approx
-  OCR0A = 155;
-
-  // enable Timer0 Compare Match A interrupt
-  TIMSK0 = 0b0;
-  TIMSK0 |= (1 << OCIE0A);
+  TCCR0B = (1 << CS02);
 }
 
 // setup everything
@@ -122,11 +71,9 @@ void boardInit() {
   SET(PORTD, (~USED_PINS_PORTD) & VALID_PINS_D);
 
   // setup interrupts
-  setPWMTimerInterrupt();
-  setupTimeCounterInterrupt();
+  setPWMTimer();
+  setupTimeCounter();
   setupEncoderInterrupt();
-  setupADCCounterInterrupt();
-  //setupADCInterrupt();
 
   // setup uart and adc
   setupADC();

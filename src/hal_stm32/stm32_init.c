@@ -11,7 +11,7 @@ void boardInit() {
 
 TIM_HandleTypeDef htim2;
 
-void setupTimeCounterInterrupt() {
+void setupTimeCounter() {
   __HAL_RCC_TIM2_CLK_ENABLE();
 
   htim2.Instance = TIM2;

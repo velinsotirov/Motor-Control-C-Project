@@ -12,9 +12,8 @@
 extern uint8_t received_msg[RX_PACKET_LEN];
 extern uint8_t outgoing_msg[TX_PACKET_LEN];
 
-extern volatile bool diag_tx_send;
-
 extern const uint16_t t_step_rx;
+extern const uint16_t t_step_tx;
 
 typedef enum {
     COMMAND_EMPTY, // 0 is not a command since we might interpret empty UART frames as a command
@@ -33,7 +32,5 @@ bool returnDiagModeRequest(void);
 bool returnDiagPowerStageRequest(void);
 q4_12_t returnDiagTorqueRequest(void);
 int16_t returnDiagSpeedRequest(void);
-
-void diagTrigger(void);
 
 #endif // DIAG_H

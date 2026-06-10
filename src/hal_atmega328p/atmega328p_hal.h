@@ -117,7 +117,7 @@ uint32_t disableInterrupts(void);
 
 uint16_t getTimerVal(void);
 
-#define TIMER_VAL TCNT1
-#define RESTORE_SREG(sreg) SREG = uint8_t (sreg)
+#define TIMER_VAL (TCNT0)
+#define RESTORE_SREG(sreg) SREG = ((uint8_t) (sreg))
 
 #endif // ATMEGA328P_HAL_H

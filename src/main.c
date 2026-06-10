@@ -16,8 +16,10 @@
 #include "stm32_hal.h"
 #endif
 
-// last execution of diag rx
+// last execution of controller, diag rx and tx
+static uint16_t controller_lastExec = 0u;
 static uint16_t diag_rx_lastExec = 0u;
+static uint16_t diag_tx_lastExec = 0u;
 
 // main function
 int main()
@@ -30,22 +32,19 @@ int main()
     uint16_t current_timer_val = getTimerVal();
 
     // check if controller should be executed
-    // flag is set by ADC (which runs at 100Hz) after it has finished converting
-    // TODO: fix execution of controller also via counters
-    if (runController) {
-      runController = false;
+    if (current_timer_val - controller_lastExec >= t_step_controller) {
+      controller_lastExec = current_timer_val;
       run_system();
     }
 
     // check if diag rx should be executed
-    // based on slow 1s timer which triggers tx uart
     if (current_timer_val - diag_rx_lastExec >= t_step_rx) {
       diag_rx_lastExec = current_timer_val;
       diag_step_100ms();
     }
 
-    if (diag_tx_send) {
-      diag_tx_send = false;
+    if (current_timer_val - diag_tx_lastExec >= t_step_tx) {
+      diag_tx_lastExec = current_timer_val;
       diag_step_1000ms();
     }
   }

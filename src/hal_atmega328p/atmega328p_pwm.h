@@ -4,7 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-void pwmCount(void);
+void enable_pwm(void);
+void disable_pwm(void);
+void setPWMTimer(void);
+void set_duty_cycle(int16_t duty);
 
 // 8 cycles * 62.5ns = 500ns
 #define DELAY_0_5US() __asm__ __volatile__ ( \

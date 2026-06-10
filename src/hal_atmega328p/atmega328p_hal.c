@@ -24,23 +24,7 @@ uint16_t getTimerVal() {
   return current_timer_val;
 }
 
-// interrupt for calling the ADC
-ISR(TIMER0_COMPA_vect) {
-  //diagTrigger();
-}
-
-// interrupt for calling tx uart, which also coutns for rx uart and controller execution
-ISR(TIMER1_COMPA_vect) {
-  diagTrigger(); 
-}
-
-// interrupt calls pwm counter
-ISR(TIMER2_COMPA_vect) {
-  pwmCount(); 
-}
-
 // encoder interrupt
-ISR(INT0_vect)
-{
+ISR(INT0_vect) {
   incrementEncoder();
 }

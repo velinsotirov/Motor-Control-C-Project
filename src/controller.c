@@ -6,8 +6,22 @@
 #include "controller.h"
 #include "fixed_point.h"
 
+#ifdef __AVR_ATmega328P__
+#include "atmega328p_pwm.h"
+//16MHz / (256 * (124 + 1)) -> 500Hz, we want 100Hz so flag is 5
+#define CONTROLLER_COUNT 5u
+#else
+#include "stm32_pwm.h"
+// 72MHz / (7200 * (999 + 1)) -> 10Hz
+// TODO: fix
+#define CONTROLLER_COUNT 999u
+#endif
+
+// when counter has moved this much, its time to execute the controller
+const uint16_t t_step_controller = CONTROLLER_COUNT;
+
 // duty output from controller, with initial condition
-int8_t duty = 0;
+int16_t duty = 0;
 
 // controller flag if it should step (triggered when ADC current measurement is complete)
 volatile bool runController = false;
@@ -35,6 +49,7 @@ void attach_controller(GetMotorSpeed s, GetMotorCurrent c, SetDuty d) {
     motorSpeed_get = s;
     motorCurrent_get = c;
     dutyCycle_set = d;
+    enable_pwm();
 }
 
 void detach_controller(void) {
@@ -42,6 +57,7 @@ void detach_controller(void) {
     motorCurrent_get = NULL;
     dutyCycle_set = NULL;
     reset_duty();
+    disable_pwm();
     integrator_speed = FLOAT_TO_Q22_10(0.0f);
     integrator_current = FLOAT_TO_Q22_10(0.0f);
 }
@@ -69,10 +85,10 @@ void speed_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    int8_t duty_lim = (int8_t) duty_unlim;
+    duty = duty_unlim;
 
     // set duty cycle
-    dutyCycle_set(duty_lim); //duty_lim
+    dutyCycle_set(duty);
 }
 
 void torque_controller_step() {
@@ -101,19 +117,16 @@ void torque_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    int8_t duty_lim = (int8_t) duty_unlim;
+    duty = duty_unlim;
 
     // set duty cycle
-    dutyCycle_set(duty_lim); //duty_lim
+    dutyCycle_set(duty);
 }
 
-void set_motor_duty(int8_t duty_cycle) {
-    duty = duty_cycle;
-}
-
-int8_t get_motor_duty(void) {
+int16_t get_motor_duty(void) {
     return duty;
 }
+
 void reset_duty(void) {
     duty = 0u;
 }

@@ -16,6 +16,12 @@
 #include "diag.h"
 #endif
 
+#ifdef __AVR_ATmega328P__
+#include "atmega328p_pwm.h"
+#else
+#include "stm32_pwm.h"
+#endif
+
 // states are hidden from other modules
 static controller_state_t controller_state = STATE_IDLE;
 static controller_state_t controller_prev_state = STATE_IDLE;
@@ -72,7 +78,7 @@ void entry_actions() {
                 break;
             case STATE_RUNNING:
                 // attach controller to motor and reset idle counter
-                attach_controller(calculateSpeed, measureCurrent, set_motor_duty);
+                attach_controller(calculateSpeed, measureCurrent, set_duty_cycle);
                 idle_counter = 0;
                 break;
             case STATE_ERROR:

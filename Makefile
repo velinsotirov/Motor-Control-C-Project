@@ -17,8 +17,8 @@ STMINCLUDES = -I src/hal_stm32 -I F:\Uni\gcc_arn_none_eabi_10_3_2021_10\arm-none
 TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/main.c \
 	src/bsw/ringbuffer.c
 ATMEGASRC = src/hal_atmega328p/atmega328p_hal.c src/hal_atmega328p/atmega328p_init.c \
-	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_pwm.c \
-	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_adc.c
+	src/hal_atmega328p/atmega328p_pwm.c src/hal_atmega328p/atmega328p_uart.c \
+	src/hal_atmega328p/atmega328p_adc.c
 STMSRC = src\hal_stm32\stm32_init.c src\hal_stm32\stm32f1xx_hal_msp.c src\hal_stm32\stm32f1xx_it.c \
 	src\hal_stm32\system_stm32f1xx.c
 
@@ -41,9 +41,9 @@ $(ATMEGAEXE) : $(COMMONSRC) $(TARGETSRC) $(ATMEGASRC)
 	$(INCLUDES) $(TARGETINCLUDES) $(ATMEGAINCLUDES) \
 	$(TARGETFLAGS) -o $(ATMEGAEXE) \
 	-fstack-usage -mmcu=atmega328p \
-	-Wl,-Map=build/main.map
+	-Wl,-Map=build/main.map -D__AVR_ATmega328P__
 	avr-objdump -d $(ATMEGAEXE) > dump.txt
-	avr-size $(ATMEGAEXE) -D__AVR_ATmega328P__
+	avr-size $(ATMEGAEXE)
 
 target_stm: $(STMEXE)
 
@@ -52,5 +52,4 @@ $(STMEXE) : $(COMMONSRC) $(TARGETSRC) $(STMSRC)
 	$(INCLUDES) $(TARGETINCLUDES) $(STMINCLUDES) \
 	$(TARGETFLAGS) -o $(STMEXE) \
 	-fstack-usage -mcpu=cortex-m3 \
-	-Wl,-Map=build/main.map
- 	-D__ARM_CortexM3__
+	-Wl,-Map=build/main.map -D__ARM_CortexM3__
