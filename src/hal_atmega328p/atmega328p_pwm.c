@@ -26,6 +26,13 @@ void set_duty_cycle(int16_t duty) {
 void disable_pwm() {
   TCNT1 = 0;
   RESET(TIMSK1, MASK(OCIE1A));
+
+  // HS open, LS closed
+  HAL_RESET_PIN(PIN_LEFT_HS);
+  HAL_RESET_PIN(PIN_RIGHT_HS);
+  DELAY_0_5US();
+  HAL_SET_PIN(PIN_LEFT_LS);
+  HAL_SET_PIN(PIN_RIGHT_LS);
 }
 
 void enable_pwm() {
@@ -97,11 +104,11 @@ void setupPWMTimer() {
   // Phase correct PWM, TOP = ICR1
   TCCR1A = 0b0;
   TCCR1B = 0b0;
-  TCCR1A = (1 << WGM11);
-  TCCR1B = (1 << WGM13);
+  SET(TCCR1A, MASK(WGM11));
+  SET(TCCR1B, MASK(WGM13));
 
   // prescaler = 1 (CS10=1)
-  TCCR1B = (1 << CS10);
+  SET(TCCR1B, MASK(CS10));
 
   // pwm frequency is 20khz, we have an up down counter with prescaler 1
   ICR1 = 400;

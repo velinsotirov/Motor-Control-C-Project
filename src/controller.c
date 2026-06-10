@@ -53,11 +53,11 @@ void attach_controller(GetMotorSpeed s, GetMotorCurrent c, SetDuty d) {
 }
 
 void detach_controller(void) {
+    disable_pwm();
+    reset_duty();
     motorSpeed_get = NULL;
     motorCurrent_get = NULL;
     dutyCycle_set = NULL;
-    reset_duty();
-    disable_pwm();
     integrator_speed = FLOAT_TO_Q22_10(0.0f);
     integrator_current = FLOAT_TO_Q22_10(0.0f);
 }

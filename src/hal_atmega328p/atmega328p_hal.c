@@ -1,5 +1,6 @@
 
 #include <avr/io.h>
+#include <avr/wdt.h>
 #include <avr/interrupt.h>
 
 #include "diag.h"
@@ -27,4 +28,9 @@ uint16_t getTimerVal() {
 // encoder interrupt
 ISR(INT0_vect) {
   incrementEncoder();
+}
+
+// reset watchdog timer
+void resetWatchdog() {
+  wdt_reset();
 }

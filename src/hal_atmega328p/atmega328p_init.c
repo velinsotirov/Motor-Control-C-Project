@@ -4,6 +4,7 @@
 #include <avr/interrupt.h>
 
 #include "encoder.h"
+#include "controller.h"
 #include "atmega328p_hal.h"
 #include "atmega328p_uart.h"
 #include "atmega328p_init.h"
@@ -14,10 +15,10 @@ void setupWatchdog(void) {
   wdt_reset();
 
   // start timed sequence
-  WDTCSR = (1 << WDCE) | (1 << WDE);
+  SET(WDTCSR, MASK(WDCE) | MASK(WDE));
 
-  // set watchdog timeout + enable reset mode
-  SET(WDTCSR, MASK(WDP1)); // 64ms
+  // set watchdog timeout + enable reset mode + interrupt
+  SET(WDTCSR, MASK(WDP1) | MASK(WDIE)); // 64ms
 }
 
 // setup encoder interrupt
@@ -40,7 +41,7 @@ void setupTimeCounter() {
 
   // prescaler = 256 (CS02=1)
   TCCR0B = 0b0;
-  TCCR0B = (1 << CS02);
+  SET(TCCR0B, MASK(CS02));
 }
 
 // setup everything
@@ -93,4 +94,9 @@ void boardInit() {
   
   // enable interrupts
   sei();
+}
+
+// watchdog interrupt, detaches controller, resets pwm sets power stage to safe state
+ISR(WDT_vect) {
+  detach_controller();
 }

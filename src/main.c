@@ -33,7 +33,7 @@ int main()
   setupWatchdog();
 
   // main loop
-  while(true) {
+  while(1) {
     uint16_t current_timer_val = getTimerVal();
 
     // check if controller should be executed
@@ -42,7 +42,7 @@ int main()
       run_system();
 
       // reset watchdog during the fastest task
-      wdt_reset();
+      resetWatchdog();
     }
 
     // check if diag rx should be executed
