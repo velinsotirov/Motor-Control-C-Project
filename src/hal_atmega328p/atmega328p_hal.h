@@ -113,9 +113,11 @@ typedef enum {
                         | PIN_LOCAL_MASK(PIN_RIGHT_LS) | PIN_LOCAL_MASK(PIN_UART_RX) \
                         | PIN_LOCAL_MASK(PIN_UART_TX))
 
-uint8_t disableInterrupts(void);
+uint32_t disableInterrupts(void);
+
+uint16_t getTimerVal(void);
 
 #define TIMER_VAL TCNT1
-#define RESTORE_SREG(sreg) SREG = sreg
+#define RESTORE_SREG(sreg) SREG = uint8_t (sreg)
 
 #endif // ATMEGA328P_HAL_H

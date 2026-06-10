@@ -2,7 +2,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "pwm.h"
 #include "diag.h"
 #include "system.h"
 #include "global.h"
@@ -14,6 +13,7 @@
 #include "atmega328p_hal.h"
 #else
 #include "stm32_init.h"
+#include "stm32_hal.h"
 #endif
 
 // last execution of diag rx
@@ -27,13 +27,11 @@ int main()
 
   // main loop
   while(true) {
-    // disable interrupts, fetch main coutner 16bit value and restore interrupts
-    uint8_t sreg = disableInterrupts();
-    uint16_t current_timer_val = TIMER_VAL;
-    RESTORE_SREG(sreg);
+    uint16_t current_timer_val = getTimerVal();
 
     // check if controller should be executed
     // flag is set by ADC (which runs at 100Hz) after it has finished converting
+    // TODO: fix execution of controller also via counters
     if (runController) {
       runController = false;
       run_system();

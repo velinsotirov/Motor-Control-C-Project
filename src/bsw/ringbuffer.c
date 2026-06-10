@@ -2,7 +2,12 @@
 #include <stdbool.h>
 
 #include "ringbuffer.h"
+
+#ifdef __AVR_ATmega328P__
 #include "atmega328p_hal.h"
+#else
+#include "stm32_hal.h"
+#endif
 
 // two ring buffers
 uint8_t rx_init[RX_RB_LEN];
@@ -21,7 +26,7 @@ void ringbuffer_write(rb_type_t *rb_struct, uint8_t data_in) {
 
 bool ringbuffer_read(rb_type_t *rb_struct, uint8_t* received_msg, uint8_t message_len) {
     // disable interrupts for safety and fetch local copies of pointers
-    uint8_t sreg = disableInterrupts();
+    uint32_t sreg = disableInterrupts();
 
     // number of new bytes
     uint8_t bytes_available = (rb_struct->wp - rb_struct->rp) & rb_struct->mask;

@@ -4,6 +4,7 @@
 #include "stm32f1xx_hal.h"
 
 /* Exported functions prototypes ---------------------------------------------*/
+void boardInit(void); 
 void Error_Handler(void);
 void SystemClock_Config(void);
 

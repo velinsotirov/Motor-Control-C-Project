@@ -7,13 +7,26 @@
 #include "system.h"
 #include "current.h"
 #include "ringbuffer.h"
-#include "atmega328p_uart.h"
 
+#ifdef __AVR_ATmega328P__
+#include "atmega328p_uart.h"
+// 16MHz / (256 * (6249 + 1)) -> 10Hz
+#define TX_COUNT 6249
+#else
+#include "stm32_uart.h"
+// 72MHz / (7200 * (999 + 1)) -> 10Hz
+#define TX_COUNT 999u
+#endif
+
+const uint16_t t_step_rx = TX_COUNT; // when counter has moved this much, its time to execute rx
 volatile bool diag_tx_send = false;
 uint16_t intermediary_ref_value = 0;
 
 // time step of rx read
-const uint16_t t_step_rx = 6249;
+// TODO: set timer and prescaler to 1152 so that: 72MHz / (1152 * (624 + 1)) -> 100Hz,
+
+// atmega328p
+
 
 bool diag_speed_mode_req = false;
 bool diag_powerstage_req = false;

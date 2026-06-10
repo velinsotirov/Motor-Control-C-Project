@@ -14,10 +14,11 @@ TARGETINCLUDES = -I test -I src/bsw
 ATMEGAINCLUDES = -I src/hal_atmega328p -I F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/avr/include/
 STMINCLUDES = -I src/hal_stm32 -I F:\Uni\gcc_arn_none_eabi_10_3_2021_10\arm-none-eabi\include
 
-TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/bsw/pwm.c src/main.c \
+TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/main.c \
 	src/bsw/ringbuffer.c
 ATMEGASRC = src/hal_atmega328p/atmega328p_hal.c src/hal_atmega328p/atmega328p_init.c \
-	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_adc.c
+	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_pwm.c \
+	src/hal_atmega328p/atmega328p_uart.c src/hal_atmega328p/atmega328p_adc.c
 STMSRC = src\hal_stm32\stm32_init.c src\hal_stm32\stm32f1xx_hal_msp.c src\hal_stm32\stm32f1xx_it.c \
 	src\hal_stm32\system_stm32f1xx.c
 

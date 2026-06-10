@@ -1,13 +1,14 @@
-#ifndef PWM_H
-#define PWM_H
+#ifndef ATMEGA329P_PWM_H
+#define ATMEGA329P_PWM_H
 
 #include <stdint.h>
 #include <stdbool.h>
 
 void pwmCount(void);
 
-// 7 cycles * 62.5ns = 437.5ns (more than 400ns)
-#define DELAY_0_4US() __asm__ __volatile__ ( \
+// 8 cycles * 62.5ns = 500ns
+#define DELAY_0_5US() __asm__ __volatile__ ( \
+    "nop\n\t" \
     "nop\n\t" \
     "nop\n\t" \
     "nop\n\t" \
@@ -17,4 +18,4 @@ void pwmCount(void);
     "nop\n\t" \
 )
 
-#endif // PWM_H
+#endif // ATMEGA329P_PWM_H
