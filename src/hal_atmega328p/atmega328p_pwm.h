@@ -6,7 +6,7 @@
 
 void enable_pwm(void);
 void disable_pwm(void);
-void setPWMTimer(void);
+void setupPWMTimer(void);
 void set_duty_cycle(int16_t duty);
 
 // 8 cycles * 62.5ns = 500ns

@@ -20,7 +20,7 @@ void disableTxInterrupt() { // TODO: REWRITE!
   RESET(UCSR0B, MASK(UDRIE0));
 }
 
-void uart_init() { // TODO: REWRITE!
+void setupUART() { // TODO: REWRITE!
     UCSR0C = 0b0;
     // bits UMSELn1, UMSELn0 = 0 for asynchronous UART
     // bits UPMn1, UPMn0 = 0 for no parity

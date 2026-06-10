@@ -1,5 +1,6 @@
 
 #include <avr/io.h>
+#include <avr/wdt.h>
 #include <avr/interrupt.h>
 
 #include "encoder.h"
@@ -7,6 +8,17 @@
 #include "atmega328p_uart.h"
 #include "atmega328p_init.h"
 #include "atmega328p_adc.h"
+
+void setupWatchdog(void) {
+  // reset watchdog state
+  wdt_reset();
+
+  // start timed sequence
+  WDTCSR = (1 << WDCE) | (1 << WDE);
+
+  // set watchdog timeout + enable reset mode
+  SET(WDTCSR, MASK(WDP1)); // 64ms
+}
 
 // setup encoder interrupt
 void setupEncoderInterrupt() {
@@ -71,13 +83,13 @@ void boardInit() {
   SET(PORTD, (~USED_PINS_PORTD) & VALID_PINS_D);
 
   // setup interrupts
-  setPWMTimer();
+  setupPWMTimer();
   setupTimeCounter();
   setupEncoderInterrupt();
 
   // setup uart and adc
   setupADC();
-  uart_init();
+  setupUART();
   
   // enable interrupts
   sei();

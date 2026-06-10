@@ -301,13 +301,13 @@ END GROUP
                 0x00000a5c                disable_pwm
                 0x00000a70                enable_pwm
                 0x00000a7c                __vector_11
-                0x00000b6a                setPWMTimer
+                0x00000b6a                setupPWMTimer
                 0x00000bbc                __vector_13
  .text          0x00000bec      0x112 C:\Users\velin\AppData\Local\Temp\ccPvpREQ.o
                 0x00000bec                writeToUSART
                 0x00000bf6                enableTxInterrupt
                 0x00000c02                disableTxInterrupt
-                0x00000c0e                uart_init
+                0x00000c0e                setupUART
                 0x00000c36                __vector_18
                 0x00000c86                __vector_19
  .text          0x00000cfe       0x78 C:\Users\velin\AppData\Local\Temp\ccIojhII.o

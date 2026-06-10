@@ -11,6 +11,8 @@
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_init.h"
 #include "atmega328p_hal.h"
+// system clock
+#define F_CPU 16000000UL
 #else
 #include "stm32_init.h"
 #include "stm32_hal.h"
@@ -27,6 +29,9 @@ int main()
   // initialize everything
   boardInit();
 
+  // start watchdog
+  setupWatchdog();
+
   // main loop
   while(true) {
     uint16_t current_timer_val = getTimerVal();
@@ -35,6 +40,9 @@ int main()
     if (current_timer_val - controller_lastExec >= t_step_controller) {
       controller_lastExec = current_timer_val;
       run_system();
+
+      // reset watchdog during the fastest task
+      wdt_reset();
     }
 
     // check if diag rx should be executed

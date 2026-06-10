@@ -6,8 +6,7 @@
 
 #include "ringbuffer.h"
 
-void uart_init(void);
-
+void setupUART(void);
 void writeToUSART(uint8_t*);
 
 void enableTxInterrupt(void);

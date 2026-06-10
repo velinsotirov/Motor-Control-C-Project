@@ -21,7 +21,7 @@ void disableTxInterrupt() {
   RESET(UCSR0B, MASK(UDRIE0));
 }
 
-void uart_init() {
+void setupUART() {
     UCSR0C = 0b0;
     // bits UMSELn1, UMSELn0 = 0 for asynchronous UART
     // bits UPMn1, UPMn0 = 0 for no parity

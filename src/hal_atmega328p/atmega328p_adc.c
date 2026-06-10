@@ -11,7 +11,8 @@
 
 void setupADC() {
     ADMUX = 0b0;
-    //pins REFS1, REFS0 = 0 -> we use AREF!
+    SET(ADMUX, MASK(REFS0));
+    //pins REFS0 = 1 -> we use Vcc!
     //pins MUX3,2,1,0 0000 for ADC0
 
     ADCSRA = 0b0;
@@ -23,8 +24,11 @@ void setupADC() {
     ADCSRB = 0b0;
 
     DIDR0 = 0b0;
-    SET(DIDR0, MASK(ADC5D) | MASK(ADC4D) | MASK(ADC3D) | MASK(ADC2D) | MASK(ADC1D) | MASK(ADC0D));
-    // disable digital input buffer on all ADC pins, since none of them are used digitally
+    SET(DIDR0, MASK(ADC0D)); // disable digital input buffer on ADC0 pin
+
+    // first adc measurement to calibrate
+    ADCSRA |= (1 << ADSC);
+    while (ADCSRA & (1 << ADSC)); // discard first result
 }
 
 // interrupt fires at middle of PWM period

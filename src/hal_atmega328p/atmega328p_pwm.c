@@ -90,7 +90,7 @@ ISR(TIMER1_COMPA_vect) {
 }
 
 // set up interrupt which triggers PWM timer
-void setPWMTimer() {
+void setupPWMTimer() {
   // reset timer count
   TCNT1 = 0;
 

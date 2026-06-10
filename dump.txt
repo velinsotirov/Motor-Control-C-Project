@@ -1260,11 +1260,11 @@ Disassembly of section .text:
      a12:	8b b1       	in	r24, 0x0b	; 11
      a14:	88 60       	ori	r24, 0x08	; 8
      a16:	8b b9       	out	0x0b, r24	; 11
-     a18:	0e 94 b5 05 	call	0xb6a	; 0xb6a <setPWMTimer>
+     a18:	0e 94 b5 05 	call	0xb6a	; 0xb6a <setupPWMTimer>
      a1c:	0e 94 d8 04 	call	0x9b0	; 0x9b0 <setupTimeCounter>
      a20:	0e 94 cf 04 	call	0x99e	; 0x99e <setupEncoderInterrupt>
      a24:	0e 94 7f 06 	call	0xcfe	; 0xcfe <setupADC>
-     a28:	0e 94 07 06 	call	0xc0e	; 0xc0e <uart_init>
+     a28:	0e 94 07 06 	call	0xc0e	; 0xc0e <setupUART>
      a2c:	78 94       	sei
      a2e:	08 95       	ret
 
@@ -1409,7 +1409,7 @@ Disassembly of section .text:
      b66:	8b b9       	out	0x0b, r24	; 11
      b68:	ae cf       	rjmp	.-164    	; 0xac6 <.L9>
 
-00000b6a <setPWMTimer>:
+00000b6a <setupPWMTimer>:
      b6a:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7f8085>
      b6e:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7f8084>
      b72:	a0 e8       	ldi	r26, 0x80	; 128
@@ -1493,7 +1493,7 @@ Disassembly of section .text:
      c0a:	80 83       	st	Z, r24
      c0c:	08 95       	ret
 
-00000c0e <uart_init>:
+00000c0e <setupUART>:
      c0e:	e2 ec       	ldi	r30, 0xC2	; 194
      c10:	f0 e0       	ldi	r31, 0x00	; 0
      c12:	10 82       	st	Z, r1
