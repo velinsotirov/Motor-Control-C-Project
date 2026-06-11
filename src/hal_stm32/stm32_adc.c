@@ -6,6 +6,9 @@
 #include "stm32_adc.h"
 #include "stm32_hal.h"
 
+// ADC handle
+static ADC_HandleTypeDef hadc1;
+
 void setupADC() {
     __HAL_RCC_ADC1_CLK_ENABLE();
 
@@ -46,7 +49,7 @@ void setupADC() {
 
     // NVIC
     HAL_NVIC_SetPriority(ADC1_2_IRQn, 1, 0); // priority lower than TIM1, so timer can preempt ADC if needed
-    HAL_NVIC_EnableIRQ(ADC1_2_IQRn);
+    HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
 }
 
 // interrupt for triggering ADC lies within pwm file since htim1 is created there

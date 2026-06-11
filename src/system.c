@@ -31,6 +31,10 @@ static controller_mode_t controller_prev_mode = STATE_TORQUE;
 // internal counter
 static uint8_t idle_counter = 0;
 
+// bugfix
+static int16_t current_speed = 0;
+static int8_t measuredCurrent = 0;
+
 // system state requests, controller accesses them directly
 // changed by diag module when outside requests arrive
 bool speed_mode = false;
@@ -49,8 +53,8 @@ void check_transitions() {
             break;
         // transitions from running
         case STATE_RUNNING:
-            int16_t current_speed = get_motor_speed_est();
-            int8_t measuredCurrent = 0;
+            current_speed = get_motor_speed_est();
+            measuredCurrent = 0;
             // go to error if we have a high speed or overcurrent
             if ((current_speed > max_speed || current_speed < -max_speed) || \
             (measuredCurrent > max_current || measuredCurrent < -max_current)) {

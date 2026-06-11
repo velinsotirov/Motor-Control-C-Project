@@ -1,91 +1,72 @@
 Archive member included to satisfy reference by file (symbol)
 
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__mulsi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o (exit)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
-                              C:\Users\velin\AppData\Local\Temp\ccCCcTil.o (__do_copy_data)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__do_clear_bss)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__usmulhisi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o) (__muluhisi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__mulshisi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccWEinu0.o (__muldi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o) (__muldi3_6)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__divdi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o) (__udivdi3_umoddi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o) (__udivmod64)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o) (__negdi2)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o) (__prologue_saves__)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o) (__epilogue_restores__)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o (__ashldi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
-                              C:\Users\velin\AppData\Local\Temp\ccW30Roh.o (__ashrdi3)
-F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
-                              F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o) (__umulhisi3)
-
-There are no discarded input sections
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+                              C:\Users\velin\AppData\Local\Temp\ccooWCON.o (__aeabi_ldivmod)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o (exit)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o) (_global_impure_ptr)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o (__libc_init_array)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o (memset)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o) (__call_exitprocs)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o) (atexit)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o) (__libc_fini_array)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o) (__retarget_lock_acquire_recursive)
+f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+                              f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o) (__register_exitproc)
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-text             0x00000000         0x00008000         xr
-data             0x00800100         0x00000800         rw!x
-eeprom           0x00810000         0x00000400         rw!x
-fuse             0x00820000         0x00000003         rw!x
-lock             0x00830000         0x00000400         rw!x
-signature        0x00840000         0x00000400         rw!x
-user_signatures  0x00850000         0x00000400         rw!x
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
-Address of section .data set to 0x800100
-LOAD F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccqotz5A.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccW30Roh.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccY3VIuz.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccC3RNap.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccqKpIIl.o
-LOAD C:\Users\velin\AppData\Local\Temp\cc433gLj.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccGkfNpk.o
-LOAD C:\Users\velin\AppData\Local\Temp\cckYrsjn.o
-LOAD C:\Users\velin\AppData\Local\Temp\ccMvOovs.o
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+LOAD C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+LOAD C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+LOAD C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+LOAD C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+LOAD C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+LOAD C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+LOAD C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+LOAD C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+LOAD C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+LOAD C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+LOAD C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+LOAD C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
 START GROUP
-LOAD F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a
-LOAD F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5\libm.a
-LOAD F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5\libc.a
-LOAD F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5\libatmega328p.a
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a
 END GROUP
-                [0x00000000]                      __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
-                [0x00008000]                      __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
-                [0x00800100]                      __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x800060
-                [0x00000800]                      __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
-                [0x00000400]                      __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
-                [0x00000003]                      __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
-                0x00000400                        __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
-                0x00000400                        __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
-                0x00000400                        __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+LOAD f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                [!provide]                PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x8000))
+                0x00008000                . = SEGMENT_START ("text-segment", 0x8000)
+
+.interp
+ *(.interp)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
 
 .hash
  *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
 
 .dynsym
  *(.dynsym)
@@ -102,71 +83,39 @@ END GROUP
 .gnu.version_r
  *(.gnu.version_r)
 
-.rel.init
+.rel.dyn        0x00008000        0x0
  *(.rel.init)
-
-.rela.init
- *(.rela.init)
-
-.rel.text
- *(.rel.text)
- *(.rel.text.*)
- *(.rel.gnu.linkonce.t*)
-
-.rela.text
- *(.rela.text)
- *(.rela.text.*)
- *(.rela.gnu.linkonce.t*)
-
-.rel.fini
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
  *(.rel.fini)
-
-.rela.fini
- *(.rela.fini)
-
-.rel.rodata
- *(.rel.rodata)
- *(.rel.rodata.*)
- *(.rel.gnu.linkonce.r*)
-
-.rela.rodata
- *(.rela.rodata)
- *(.rela.rodata.*)
- *(.rela.gnu.linkonce.r*)
-
-.rel.data
- *(.rel.data)
- *(.rel.data.*)
- *(.rel.gnu.linkonce.d*)
-
-.rela.data
- *(.rela.data)
- *(.rela.data.*)
- *(.rela.gnu.linkonce.d*)
-
-.rel.ctors
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
  *(.rel.ctors)
-
-.rela.ctors
- *(.rela.ctors)
-
-.rel.dtors
  *(.rel.dtors)
-
-.rela.dtors
- *(.rela.dtors)
-
-.rel.got
  *(.rel.got)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+ .rel.iplt      0x00008000        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                [!provide]                PROVIDE (__rel_iplt_end = .)
 
-.rela.got
+.rela.dyn       0x00008000        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
  *(.rela.got)
-
-.rel.bss
- *(.rel.bss)
-
-.rela.bss
- *(.rela.bss)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                PROVIDE (__rela_iplt_end = .)
 
 .rel.plt
  *(.rel.plt)
@@ -174,606 +123,483 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x115a
- *(.vectors)
- .vectors       0x00000000       0x68 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
-                0x00000000                __vector_default
-                0x00000000                __vectors
- *(.vectors)
- *(.progmem.gcc*)
-                0x00000068                        . = ALIGN (0x2)
-                0x00000068                        __trampolines_start = .
- *(.trampolines)
- .trampolines   0x00000068        0x0 linker stubs
- *(.trampolines*)
-                0x00000068                        __trampolines_end = .
- *libprintf_flt.a:*(.progmem.data)
- *libc.a:*(.progmem.data)
- *(.progmem.*)
-                0x00000068                        . = ALIGN (0x2)
- *(.lowtext)
- *(.lowtext*)
-                0x00000068                        __ctors_start = .
+.init           0x00008000        0xc
+ *(SORT_NONE(.init))
+ .init          0x00008000        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x00008000                _init
+ .init          0x00008004        0x8 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+
+.plt
+ *(.plt)
+
+.iplt           0x0000800c        0x0
+ *(.iplt)
+ .iplt          0x0000800c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+
+.text           0x0000800c      0xe80
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ .text.exit     0x0000800c       0x20 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+                0x0000800c                exit
+ *(.text.startup .text.startup.*)
+ .text.startup.register_fini
+                0x0000802c       0x14 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00008040        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+ .text          0x00008040       0x40 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .text          0x00008080       0x7c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+                0x00008080                _stack_init
+                0x00008088                _start
+                0x00008088                _mainCRTStartup
+ .text          0x000080fc        0x0 C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+ .text          0x000080fc      0x178 C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+                0x000080fc                attach_controller
+                0x00008110                speed_controller_step
+                0x00008184                torque_controller_step
+                0x00008224                get_motor_duty
+                0x00008230                reset_duty
+                0x0000823c                detach_controller
+                0x0000825c                resetSpeedIntegrator
+                0x00008268                resetCurrentIntegrator
+ .text          0x00008274      0x180 C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+                0x00008274                check_transitions
+                0x000082c8                entry_actions
+                0x00008310                check_subtransitions
+                0x00008340                entry_subactions
+                0x00008360                state_subactions
+                0x00008380                state_actions
+                0x000083ac                run_system
+                0x000083dc                get_controller_state
+                0x000083e8                get_controller_mode
+ .text          0x000083f4       0x34 C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+                0x000083f4                measureCurrent
+ .text          0x00008428      0x14c C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+                0x00008428                diag_step_100ms
+                0x00008494                diag_step_1000ms
+                0x00008544                returnDiagModeRequest
+                0x00008550                returnDiagPowerStageRequest
+                0x0000855c                returnDiagTorqueRequest
+                0x00008568                returnDiagSpeedRequest
+ .text          0x00008574       0x30 C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+                0x00008574                calculateSpeed
+                0x00008598                get_motor_speed_est
+ .text          0x000085a4       0x6c C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+                0x000085a4                main
+ .text          0x00008610       0x74 C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+                0x00008610                ringbuffer_write
+                0x0000862a                ringbuffer_read
+ .text          0x00008684      0x104 C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+                0x00008684                setupWatchdog
+                0x00008686                resetWatchdog
+                0x00008688                Error_Handler
+                0x0000868c                setupEncoder
+                0x0000871c                SystemClock_Config
+                0x0000876e                boardInit
+ .text          0x00008788       0x44 C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+                0x00008788                HAL_MspInit
+ .text          0x000087cc       0x18 C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+                0x000087cc                NMI_Handler
+                0x000087ce                HardFault_Handler
+                0x000087d0                MemManage_Handler
+                0x000087d2                BusFault_Handler
+                0x000087d4                UsageFault_Handler
+                0x000087d6                SVC_Handler
+                0x000087d8                DebugMon_Handler
+                0x000087da                PendSV_Handler
+                0x000087dc                SysTick_Handler
+ .text          0x000087e4       0x94 C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
+                0x000087e4                SystemInit
+                0x000087e6                SystemCoreClockUpdate
+ .text          0x00008878       0xa0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+                0x00008878                __aeabi_ldivmod
+ .text          0x00008918      0x2d4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x00008918                __udivmoddi4
+ .text          0x00008bec        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+                0x00008bec                __aeabi_idiv0
+                0x00008bec                __aeabi_ldiv0
+ .text          0x00008bf0        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+ .text          0x00008bf0        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+ .text          0x00008bf0        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x00008bf0       0x48 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+                0x00008bf0                __libc_init_array
+ .text          0x00008c38        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+ .text.memset   0x00008c38       0xa4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+                0x00008c38                memset
+ .text          0x00008cdc        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x00008cdc       0xc4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+                0x00008cdc                __call_exitprocs
+ .text          0x00008da0        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+ .text.atexit   0x00008da0        0xc f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+                0x00008da0                atexit
+ .text          0x00008dac        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+ .text.__libc_fini_array
+                0x00008dac       0x2c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+                0x00008dac                __libc_fini_array
+ .text          0x00008dd8        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+ .text.__retarget_lock_init
+                0x00008dd8        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008dd8                __retarget_lock_init
+ .text.__retarget_lock_init_recursive
+                0x00008ddc        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008ddc                __retarget_lock_init_recursive
+ .text.__retarget_lock_close
+                0x00008de0        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008de0                __retarget_lock_close
+ .text.__retarget_lock_close_recursive
+                0x00008de4        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008de4                __retarget_lock_close_recursive
+ .text.__retarget_lock_acquire
+                0x00008de8        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008de8                __retarget_lock_acquire
+ .text.__retarget_lock_acquire_recursive
+                0x00008dec        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008dec                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_try_acquire
+                0x00008df0        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008df0                __retarget_lock_try_acquire
+ .text.__retarget_lock_try_acquire_recursive
+                0x00008df4        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008df4                __retarget_lock_try_acquire_recursive
+ .text.__retarget_lock_release
+                0x00008df8        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008df8                __retarget_lock_release
+ .text.__retarget_lock_release_recursive
+                0x00008dfc        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00008dfc                __retarget_lock_release_recursive
+ .text          0x00008e00        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x00008e00       0x8c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+                0x00008e00                __register_exitproc
+ .text          0x00008e8c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ .text          0x00008e8c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00008e8c        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00008e8c        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00008e8c        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00008e8c        0x0 linker stubs
+
+.fini           0x00008e8c        0xc
+ *(SORT_NONE(.fini))
+ .fini          0x00008e8c        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+                0x00008e8c                _fini
+ .fini          0x00008e90        0x8 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+                [!provide]                PROVIDE (__etext = .)
+                [!provide]                PROVIDE (_etext = .)
+                [!provide]                PROVIDE (etext = .)
+
+.rodata         0x00008e98       0x80
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00008e98       0x24 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .rodata        0x00008ebc       0x14 C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+                0x00008ebc                duty_max
+                0x00008ebd                duty_min
+                0x00008ebe                duty_mean
+                0x00008ec0                K_times_Psi_q4_12
+                0x00008ec4                K_times_Psi
+                0x00008ec8                max_current
+                0x00008eca                max_speed
+                0x00008ecc                Ts_controller
+ .rodata        0x00008ed0        0x2 C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+                0x00008ed0                t_step_controller
+ .rodata        0x00008ed2        0x4 C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+                0x00008ed2                t_step_rx
+                0x00008ed4                t_step_tx
+ *fill*         0x00008ed6        0x2 
+ .rodata        0x00008ed8       0x18 C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
+                0x00008ed8                AHBPrescTable
+                0x00008ee8                APBPrescTable
+ .rodata._global_impure_ptr
+                0x00008ef0        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+                0x00008ef0                _global_impure_ptr
+ .rodata        0x00008ef4       0x24 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab      0x00008f18        0x0
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x00008f18        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+ .ARM.extab     0x00008f18        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+
+.ARM.exidx      0x00008f18        0x8
+                [!provide]                PROVIDE (__exidx_start = .)
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x00008f18        0x8 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+                                 0x10 (size before relaxing)
+ .ARM.exidx     0x00008f20        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+                                  0x8 (size before relaxing)
+                [!provide]                PROVIDE (__exidx_end = .)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00008f20        0x4
+ *(.eh_frame)
+ .eh_frame      0x00008f20        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x00008f20        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x00018f24                . = (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1)))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x00018f24        0x0
+                [!provide]                PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x00018f24        0x0
+                0x00018f24                PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                0x00018f24                PROVIDE (__preinit_array_end = .)
+
+.init_array     0x00018f24        0x8
+                0x00018f24                PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ .init_array.00000
+                0x00018f24        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x00018f28        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x00018f2c                PROVIDE (__init_array_end = .)
+
+.fini_array     0x00018f2c        0x4
+                0x00018f2c                PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x00018f2c        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x00018f30                PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x00000068                        __ctors_end = .
-                0x00000068                        __dtors_start = .
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x00000068                        __dtors_end = .
- SORT_BY_NAME(*)(.ctors)
- SORT_BY_NAME(*)(.dtors)
- *(.init0)
- .init0         0x00000068        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
-                0x00000068                __init
- *(.init0)
- *(.init1)
- *(.init1)
- *(.init2)
- .init2         0x00000068        0xc F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- *(.init2)
- *(.init3)
- *(.init3)
- *(.init4)
- .init4         0x00000074       0x16 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
-                0x00000074                __do_copy_data
- .init4         0x0000008a       0x10 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
-                0x0000008a                __do_clear_bss
- *(.init4)
- *(.init5)
- *(.init5)
- *(.init6)
- *(.init6)
- *(.init7)
- *(.init7)
- *(.init8)
- *(.init8)
- *(.init9)
- .init9         0x0000009a        0x8 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- *(.init9)
- *(.text)
- .text          0x000000a2        0x4 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
-                0x000000a2                __vector_22
-                0x000000a2                __vector_24
-                0x000000a2                __vector_12
-                0x000000a2                __bad_interrupt
-                0x000000a2                __vector_3
-                0x000000a2                __vector_23
-                0x000000a2                __vector_25
-                0x000000a2                __vector_17
-                0x000000a2                __vector_7
-                0x000000a2                __vector_5
-                0x000000a2                __vector_4
-                0x000000a2                __vector_9
-                0x000000a2                __vector_2
-                0x000000a2                __vector_8
-                0x000000a2                __vector_14
-                0x000000a2                __vector_10
-                0x000000a2                __vector_16
-                0x000000a2                __vector_20
- .text          0x000000a6        0x0 C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
- .text          0x000000a6      0x392 C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
-                0x000000a6                attach_controller
-                0x000000c4                speed_controller_step
-                0x00000232                torque_controller_step
-                0x000003be                get_motor_duty
-                0x000003c8                reset_duty
-                0x000003d2                detach_controller
-                0x00000414                resetSpeedIntegrator
-                0x00000426                resetCurrentIntegrator
- .text          0x00000438      0x184 C:\Users\velin\AppData\Local\Temp\ccqotz5A.o
-                0x00000438                check_transitions
-                0x00000496                entry_actions
-                0x000004d6                check_subtransitions
-                0x0000050c                entry_subactions
-                0x0000052c                state_subactions
-                0x00000548                state_actions
-                0x00000572                run_system
-                0x000005a8                get_controller_state
-                0x000005b2                get_controller_mode
- .text          0x000005bc       0x72 C:\Users\velin\AppData\Local\Temp\ccW30Roh.o
-                0x000005bc                measureCurrent
- .text          0x0000062e      0x19c C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
-                0x0000062e                diag_step_100ms
-                0x000006b4                diag_step_1000ms
-                0x000007aa                returnDiagModeRequest
-                0x000007b0                returnDiagPowerStageRequest
-                0x000007b6                returnDiagTorqueRequest
-                0x000007c0                returnDiagSpeedRequest
- .text          0x000007ca       0x5c C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
-                0x000007ca                calculateSpeed
-                0x000007f0                incrementEncoder
-                0x0000081c                get_motor_speed_est
- .text          0x00000826       0x94 C:\Users\velin\AppData\Local\Temp\ccY3VIuz.o
-                0x00000826                main
- .text          0x000008ba       0x8c C:\Users\velin\AppData\Local\Temp\ccC3RNap.o
-                0x000008ba                ringbuffer_write
-                0x000008da                ringbuffer_read
- .text          0x00000946       0x64 C:\Users\velin\AppData\Local\Temp\ccqKpIIl.o
-                0x00000946                disableInterrupts
-                0x00000952                getTimerVal
-                0x0000095e                __vector_1
-                0x000009a6                resetWatchdog
- .text          0x000009aa       0xec C:\Users\velin\AppData\Local\Temp\cc433gLj.o
-                0x000009aa                setupWatchdog
-                0x000009bc                setupEncoder
-                0x000009ce                setupTimeCounter
-                0x000009da                boardInit
-                0x00000a4e                __vector_6
- .text          0x00000a96      0x1e4 C:\Users\velin\AppData\Local\Temp\ccGkfNpk.o
-                0x00000a96                set_duty_cycle
-                0x00000ac2                disable_pwm
-                0x00000afe                enable_pwm
-                0x00000b0a                __vector_11
-                0x00000bf8                setupPWMTimer
-                0x00000c4a                __vector_13
- .text          0x00000c7a      0x112 C:\Users\velin\AppData\Local\Temp\cckYrsjn.o
-                0x00000c7a                writeToUSART
-                0x00000c84                enableTxInterrupt
-                0x00000c90                disableTxInterrupt
-                0x00000c9c                setupUART
-                0x00000cc4                __vector_18
-                0x00000d14                __vector_19
- .text          0x00000d8c       0x8e C:\Users\velin\AppData\Local\Temp\ccMvOovs.o
-                0x00000d8c                setupADC
-                0x00000dc4                __vector_15
-                0x00000dee                __vector_21
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text          0x00000e1a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00000e1a                        . = ALIGN (0x2)
- *(.text.*)
- .text.libgcc.mul
-                0x00000e1a       0x20 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
-                0x00000e1a                __mulsi3
- .text.libgcc.div
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc   0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc.prologue
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc.builtins
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc.fmul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc.fixed
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .text.libgcc.mul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.div
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.prologue
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.builtins
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.fmul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.fixed
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .text.libgcc.mul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.div
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.prologue
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.builtins
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.fmul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.fixed
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc.mul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.div
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.prologue
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.builtins
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.fmul
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.fixed
-                0x00000e3a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.mul
-                0x00000e3a        0xe F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
-                0x00000e3a                __usmulhisi3
-                0x00000e3e                __usmulhisi3_tail
- .text.libgcc.div
-                0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc   0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc.prologue
-                0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc.builtins
-                0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc.fmul
-                0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc.fixed
-                0x00000e48        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .text.libgcc.mul
-                0x00000e48       0x16 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
-                0x00000e48                __muluhisi3
- .text.libgcc.div
-                0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc   0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc.prologue
-                0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc.builtins
-                0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc.fmul
-                0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc.fixed
-                0x00000e5e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .text.libgcc.mul
-                0x00000e5e       0x10 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
-                0x00000e5e                __mulshisi3
-                0x00000e64                __mulohisi3
- .text.libgcc.div
-                0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc   0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc.prologue
-                0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc.builtins
-                0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc.fmul
-                0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc.fixed
-                0x00000e6e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .text.libgcc.mul
-                0x00000e6e       0x9e F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
-                0x00000e6e                __muldi3
- .text.libgcc.div
-                0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc   0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc.prologue
-                0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc.builtins
-                0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc.fmul
-                0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc.fixed
-                0x00000f0c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .text.libgcc.mul
-                0x00000f0c       0x12 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
-                0x00000f0c                __muldi3_6
- .text.libgcc.div
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc   0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc.prologue
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc.builtins
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc.fmul
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc.fixed
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .text.libgcc.mul
-                0x00000f1e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.div
-                0x00000f1e       0x62 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
-                0x00000f1e                __moddi3
-                0x00000f22                __divdi3
-                0x00000f24                __divdi3_moddi3
- .text.libgcc   0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.prologue
-                0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.builtins
-                0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.fmul
-                0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.fixed
-                0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .text.libgcc.mul
-                0x00000f80        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.div
-                0x00000f80       0x1c F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
-                0x00000f80                __umoddi3
-                0x00000f84                __udivdi3
-                0x00000f86                __udivdi3_umoddi3
- .text.libgcc   0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.prologue
-                0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.builtins
-                0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.fmul
-                0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.fixed
-                0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .text.libgcc.mul
-                0x00000f9c        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.div
-                0x00000f9c       0xa2 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
-                0x00000f9c                __udivmod64
- .text.libgcc   0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.prologue
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.builtins
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.fmul
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.fixed
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .text.libgcc.mul
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc.div
-                0x0000103e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc   0x0000103e       0x20 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
-                0x0000103e                __negdi2
- .text.libgcc.prologue
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc.builtins
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc.fmul
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc.fixed
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .text.libgcc.mul
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc.div
-                0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc   0x0000105e        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc.prologue
-                0x0000105e       0x38 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
-                0x0000105e                __prologue_saves__
- .text.libgcc.builtins
-                0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc.fmul
-                0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc.fixed
-                0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .text.libgcc.mul
-                0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc.div
-                0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc   0x00001096        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc.prologue
-                0x00001096       0x36 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
-                0x00001096                __epilogue_restores__
- .text.libgcc.builtins
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc.fmul
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc.fixed
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .text.libgcc.mul
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc.div
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc   0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc.prologue
-                0x000010cc        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc.builtins
-                0x000010cc       0x32 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
-                0x000010cc                __ashldi3
- .text.libgcc.fmul
-                0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc.fixed
-                0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .text.libgcc.mul
-                0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc.div
-                0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc   0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc.prologue
-                0x000010fe        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc.builtins
-                0x000010fe       0x3a F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
-                0x000010fe                __ashrdi3
-                0x00001102                __lshrdi3
- .text.libgcc.fmul
-                0x00001138        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc.fixed
-                0x00001138        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .text.libgcc.mul
-                0x00001138       0x1e F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00001138                __umulhisi3
- .text.libgcc.div
-                0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc   0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.prologue
-                0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.builtins
-                0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.fmul
-                0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- .text.libgcc.fixed
-                0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00001156                        . = ALIGN (0x2)
- *(.fini9)
- .fini9         0x00001156        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
-                0x00001156                _exit
-                0x00001156                exit
- *(.fini9)
- *(.fini8)
- *(.fini8)
- *(.fini7)
- *(.fini7)
- *(.fini6)
- *(.fini6)
- *(.fini5)
- *(.fini5)
- *(.fini4)
- *(.fini4)
- *(.fini3)
- *(.fini3)
- *(.fini2)
- *(.fini2)
- *(.fini1)
- *(.fini1)
- *(.fini0)
- .fini0         0x00001156        0x4 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- *(.fini0)
- *(.hightext)
- *(.hightext*)
- *(.progmemx.*)
-                0x0000115a                        . = ALIGN (0x2)
- *(.jumptables)
- *(.jumptables*)
-                0x0000115a                        _etext = .
 
-.data           0x00800100       0x28 load address 0x0000115a
-                0x00800100                        PROVIDE (__data_start = .)
- *(.data)
- .data          0x00800100        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .data          0x00800100        0x0 C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
- .data          0x00800100        0x0 C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
- .data          0x00800100        0x2 C:\Users\velin\AppData\Local\Temp\ccqotz5A.o
- .data          0x00800102        0x0 C:\Users\velin\AppData\Local\Temp\ccW30Roh.o
- .data          0x00800102        0x0 C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
- .data          0x00800102        0x0 C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
- .data          0x00800102        0x0 C:\Users\velin\AppData\Local\Temp\ccY3VIuz.o
- .data          0x00800102        0xc C:\Users\velin\AppData\Local\Temp\ccC3RNap.o
-                0x00800102                tx_rb
-                0x00800108                rx_rb
- .data          0x0080010e        0x0 C:\Users\velin\AppData\Local\Temp\ccqKpIIl.o
- .data          0x0080010e        0x0 C:\Users\velin\AppData\Local\Temp\cc433gLj.o
- .data          0x0080010e        0x1 C:\Users\velin\AppData\Local\Temp\ccGkfNpk.o
-                0x0080010e                dutyPositive
- .data          0x0080010f        0x0 C:\Users\velin\AppData\Local\Temp\cckYrsjn.o
- .data          0x0080010f        0x0 C:\Users\velin\AppData\Local\Temp\ccMvOovs.o
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .data          0x0080010f        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- *(.data*)
- *(.gnu.linkonce.d*)
- *(.rodata)
- .rodata        0x0080010f       0x11 C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
-                0x0080010f                duty_max
-                0x00800110                duty_min
-                0x00800111                duty_mean
-                0x00800112                duty_count
-                0x00800113                K_times_Psi_q4_12
-                0x00800115                K_times_Psi
-                0x00800119                max_current
-                0x0080011a                max_speed
-                0x0080011c                Ts_controller
- .rodata        0x00800120        0x2 C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
-                0x00800120                t_step_controller
- .rodata        0x00800122        0x4 C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
-                0x00800122                t_step_rx
-                0x00800124                t_step_tx
- .rodata        0x00800126        0x1 C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
-                0x00800126                speed_conv_fact
- *(.rodata*)
- *(.gnu.linkonce.r*)
-                0x00800128                        . = ALIGN (0x2)
- *fill*         0x00800127        0x1 
-                0x00800128                        _edata = .
-                0x00800128                        PROVIDE (__data_end = .)
+.jcr
+ *(.jcr)
 
-.bss            0x00800128       0x52
-                0x00800128                        PROVIDE (__bss_start = .)
- *(.bss)
- .bss           0x00800128        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .bss           0x00800128        0x0 C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
- .bss           0x00800128       0x11 C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
-                0x00800128                runController
-                0x00800129                duty
- .bss           0x00800139        0x9 C:\Users\velin\AppData\Local\Temp\ccqotz5A.o
-                0x00800139                speed_ref
-                0x0080013b                torque_ref
-                0x0080013d                powerstage_mode
-                0x0080013e                speed_mode
- .bss           0x00800142        0x2 C:\Users\velin\AppData\Local\Temp\ccW30Roh.o
-                0x00800142                currentADCticks
- .bss           0x00800144       0x13 C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
-                0x00800144                outgoing_msg
-                0x0080014c                received_msg
-                0x0080014f                speed_diag_ref
-                0x00800151                torque_diag_ref
-                0x00800153                diag_powerstage_req
-                0x00800154                diag_speed_mode_req
-                0x00800155                intermediary_ref_value
- .bss           0x00800157        0x4 C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
-                0x00800157                encoder_cnt
-                0x00800159                encoder_speed_rpm
- .bss           0x0080015b        0x6 C:\Users\velin\AppData\Local\Temp\ccY3VIuz.o
- .bss           0x00800161       0x18 C:\Users\velin\AppData\Local\Temp\ccC3RNap.o
-                0x00800161                tx_init
-                0x00800171                rx_init
- .bss           0x00800179        0x0 C:\Users\velin\AppData\Local\Temp\ccqKpIIl.o
- .bss           0x00800179        0x0 C:\Users\velin\AppData\Local\Temp\cc433gLj.o
- .bss           0x00800179        0x1 C:\Users\velin\AppData\Local\Temp\ccGkfNpk.o
-                0x00800179                countingUp
- .bss           0x0080017a        0x0 C:\Users\velin\AppData\Local\Temp\cckYrsjn.o
- .bss           0x0080017a        0x0 C:\Users\velin\AppData\Local\Temp\ccMvOovs.o
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulsi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_exit.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_copy_data.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_clear_bss.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_usmulhisi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muluhisi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_mulshisi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_muldi3_6.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_divdi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivdi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_udivmod64.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_negdi2.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_prologue.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_epilogue.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashldi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_ashrdi3.o)
- .bss           0x0080017a        0x0 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/avr5\libgcc.a(_umulhisi3.o)
- *(.bss*)
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic
+ *(.dynamic)
+
+.got            0x00018f30        0x0
+ *(.got.plt)
+ *(.igot.plt)
+ .igot.plt      0x00018f30        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ *(.got)
+ *(.igot)
+
+.data           0x00018f30      0x454
+                0x00018f30                __data_start = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00018f30        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+ .data          0x00018f30        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x00018f30                __dso_handle
+ .data          0x00018f34        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+ .data          0x00018f34        0x0 C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+ .data          0x00018f34        0x0 C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+ .data          0x00018f34        0x1 C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+ .data          0x00018f35        0x0 C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+ .data          0x00018f35        0x0 C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+ .data          0x00018f35        0x0 C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+ .data          0x00018f35        0x0 C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+ *fill*         0x00018f35        0x3 
+ .data          0x00018f38       0x18 C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+                0x00018f38                tx_rb
+                0x00018f44                rx_rb
+ .data          0x00018f50        0x0 C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+ .data          0x00018f50        0x0 C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+ .data          0x00018f50        0x0 C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+ .data          0x00018f50        0x4 C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
+                0x00018f50                SystemCoreClock
+ .data          0x00018f54        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .data          0x00018f54        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .data          0x00018f54        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .data          0x00018f54        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+ .data          0x00018f54        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00018f54        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+                0x00018f54                _impure_ptr
+ .data.impure_data
+                0x00018f58      0x428 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+ .data          0x00019380        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+ .data          0x00019380        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+ .data          0x00019380        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ .data.__atexit_recursive_mutex
+                0x00019380        0x4 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+                0x00019380                __atexit_recursive_mutex
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ .data          0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+
+.data1
+ *(.data1)
+                0x00019384                _edata = .
+                [!provide]                PROVIDE (edata = .)
+
+.persistent     0x00019384        0x0
+                0x00019384                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__persistent_start = .)
+ *(.persistent .persistent.* .gnu.linkonce.p.*)
+                0x00019384                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__persistent_end = .)
+                0x00019384                . = .
+                0x00019384                __bss_start = .
+                0x00019384                __bss_start__ = .
+
+.bss            0x00019384       0xec
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00019384        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+ .bss           0x00019384       0x1c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .bss           0x000193a0        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+ .bss           0x000193a0        0x0 C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+ .bss           0x000193a0       0x19 C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+                0x000193b0                duty
+                0x000193b8                runController
+ *fill*         0x000193b9        0x1 
+ .bss           0x000193ba        0xc C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+                0x000193bb                powerstage_mode
+                0x000193c1                speed_mode
+                0x000193c2                torque_ref
+                0x000193c4                speed_ref
+ .bss           0x000193c6        0x2 C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+                0x000193c6                currentADCticks
+ .bss           0x000193c8       0x14 C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+                0x000193c8                received_msg
+                0x000193cb                diag_speed_mode_req
+                0x000193cc                intermediary_ref_value
+                0x000193ce                torque_diag_ref
+                0x000193d0                speed_diag_ref
+                0x000193d2                diag_powerstage_req
+                0x000193d4                outgoing_msg
+ .bss           0x000193dc        0x2 C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+                0x000193dc                encoder_speed_rpm
+ *fill*         0x000193de        0x2 
+ .bss           0x000193e0        0xc C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+ .bss           0x000193ec       0x18 C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+                0x000193ec                tx_init
+                0x000193fc                rx_init
+ .bss           0x00019404       0x48 C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+ .bss           0x0001944c        0x0 C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+ .bss           0x0001944c        0x0 C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+ .bss           0x0001944c        0x0 C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+ .bss           0x0001944c        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+ .bss.__lock___arc4random_mutex
+                0x0001944c        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x0001944c                __lock___arc4random_mutex
+ *fill*         0x0001944d        0x3 
+ .bss.__lock___at_quick_exit_mutex
+                0x00019450        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019450                __lock___at_quick_exit_mutex
+ *fill*         0x00019451        0x3 
+ .bss.__lock___atexit_recursive_mutex
+                0x00019454        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019454                __lock___atexit_recursive_mutex
+ *fill*         0x00019455        0x3 
+ .bss.__lock___dd_hash_mutex
+                0x00019458        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019458                __lock___dd_hash_mutex
+ *fill*         0x00019459        0x3 
+ .bss.__lock___env_recursive_mutex
+                0x0001945c        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x0001945c                __lock___env_recursive_mutex
+ *fill*         0x0001945d        0x3 
+ .bss.__lock___malloc_recursive_mutex
+                0x00019460        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019460                __lock___malloc_recursive_mutex
+ *fill*         0x00019461        0x3 
+ .bss.__lock___sfp_recursive_mutex
+                0x00019464        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019464                __lock___sfp_recursive_mutex
+ *fill*         0x00019465        0x3 
+ .bss.__lock___sinit_recursive_mutex
+                0x00019468        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x00019468                __lock___sinit_recursive_mutex
+ *fill*         0x00019469        0x3 
+ .bss.__lock___tz_mutex
+                0x0001946c        0x1 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+                0x0001946c                __lock___tz_mutex
+ .bss           0x0001946d        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+ .bss           0x0001946d        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ .bss           0x0001946d        0x0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
  *(COMMON)
-                0x0080017a                        PROVIDE (__bss_end = .)
-                0x0000115a                        __data_load_start = LOADADDR (.data)
-                0x00001182                        __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00019470                . = ALIGN ((. != 0x0)?0x4:0x1)
+ *fill*         0x0001946d        0x3 
+                0x00019470                _bss_end__ = .
+                0x00019470                __bss_end__ = .
 
-.noinit         0x0080017a        0x0
-                [!provide]                        PROVIDE (__noinit_start = .)
+.noinit         0x00019470        0x0
+                0x00019470                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__noinit_start = .)
  *(.noinit .noinit.* .gnu.linkonce.n.*)
-                [!provide]                        PROVIDE (__noinit_end = .)
-                0x0080017a                        _end = .
-                [!provide]                        PROVIDE (__heap_start = .)
-                0x00000000                        __flmap_init_label = DEFINED (__flmap_noinit_start)?__flmap_noinit_start:0x0
-                0x00000000                        __flmap = DEFINED (__flmap)?__flmap:0x0
+                0x00019470                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__noinit_end = .)
+                0x00019470                . = ALIGN (0x4)
+                0x00019470                . = SEGMENT_START ("ldata-segment", .)
+                0x00019470                . = ALIGN (0x4)
+                0x00019470                __end__ = .
+                0x00019470                _end = .
+                [!provide]                PROVIDE (end = .)
 
-.eeprom         0x00810000        0x0
- *(.eeprom*)
-                0x00810000                        __eeprom_end = .
-
-.fuse
- *(.fuse)
- *(.lfuse)
- *(.hfuse)
- *(.efuse)
-
-.lock
- *(.lock*)
-
-.signature
- *(.signature*)
+.stack          0x00080000        0x0
+                0x00080000                _stack = .
+ *(.stack)
 
 .stab
  *(.stab)
@@ -793,33 +619,24 @@ END GROUP
 .stab.indexstr
  *(.stab.indexstr)
 
-.comment        0x00000000       0x2f
+.comment        0x00000000       0x49
  *(.comment)
- .comment       0x00000000       0x2f C:\Users\velin\AppData\Local\Temp\ccCCcTil.o
-                                 0x30 (size before relaxing)
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccsUSeTW.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccqotz5A.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccW30Roh.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccWEinu0.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccGb8YOL.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccY3VIuz.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccC3RNap.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccqKpIIl.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\cc433gLj.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccGkfNpk.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\cckYrsjn.o
- .comment       0x0000002f       0x30 C:\Users\velin\AppData\Local\Temp\ccMvOovs.o
-
-.note.gnu.avr.deviceinfo
-                0x00000000       0x40
- .note.gnu.avr.deviceinfo
-                0x00000000       0x40 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
+ .comment       0x00000000       0x49 C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+ .comment       0x00000049       0x4a C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
 
 .gnu.build.attributes
  *(.gnu.build.attributes .gnu.build.attributes.*)
-
-.note.gnu.build-id
- *(.note.gnu.build-id)
 
 .debug
  *(.debug)
@@ -839,24 +656,30 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x5f4
+.debug_info
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x5f4 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
 
-.debug_abbrev   0x00000000      0x5a2
+.debug_abbrev
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x5a2 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
 
-.debug_line     0x00000000       0x1d
+.debug_line
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000       0x1d F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
 
-.debug_frame
+.debug_frame    0x00000000      0x28c
  *(.debug_frame)
+ .debug_frame   0x00000000       0x44 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00000044       0x34 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000078       0x28 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+ .debug_frame   0x000000a0       0x2c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+ .debug_frame   0x000000cc       0x2c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+ .debug_frame   0x000000f8       0x5c f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000154       0x20 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00000174       0x34 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+ .debug_frame   0x000001a8       0xb0 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+ .debug_frame   0x00000258       0x34 f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
 
-.debug_str      0x00000000      0x208
+.debug_str
  *(.debug_str)
- .debug_str     0x00000000      0x208 F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/bin/../lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
 
 .debug_loc
  *(.debug_loc)
@@ -905,5 +728,76 @@ END GROUP
 
 .debug_sup
  *(.debug_sup)
-OUTPUT(build/main_atmega328p.elf elf32-avr)
+
+.ARM.attributes
+                0x00000000       0x29
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crti.o
+ .ARM.attributes
+                0x0000001d       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+ .ARM.attributes
+                0x00000065       0x2d C:\Users\velin\AppData\Local\Temp\ccs7wdnz.o
+ .ARM.attributes
+                0x00000092       0x2d C:\Users\velin\AppData\Local\Temp\ccooWCON.o
+ .ARM.attributes
+                0x000000bf       0x2d C:\Users\velin\AppData\Local\Temp\ccQLEK89.o
+ .ARM.attributes
+                0x000000ec       0x2d C:\Users\velin\AppData\Local\Temp\cciXetOx.o
+ .ARM.attributes
+                0x00000119       0x2d C:\Users\velin\AppData\Local\Temp\cckvV9f1.o
+ .ARM.attributes
+                0x00000146       0x2d C:\Users\velin\AppData\Local\Temp\ccWjNcgA.o
+ .ARM.attributes
+                0x00000173       0x2d C:\Users\velin\AppData\Local\Temp\cckfYTZd.o
+ .ARM.attributes
+                0x000001a0       0x2d C:\Users\velin\AppData\Local\Temp\cceZSf5R.o
+ .ARM.attributes
+                0x000001cd       0x2d C:\Users\velin\AppData\Local\Temp\cci6YEpB.o
+ .ARM.attributes
+                0x000001fa       0x2d C:\Users\velin\AppData\Local\Temp\ccM2S3Bq.o
+ .ARM.attributes
+                0x00000227       0x2d C:\Users\velin\AppData\Local\Temp\cc0CfnMg.o
+ .ARM.attributes
+                0x00000254       0x2d C:\Users\velin\AppData\Local\Temp\cc6qB3Yc.o
+ .ARM.attributes
+                0x00000281       0x1d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x0000029e       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x000002cb       0x1d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000002e8       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000315       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000342       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000036f       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000039c       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x000003c9       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x000003f6       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x00000423       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-lock.o)
+ .ARM.attributes
+                0x00000450       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x0000047d       0x2d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtend.o
+ .ARM.attributes
+                0x000004aa       0x1d f:/uni/gcc_arn_none_eabi_10_3_2021_10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp/crtn.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(build/main_stm32.elf elf32-littlearm)
 LOAD linker stubs

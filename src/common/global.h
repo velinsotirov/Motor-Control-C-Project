@@ -13,7 +13,6 @@ extern const float K_times_Psi;
 extern const q4_12_t K_times_Psi_q4_12;
 
 // duty parameters
-extern const int8_t duty_count;
 extern const int8_t duty_mean;
 extern const int8_t duty_min;
 extern const int8_t duty_max;

@@ -4,6 +4,7 @@
 #include "diag.h"
 #include "stm32_hal.h"
 #include "stm32f1xx_hal.h"
+#include "stm32f1xx_hal_tim.h"
 
 uint32_t getTimerVal() {
     return HAL_GetTick();

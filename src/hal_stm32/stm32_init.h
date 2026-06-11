@@ -8,5 +8,8 @@ void setupEncoder(void);
 void boardInit(void); 
 void Error_Handler(void);
 void SystemClock_Config(void);
+void setupWatchdog(void);
+void resetWatchdog(void);
+void setupADC(void);
 
 #endif /* STM32_INIT_H */

@@ -19,7 +19,7 @@ void set_duty_cycle(int16_t duty) {
     dutyPositive = false;
     duty_compa = -duty;
   }
-  // we count to 400, so a duty of 100 is 400
+  // we count to 400, so 100% duty is 400
   OCR1B = duty_compa * 4;
 }
 

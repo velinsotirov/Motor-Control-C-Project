@@ -2,6 +2,10 @@
 #include "stm32_pwm.h"
 #include "stm32_init.h"
 #include "stm32f1xx_hal.h"
+#include "stm32f1xx_hal_tim.h"
+
+// Timer handles
+static TIM_HandleTypeDef htim3;
 
 void boardInit() {
   // configures system tick
@@ -54,6 +58,14 @@ void setupEncoder() {
   // start encoder
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_2);
+}
+
+void setupWatchdog() {
+  // TODO: implement!
+}
+
+void resetWatchdog() {
+  // TODO: implement!
 }
 
 void SystemClock_Config(void)
