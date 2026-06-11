@@ -22,7 +22,7 @@ void setupWatchdog(void) {
 }
 
 // setup encoder interrupt
-void setupEncoderInterrupt() {
+void setupEncoder() {
   // enable interrupt INT0 (pin 2)
   SET(EIMSK, MASK(INT0));
 
@@ -86,7 +86,7 @@ void boardInit() {
   // setup interrupts
   setupPWMTimer();
   setupTimeCounter();
-  setupEncoderInterrupt();
+  setupEncoder();
 
   // setup uart and adc
   setupADC();

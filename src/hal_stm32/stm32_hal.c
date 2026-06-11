@@ -15,6 +15,13 @@ uint32_t disableInterrupts() {
     return primask;
 }
 
+// return encoder count and reset it
+int16_t fetchAndResetEncoderCount() {
+  int16_t temp_cnt = (int16_t) TIM3->CNT;
+  TIM3->CNT = 0;
+  return temp_cnt;
+}
+
 // interrupt for calling tx uart, which also coutns for rx uart and controller execution
 // HAL Callback called automatically from the STM32 ISR file
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {

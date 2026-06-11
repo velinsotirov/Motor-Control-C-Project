@@ -1211,7 +1211,7 @@ Disassembly of section .text:
      9b8:	80 83       	st	Z, r24
      9ba:	08 95       	ret
 
-000009bc <setupEncoderInterrupt>:
+000009bc <setupEncoder>:
      9bc:	8d b3       	in	r24, 0x1d	; 29
      9be:	81 60       	ori	r24, 0x01	; 1
      9c0:	8d bb       	out	0x1d, r24	; 29
@@ -1279,7 +1279,7 @@ Disassembly of section .text:
      a34:	8b b9       	out	0x0b, r24	; 11
      a36:	0e 94 fc 05 	call	0xbf8	; 0xbf8 <setupPWMTimer>
      a3a:	0e 94 e7 04 	call	0x9ce	; 0x9ce <setupTimeCounter>
-     a3e:	0e 94 de 04 	call	0x9bc	; 0x9bc <setupEncoderInterrupt>
+     a3e:	0e 94 de 04 	call	0x9bc	; 0x9bc <setupEncoder>
      a42:	0e 94 c6 06 	call	0xd8c	; 0xd8c <setupADC>
      a46:	0e 94 4e 06 	call	0xc9c	; 0xc9c <setupUART>
      a4a:	78 94       	sei

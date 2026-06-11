@@ -114,8 +114,9 @@ typedef enum {
                         | PIN_LOCAL_MASK(PIN_UART_TX))
 
 uint32_t disableInterrupts(void);
-uint16_t getTimerVal(void);
+uint32_t getTimerVal(void);
 void resetWatchdog(void);
+int16_t fetchAndResetEncoderCount(void);
 
 #define TIMER_VAL (TCNT0)
 #define RESTORE_SREG(sreg) SREG = ((uint8_t) (sreg))

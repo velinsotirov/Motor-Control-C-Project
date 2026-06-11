@@ -294,7 +294,7 @@ END GROUP
                 0x000009a6                resetWatchdog
  .text          0x000009aa       0xec C:\Users\velin\AppData\Local\Temp\cc433gLj.o
                 0x000009aa                setupWatchdog
-                0x000009bc                setupEncoderInterrupt
+                0x000009bc                setupEncoder
                 0x000009ce                setupTimeCounter
                 0x000009da                boardInit
                 0x00000a4e                __vector_6

@@ -19,6 +19,7 @@
 #endif
 
 // last execution of controller, diag rx and tx
+// 32 bit needed even though avr timer is 16bit, because stm systick is 32bit
 static uint32_t controller_lastExec = 0u;
 static uint32_t diag_rx_lastExec = 0u;
 static uint32_t diag_tx_lastExec = 0u;
@@ -34,6 +35,7 @@ int main()
 
   // main loop
   while(1) {
+    // 32 bit needed even though avr timer is 16bit, because stm systick is 32bit
     uint32_t current_timer_val = getTimerVal();
 
     // check if controller should be executed
