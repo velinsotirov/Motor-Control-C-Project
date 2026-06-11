@@ -11,8 +11,6 @@
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_init.h"
 #include "atmega328p_hal.h"
-// system clock
-#define F_CPU 16000000UL
 #else
 #include "stm32_init.h"
 #include "stm32_hal.h"

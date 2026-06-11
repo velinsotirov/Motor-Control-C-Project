@@ -10,14 +10,10 @@ void boardInit() {
   /* Configure the system clock */
   SystemClock_Config();
 
-  // configure PWM timer and PWM pins
+  // configure PWM timer and PWM pins, encoder and ADC
   setupPWMTimer();
-
-  // configure encoder
   setupEncoder();
-
-  // configure ADC
-
+  setupADC();
 }
 
 // setup encoder

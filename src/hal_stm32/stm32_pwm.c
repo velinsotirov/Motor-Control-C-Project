@@ -128,9 +128,9 @@ void TIM1_CC_IRQHandler(void) {
     // fires for eevry channel, so we need to check if channel 3 triggered AND if we're upcounting
     // dir = 1 is downcounting, so we wanna execute when dir = 0
     if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC3) && !(TIM1->CR1 & TIM_CR1_DIR)) {
+        __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
         HAL_ADC_Start_IT(&hadc1);
     }
-    HAL_TIM_IRQHandler(&htim1); // why?
 }
 
 // break interrupt

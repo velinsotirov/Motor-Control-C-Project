@@ -5,7 +5,6 @@
 #include <avr/interrupt.h>
 
 #include "current.h"
-#include "controller.h"
 #include "atmega328p_adc.h"
 #include "atmega328p_hal.h"
 

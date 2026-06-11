@@ -10,6 +10,8 @@
 #include "atmega328p_init.h"
 #include "atmega328p_adc.h"
 
+#define F_CPU 16000000UL
+
 void setupWatchdog(void) {
   // reset watchdog state
   wdt_reset();
