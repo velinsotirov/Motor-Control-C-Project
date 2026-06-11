@@ -18,10 +18,9 @@
 #define TX_COUNT 250u
 #else
 #include "stm32_uart.h"
-// 72MHz / (7200 * (999 + 1)) -> 10Hz
-// TODO: update
-#define RX_COUNT 999u
-#define TX_COUNT 250u
+// systick is 1000Hz, so counters are twice as large
+#define RX_COUNT 100u
+#define TX_COUNT 500u
 #endif
 
 const uint16_t t_step_tx = TX_COUNT; // when counter has moved this much, its time to execute tx

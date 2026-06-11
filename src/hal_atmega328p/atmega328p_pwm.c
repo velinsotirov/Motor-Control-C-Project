@@ -23,8 +23,8 @@ void set_duty_cycle(int16_t duty) {
   OCR1B = duty_compa * 4;
 }
 
+// timer keeps going but we no longer toggle PWM
 void disable_pwm() {
-  TCNT1 = 0;
   RESET(TIMSK1, MASK(OCIE1A));
 
   // HS open, LS closed
@@ -35,6 +35,7 @@ void disable_pwm() {
   HAL_SET_PIN(PIN_RIGHT_LS);
 }
 
+// enable A interrupt (used for PWM)
 void enable_pwm() {
   SET(TIMSK1, MASK(OCIE1A));
 }
@@ -98,12 +99,12 @@ ISR(TIMER1_COMPA_vect) {
 
 // set up interrupt which triggers PWM timer
 void setupPWMTimer() {
-  // reset timer count
+  // reset timer count and settings
   TCNT1 = 0;
-
-  // Phase correct PWM, TOP = ICR1
   TCCR1A = 0b0;
   TCCR1B = 0b0;
+
+  // Phase correct PWM, TOP = ICR1
   SET(TCCR1A, MASK(WGM11));
   SET(TCCR1B, MASK(WGM13));
 

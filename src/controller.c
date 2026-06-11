@@ -12,9 +12,8 @@
 #define CONTROLLER_COUNT 5u
 #else
 #include "stm32_pwm.h"
-// 72MHz / (7200 * (999 + 1)) -> 10Hz
-// TODO: fix
-#define CONTROLLER_COUNT 999u
+// systick is 1000Hz, so counter value is twice as large
+#define CONTROLLER_COUNT 10u
 #endif
 
 // when counter has moved this much, its time to execute the controller

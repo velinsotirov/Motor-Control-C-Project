@@ -19,9 +19,9 @@
 #endif
 
 // last execution of controller, diag rx and tx
-static uint16_t controller_lastExec = 0u;
-static uint16_t diag_rx_lastExec = 0u;
-static uint16_t diag_tx_lastExec = 0u;
+static uint32_t controller_lastExec = 0u;
+static uint32_t diag_rx_lastExec = 0u;
+static uint32_t diag_tx_lastExec = 0u;
 
 // main function
 int main()
@@ -34,7 +34,7 @@ int main()
 
   // main loop
   while(1) {
-    uint16_t current_timer_val = getTimerVal();
+    uint32_t current_timer_val = getTimerVal();
 
     // check if controller should be executed
     if (current_timer_val - controller_lastExec >= t_step_controller) {

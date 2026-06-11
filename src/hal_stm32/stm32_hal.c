@@ -5,9 +5,8 @@
 #include "stm32_hal.h"
 #include "stm32f1xx_hal.h"
 
-uint16_t getTimerVal() {
-    // TODO: return the counter value using HAL functions
-    return (uint16_t) TIMER_VAL;
+uint32_t getTimerVal() {
+    return HAL_GetTick();
 }
 
 uint32_t disableInterrupts() {
