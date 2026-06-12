@@ -2,7 +2,6 @@
 #include "stm32_pwm.h"
 #include "stm32_init.h"
 #include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_tim.h"
 
 // Timer handles
 static TIM_HandleTypeDef htim3;

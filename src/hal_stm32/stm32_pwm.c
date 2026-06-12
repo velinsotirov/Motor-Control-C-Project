@@ -1,9 +1,8 @@
 
 #include "stm32_pwm.h"
+#include "stm32_adc.h"
 #include "stm32_init.h"
 #include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_adc.h"
-#include "stm32f1xx_hal_tim.h"
 
 // Timer handle for PWM
 static TIM_HandleTypeDef htim1;
@@ -16,7 +15,7 @@ void enable_pwm() {
 // disable PWM via main output enable
 // this automatically switches pins to idle state config (HS floating, LS closed)
 void disable_pwm() {
-    __HAL_TIM_DISABLE(htim1);
+    __HAL_TIM_DISABLE(&htim1);
 }
 
 void set_duty_cycle(int16_t duty) {
@@ -98,8 +97,8 @@ void setupPWMTimer() {
 
     // dead time config
     TIM_BreakDeadTimeConfigTypeDef deadtimeConfig = {0};
-    deadtimeConfig.OffStateIDLEMode = TIM_OSSR_ENABLE; // do we set pin states to idle when channel is disabled
-    deadtimeConfig.OffStateIdleMode = TIM_OSSI_ENABLE; // do we set pin states to idle when timer is disabled
+    deadtimeConfig.OffStateRunMode = TIM_OSSR_ENABLE; // do we set pin states to idle when channel is disabled
+    deadtimeConfig.OffStateIDLEMode = TIM_OSSI_ENABLE; // do we set pin states to idle when timer is disabled
     deadtimeConfig.LockLevel = TIM_LOCKLEVEL_1; // lock safety critical registers after first write
     deadtimeConfig.DeadTime = 36; // 500ns with 72MHz clock
     deadtimeConfig.BreakState = TIM_BREAK_ENABLE; // trigger break state when a pin changes state unexpectedly
@@ -111,13 +110,13 @@ void setupPWMTimer() {
 
     // ADC starts sampling around middle of PWM period, and with a freq of 14MHz and prescaler 8, takes 1.5 cycles to sample,
     // which is 14MHz/8 = 1.75MHz, so 1.5 periods is 0.857us. this limits max duty to 94%
-    TIM_OC_InitTypeDef channelConfig;
-    channelConfig.Pulse = 1692;
-    channelConfig.OCMode = TIM_OCMODE_TIMING;
-    channelConfig.OCPolarity = TIM_OCPOLARITY_HIGH; // irrelevant since we arent toggling a pin with this channel
-    channelConfig.OCFastMode = TIM_OCFAST_DISABLE; // same as above
-    TIM_OC1_SetConfig(&htim1, CCstruct)
-    if (HAL_TIM_PWM_ConigChannel(&htim1, &channelConfig, TIM_CHANNEL_3) != HAL_OK) {
+    TIM_OC_InitTypeDef channelConfig2;
+    channelConfig2.Pulse = 1692;
+    channelConfig2.OCMode = TIM_OCMODE_TIMING;
+    channelConfig2.OCPolarity = TIM_OCPOLARITY_HIGH; // irrelevant since we arent toggling a pin with this channel
+    channelConfig2.OCFastMode = TIM_OCFAST_DISABLE; // same as above
+    HAL_TIM_PWM_ConfigChannel(&htim1, &channelConfig2, TIM_CHANNEL_3);
+    if (HAL_TIM_PWM_ConfigChannel(&htim1, &channelConfig2, TIM_CHANNEL_3) != HAL_OK) {
         Error_Handler();
     }
 

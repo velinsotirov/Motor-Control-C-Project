@@ -22,7 +22,7 @@ ATMEGASRC = src/hal_atmega328p/atmega328p_hal.c src/hal_atmega328p/atmega328p_in
 	src/hal_atmega328p/atmega328p_adc.c
 STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32f1xx_hal_msp.c src/hal_stm32/stm32f1xx_it.c \
 	src/hal_stm32/system_stm32f1xx.c src/hal_stm32/stm32_hal.c src/hal_stm32/stm32_pwm.c \
-	src/hal_stm32/stm32_uart.c src/hal_stm32/stm32_adc.c \
+	src/hal_stm32/stm32_uart.c src/hal_stm32/stm32_adc.c src/hal_stm32/stm32_syscalls.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c \
@@ -30,12 +30,15 @@ STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32f1xx_hal_msp.c src/hal_st
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
-	src/hal_stm32/stm32_syscalls.c
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c \
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
 
 ATMEGAEXE = build/main_atmega328p.elf
 STMEXE = build/main_stm32.elf
 
-TARGETFLAGS = -Wall -Wextra -Og
+COMMONFLAGS = -Wall -Wextra -Og
 
 test: $(TESTEXE)
 
@@ -49,9 +52,9 @@ target_atmega: $(ATMEGAEXE)
 $(ATMEGAEXE) : $(COMMONSRC) $(TARGETSRC) $(ATMEGASRC)
 	$(ATMEGACC) $(COMMONSRC) $(TARGETSRC) $(ATMEGASRC) \
 	$(INCLUDES) $(TARGETINCLUDES) $(ATMEGAINCLUDES) \
-	$(TARGETFLAGS) -o $(ATMEGAEXE) \
+	$(COMMONFLAGS) -o $(ATMEGAEXE) \
 	-fstack-usage -mmcu=atmega328p \
-	-Wl,-Map=build/main.map -D__AVR_ATmega328P__
+	-Wl,-Map=build/main_atmega328p.map -D__AVR_ATmega328P__
 	avr-objdump -d $(ATMEGAEXE) > dump.txt
 	avr-size $(ATMEGAEXE)
 
@@ -60,6 +63,8 @@ target_stm: $(STMEXE)
 $(STMEXE) : $(COMMONSRC) $(TARGETSRC) $(STMSRC)
 	$(STMCC) $(COMMONSRC) $(TARGETSRC) $(STMSRC) \
 	$(INCLUDES) $(TARGETINCLUDES) $(STMINCLUDES) \
-	$(TARGETFLAGS) -o $(STMEXE) \
-	-fstack-usage -mcpu=cortex-m3 \
-	-Wl,-Map=build/main.map -D__ARM_CortexM3__ -DSTM32F103xB
+	$(COMMONFLAGS) -o $(STMEXE) \
+	-ffunction-sections -fdata-sections -Wl,--gc-sections \
+	-mcpu=cortex-m3 -Wl,-Map=build/main_stm32.map \
+	-D__ARM_CortexM3__ -DSTM32F103xB
+	arm-none-eabi-size build/main_stm32.elf

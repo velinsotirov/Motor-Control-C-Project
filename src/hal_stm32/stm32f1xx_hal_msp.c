@@ -18,8 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal_rcc.h"
-#include "stm32f1xx_hal_gpio_ex.h"
+#include "stm32f1xx_hal.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */

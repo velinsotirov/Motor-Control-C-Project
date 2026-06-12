@@ -4,6 +4,7 @@
 #include "diag.h"
 #include "ringbuffer.h"
 #include "stm32_hal.h"
+#include "stm32_init.h"
 #include "stm32_uart.h"
 #include "stm32f1xx_hal.h"
 

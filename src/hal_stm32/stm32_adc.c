@@ -4,10 +4,13 @@
 
 #include "current.h"
 #include "stm32_adc.h"
+#include "stm32_init.h"
 #include "stm32_hal.h"
+#include "stm32f1xx_hal.h"
+#include "stm32f1xx_hal_adc.h"
 
 // ADC handle
-static ADC_HandleTypeDef hadc1;
+ADC_HandleTypeDef hadc1;
 
 void setupADC() {
     __HAL_RCC_ADC1_CLK_ENABLE();
@@ -40,7 +43,7 @@ void setupADC() {
     adcChannelConfig.Channel = ADC_CHANNEL_0;
     adcChannelConfig.Rank = ADC_REGULAR_RANK_1; // first in sequence
     adcChannelConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5; // with 9MHz ADC clock, this gives us 3.16us, similar to AVR's 3us
-    if (HAL_ADC_ChannelConfig(&hadc1, &adcChannelConfig) != HAL_OK) {
+    if (HAL_ADC_ConfigChannel(&hadc1, &adcChannelConfig) != HAL_OK) {
         Error_Handler();
     }
 

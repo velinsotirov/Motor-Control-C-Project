@@ -5,6 +5,8 @@
 
 /* Newlib stubs for bare-metal ARM development */
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+
 /* _exit is called when the program terminates */
 void _exit(int status) {
     /* Hang in an infinite loop */
