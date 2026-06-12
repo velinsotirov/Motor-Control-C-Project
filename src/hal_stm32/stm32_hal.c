@@ -21,3 +21,11 @@ int16_t fetchAndResetEncoderCount() {
   TIM3->CNT = 0;
   return temp_cnt;
 }
+
+void setupWatchdog() {
+  // TODO: implement!
+}
+
+void resetWatchdog() {
+  // TODO: implement!
+}

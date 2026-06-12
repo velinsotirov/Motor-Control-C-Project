@@ -24,6 +24,7 @@ void disableTxInterrupt() {
   __HAL_UART_DISABLE_IT(&huart1, UART_IT_TXE);
 }
 
+// TODO: review/rewrite!
 void setupUART() {
     // Enable USART1 clock
     __HAL_RCC_USART1_CLK_ENABLE();

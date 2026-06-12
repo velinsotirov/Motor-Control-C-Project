@@ -59,14 +59,6 @@ void setupEncoder() {
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_2);
 }
 
-void setupWatchdog() {
-  // TODO: implement!
-}
-
-void resetWatchdog() {
-  // TODO: implement!
-}
-
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

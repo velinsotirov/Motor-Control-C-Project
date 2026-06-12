@@ -3,13 +3,10 @@
 #include "encoder.h"
 #include "fixed_point.h"
 
-// TODO: motor no load speed is 5950, with 11 PPR we can get max
-// 5950*60*11 pulses per second, we evaluate encoder every 10ms
-// encoder counter can go up to 5950*60*11/100 = 39270 so overflow on int16_t is possible at high speeds!
-
 #define GEAR_RATIO 35u
 #define PPR 11u
 #define ENCODER_CONV_FACT (GEAR_RATIO * PPR * 60u / 100u)
+// if we wanted a higher accuracy, we could count encoder B pulses as well!
 
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_hal.h"
