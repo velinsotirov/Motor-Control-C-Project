@@ -18,7 +18,7 @@
 
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_pwm.h"
-#else
+#elif defined(__ARM_CortexM3__)
 #include "stm32_pwm.h"
 #endif
 

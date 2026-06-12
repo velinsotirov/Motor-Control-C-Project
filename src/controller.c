@@ -10,11 +10,18 @@
 #include "atmega328p_pwm.h"
 //16MHz / (256 * (124 + 1)) -> 500Hz, we want 100Hz so flag is 5
 #define CONTROLLER_COUNT 5u
-#else
+#elif defined(__ARM_CortexM3__)
 #include "stm32_pwm.h"
 // systick is 1000Hz, so counter value is twice as large
 #define CONTROLLER_COUNT 10u
+#elif defined(TEST_BUILD)
+#include "test_abstraction.h"
+// unused value, added to avoid errors
+#define CONTROLLER_COUNT 0u
 #endif
+
+#define KI_FLOAT_VAL 0.5f
+#define KIT_FLOAT_VAL 2500.0f
 
 // when counter has moved this much, its time to execute the controller
 const uint16_t t_step_controller = CONTROLLER_COUNT;
@@ -26,14 +33,14 @@ int16_t duty = 0;
 volatile bool runController = false;
 
 // speed controller constants
-static const float Ki_float = 0.5f;
+static const float Ki_float = KI_FLOAT_VAL;
 static const q22_10_t Kp = FLOAT_TO_Q22_10(0.01f);
-static const q22_10_t Ki = FLOAT_TO_Q22_10(Ki_float);
+static const q22_10_t Ki = FLOAT_TO_Q22_10(KI_FLOAT_VAL);
 
 // torque controller constants
-static const float Kit_float = 2500.0f;
+static const float Kit_float = KIT_FLOAT_VAL;
 static const q22_10_t Kpt = FLOAT_TO_Q22_10(10.0f);
-static const q22_10_t Kit = FLOAT_TO_Q22_10(Kit_float);
+static const q22_10_t Kit = FLOAT_TO_Q22_10(KIT_FLOAT_VAL);
 
 // speed controller states, static for file so they can be reset when detaching
 static q22_10_t integrator_speed = 0;

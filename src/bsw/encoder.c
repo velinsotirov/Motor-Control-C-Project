@@ -15,9 +15,8 @@
 #include "atmega328p_hal.h"
 // encoder count incremented by encoder interrupt
 volatile int16_t encoder_cnt = 0;
-#else
+#elif defined(__ARM_CortexM3__)
 #include "stm32_hal.h"
-
 #endif
 
 // encoder last calculated speed

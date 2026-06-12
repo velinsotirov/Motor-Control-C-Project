@@ -11,7 +11,7 @@
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_init.h"
 #include "atmega328p_hal.h"
-#else
+#elif defined(__ARM_CortexM3__)
 #include "stm32_init.h"
 #include "stm32_hal.h"
 #endif

@@ -16,7 +16,7 @@
 // we want 2Hz Tx so flag is 250
 #define RX_COUNT 50u
 #define TX_COUNT 250u
-#else
+#elif defined(__ARM_CortexM3__)
 #include "stm32_uart.h"
 // systick is 1000Hz, so counters are twice as large
 #define RX_COUNT 100u
