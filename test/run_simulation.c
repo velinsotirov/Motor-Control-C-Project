@@ -90,10 +90,10 @@ int main() {
         float motor_angle = get_motor_angle();
         float current = get_motor_current();
         float torque = get_motor_torque();
-        int8_t duty_discrete = get_motor_duty();
+        float duty = Q8_8_TO_FLOAT(get_motor_duty());
         controller_state_t state = get_controller_state();
         controller_mode_t mode = get_controller_mode();
-        fprintf(fptr,"%f,%f,%f,%f,%f,%d,%d,%d\n",time,torque,speed,motor_angle,current,duty_discrete,state,mode);
+        fprintf(fptr,"%f,%f,%f,%f,%f,%f,%d,%d\n",time,torque,speed,motor_angle,current,duty,state,mode);
     }
     fclose(fptr);
 

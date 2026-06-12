@@ -34,8 +34,8 @@ void step_motor(float uBat, float speedSlope) {
     // speed is controlled using torque
     if (speedModeReq) {
         // get controller duty cycle and calculate motor voltage
-        int16_t duty_discrete = get_motor_duty();
-        float voltage = (float) duty_discrete / (float) duty_mean * uBat;
+        float duty = Q8_8_TO_FLOAT(get_motor_duty());
+        float voltage = duty / (float) duty_mean * uBat;
 
         // calculate motor driving voltage
         float U_ind = Ki_times_Psi * motor_speed;
@@ -62,8 +62,8 @@ void step_motor(float uBat, float speedSlope) {
         motor_angle = fmodf(motor_angle, 2.0f * M_PI);
 
         // get controller duty cycle and calculate motor voltage
-        int16_t duty_discrete = get_motor_duty();
-        float voltage = (float) duty_discrete / (float) duty_mean * uBat;
+        float duty = Q8_8_TO_FLOAT(get_motor_duty());
+        float voltage = duty / (float) duty_mean * uBat;
 
         // calculate motor driving voltage
         float U_ind = Ki_times_Psi * motor_speed;

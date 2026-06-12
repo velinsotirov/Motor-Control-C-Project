@@ -2,25 +2,26 @@
 #include "global.h"
 #include "system.h"
 #include "controller.h"
+#include "fixed_point.h"
 #include "atmega328p_hal.h"
 #include "atmega328p_pwm.h"
 
 volatile bool dutyPositive = true;
 volatile bool countingUp = false;
 
-void set_duty_cycle(int16_t duty) {
+void set_duty_cycle(q8_8_t duty) {
   // is duty positive
   uint16_t duty_compa;
   if (duty >= 0) {
     dutyPositive = true;
-    duty_compa = duty;
+    // 100% duty is 400 timer count, so we right shift by 6 bits instead of 8
+    duty_compa = (uint16_t) (duty >> 6);
   }
   else {
     dutyPositive = false;
-    duty_compa = -duty;
+    duty_compa = (uint16_t) ((-duty) >> 6);
   }
-  // we count to 400, so 100% duty is 400
-  OCR1B = duty_compa * 4;
+  OCR1B = duty_compa;
 }
 
 // timer keeps going but we no longer toggle PWM

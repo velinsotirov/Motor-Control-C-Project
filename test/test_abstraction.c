@@ -21,4 +21,4 @@ int16_t get_motor_speed_est() {
 
 void enable_pwm(void) {}
 void disable_pwm(void) {}
-void set_duty_cycle(int16_t duty_in) {}
+void set_duty_cycle(q8_8_t duty_in) {}

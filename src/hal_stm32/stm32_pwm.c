@@ -3,6 +3,7 @@
 #include "stm32_adc.h"
 #include "stm32_init.h"
 #include "stm32f1xx_hal.h"
+#include "fixed_point.h"
 
 // Timer handle for PWM
 static TIM_HandleTypeDef htim1;
@@ -18,18 +19,19 @@ void disable_pwm() {
     __HAL_TIM_DISABLE(&htim1);
 }
 
-void set_duty_cycle(int16_t duty) {
+void set_duty_cycle(q8_8_t duty) {
   // is duty positive
-  uint16_t duty_compa;
+  uint32_t duty_abs;
   if (duty >= 0) {
-    duty_compa = duty;
-    TIM1->CCR1 = duty_compa * 18; // we count to 1800, so 100% duty is 1800
+    duty_abs = (uint32_t) duty;
+    // we count to 1800, so 100% duty is 1800
+    TIM1->CCR1 = (uint16_t) ((duty_abs * 1800) >> 8);
     TIM1->CCR2 = 0u;
   }
   else {
-    duty_compa = -duty;
+    duty_abs = (uint32_t) (-duty);
     TIM1->CCR1 = 0u;
-    TIM1->CCR2 = duty_compa * 18; // we count to 1800, so 100% duty is 1800
+    TIM1->CCR2 = (uint16_t) ((duty_abs * 1800) >> 8);
   }
 }
 

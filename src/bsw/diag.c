@@ -85,7 +85,7 @@ void diag_step_1000ms() {
     q4_12_t current = measureCurrent();
     q4_12_t torque = q4_12_mul(current, K_times_Psi_q4_12);
     int16_t speed = get_motor_speed_est();
-    int8_t duty = get_motor_duty();
+    int8_t duty = Q8_8_TO_INT(get_motor_duty());
 
     // push all but 1st tx packets into tx rb
     ringbuffer_write(&tx_rb, (current >> 8));
