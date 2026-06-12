@@ -6,6 +6,7 @@
 #include "fixed_point.h"
 
 extern const uint16_t t_step_controller;
+extern q8_8_t duty;
 
 void speed_controller_step();
 void torque_controller_step();

@@ -33,7 +33,8 @@ STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32f1xx_hal_msp.c src/hal_st
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c \
-	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
+	startup_stm32f103c8tx.s
 
 ATMEGAEXE = build/main_atmega328p.elf
 STMEXE = build/main_stm32.elf
@@ -63,7 +64,7 @@ target_stm: $(STMEXE)
 $(STMEXE) : $(COMMONSRC) $(TARGETSRC) $(STMSRC)
 	$(STMCC) $(COMMONSRC) $(TARGETSRC) $(STMSRC) \
 	$(INCLUDES) $(TARGETINCLUDES) $(STMINCLUDES) \
-	$(COMMONFLAGS) -o $(STMEXE) \
+	$(COMMONFLAGS) -o $(STMEXE) -TSTM32F103C8TX_FLASH.ld \
 	-ffunction-sections -fdata-sections -Wl,--gc-sections \
 	-mcpu=cortex-m3 -Wl,-Map=build/main_stm32.map \
 	-D__ARM_CortexM3__ -DSTM32F103xB

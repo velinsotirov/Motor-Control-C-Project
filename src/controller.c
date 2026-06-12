@@ -29,15 +29,13 @@
 const uint16_t t_step_controller = CONTROLLER_COUNT;
 
 // duty output from controller, with initial condition
-static q8_8_t duty = 0;
+q8_8_t duty = 0;
 
 // speed controller constants
-static const float Ki_float = KI_FLOAT_VAL;
 static const q22_10_t Kp_speed = FLOAT_TO_Q22_10(KP_FLOAT_VAL);
 static const q22_10_t Ki_speed = FLOAT_TO_Q22_10(KI_FLOAT_VAL);
 
 // torque controller constants
-static const float Kit_float = KIT_FLOAT_VAL;
 static const q16_16_t Kp_current = FLOAT_TO_Q16_16(KPT_FLOAT_VAL);
 static const q16_16_t Ki_current = FLOAT_TO_Q16_16(KIT_FLOAT_VAL);
 
