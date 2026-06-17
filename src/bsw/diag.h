@@ -16,13 +16,13 @@ extern const uint16_t t_step_rx;
 extern const uint16_t t_step_tx;
 
 typedef enum {
-    COMMAND_EMPTY, // 0 is not a command since we might interpret empty UART frames as a command
+    COMMAND_EMPTY = 0u, // 0 is not a command since we might interpret empty UART frames as a command
+    COMMAND_RUN,
+    COMMAND_STOP,
     COMMAND_SPEED_MODE,
     COMMAND_TORQUE_MODE,
     COMMAND_SPEED_REF,
-    COMMAND_TORQUE_REF,
-    COMMAND_RUN,
-    COMMAND_STOP
+    COMMAND_TORQUE_REF
 } diag_command_t;
 
 void diag_step_100ms(void);
