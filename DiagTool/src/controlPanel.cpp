@@ -7,6 +7,8 @@
 #include <FL/Fl_Group.H>
 #include <FL/Fl_Input.H>
 
+#include <cstdlib>
+
 #include "controlPanel.h"
 
 // constructor of communication panel, calls group constructor to create group with given size
@@ -42,16 +44,24 @@ void ControlPanel::onControlBtnClick(Fl_Widget *w, void *userdata) {
             controlPanel->powerstageDisableFcn();
         }
     }
-    // if callback comes from deactivate button
     else if(w == controlPanel->torqueControlEnableBtn) {
         if (controlPanel->torqueControlEnableFcn) { // ensure function pointer has been set before calling
             controlPanel->torqueControlEnableFcn();
         }
     }
-    // if callback comes from deactivate button
     else if(w == controlPanel->speedControlEnableBtn) {
         if (controlPanel->speedControlEnableFcn) { // ensure function pointer has been set before calling
             controlPanel->speedControlEnableFcn();
+        }
+    }
+    else if(w == controlPanel->torqueReqBtn) {
+        if (controlPanel->torqueRequestFcn) { // ensure function pointer has been set before calling
+            controlPanel->torqueRequestFcn();
+        }
+    }
+    else if(w == controlPanel->speedReqBtn) {
+        if (controlPanel->speedRequestFcn) { // ensure function pointer has been set before calling
+            controlPanel->speedRequestFcn();
         }
     }
 }
@@ -67,14 +77,14 @@ void ControlPanel::setupControlCallbacks() {
 }
 
 void ControlPanel::getDesiredTorque_q4_12(uint8_t* bytes) {
-    float torqueVal = atof(desiredTorqueIpt->value());
+    float torqueVal = std::atof(desiredTorqueIpt->value());
     int16_t torqueVal_Q4_12 = (int16_t) (torqueVal * (1 << 12));
     bytes[0] = (uint8_t) (torqueVal_Q4_12 >> 8);
     bytes[1] = (uint8_t) (torqueVal_Q4_12 & 255u);
 }
 
 void ControlPanel::getDesiredSpeed_int16(uint8_t* bytes) {
-    float speedVal = atof(desiredSpeedIpt->value());
+    float speedVal = std::atof(desiredSpeedIpt->value());
     int16_t speedVal_int16 = (int16_t) speedVal;
     bytes[0] = (uint8_t) (speedVal_int16 >> 8);
     bytes[1] = (uint8_t) (speedVal_int16 & 255u);

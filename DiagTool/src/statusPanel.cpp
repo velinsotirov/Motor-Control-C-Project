@@ -40,20 +40,20 @@ void StatusPanel::updateStatusPanel(uint8_t *packet, uint8_t len) {
     controlModeStatus->redraw();
 
     // update torque
-    int16_t torqueRaw = (packet[3] << 8) & packet[4];
+    int16_t torqueRaw = (packet[3] << 8) | packet[4];
     float torqueVal = ((float) (torqueRaw)) / (1 << 12);
     torqueStringLabel = std::to_string(torqueVal);
     torqueStatus->label(torqueStringLabel.c_str());
     torqueStatus->redraw();
 
     // update speed
-    int16_t speedVal = (packet[5] << 8) & packet[6];
+    int16_t speedVal = (packet[5] << 8) | packet[6];
     speedStringLabel = std::to_string(speedVal);
     speedStatus->label(speedStringLabel.c_str());
     speedStatus->redraw();
 
     // update current
-    int16_t currentRaw = (packet[1] << 8) & packet[2];
+    int16_t currentRaw = (packet[1] << 8) | packet[2];
     float currentVal = ((float) (currentRaw)) / (1 << 12);
     currentStringLabel = std::to_string(currentVal);
     currentStatus->label(currentStringLabel.c_str());

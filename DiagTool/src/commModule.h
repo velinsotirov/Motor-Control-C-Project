@@ -47,7 +47,7 @@ class CommModule {
         std::atomic<bool> receiveLoopEnabled {false};
         std::mutex mutexLock;
 
-        static const uint8_t READ_BYTE_TIMEOUT_MS {100u};
+        static const uint32_t READ_BYTE_TIMEOUT_MS {100u};
         static constexpr uint8_t RX_PACKET_LEN {8u};
         uint8_t packetBuffer[RX_PACKET_LEN];
         uint8_t num_bytes_received {0u};

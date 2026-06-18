@@ -13,16 +13,12 @@
 CommModule::CommModule() {
 
     // find all open comm ports
-    for (int i = 1; i <= 256; i++) {
+    for (int i = 1; i <= 32; i++) {
         std::string portName = "COM" + std::to_string(i);
 
-        // try to open the port to see if it exists
-        HANDLE h = CreateFileA(portName.c_str(),GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
-
-        if (h != INVALID_HANDLE_VALUE) {
-            // port exists, push name to vector and close port
+        char targetPath[5000];
+        if (QueryDosDeviceA(portName.c_str(), targetPath, sizeof(targetPath)) != 0) {
             availablePorts.push_back(portName);
-            CloseHandle(h);
         }
     }
 }

@@ -60,33 +60,33 @@ void MainWindow::attachCommPanelCallbacks() {
 
 void MainWindow::attachControlPanelCallbacks() {
     controlPanel->powerstageEnableFcn = [this]() {
-        uint8_t pwrstage_enable[this->commModule.TX_PACKET_LEN];
+        uint8_t pwrstage_enable[this->commModule.TX_PACKET_LEN] = {0u};
         pwrstage_enable[0] = 1u;
         this->commModule.sendPacket(pwrstage_enable, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->powerstageDisableFcn = [this]() {
-        uint8_t pwrstage_disable[this->commModule.TX_PACKET_LEN];
+        uint8_t pwrstage_disable[this->commModule.TX_PACKET_LEN] = {0u};
         pwrstage_disable[0] = 2u;
         this->commModule.sendPacket(pwrstage_disable, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->speedControlEnableFcn = [this]() {
-        uint8_t speedctrl_enable[this->commModule.TX_PACKET_LEN];
+        uint8_t speedctrl_enable[this->commModule.TX_PACKET_LEN] = {0u};
         speedctrl_enable[0] = 3u;
         this->commModule.sendPacket(speedctrl_enable, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->torqueControlEnableFcn = [this]() {
-        uint8_t torquectrl_enable[this->commModule.TX_PACKET_LEN];
+        uint8_t torquectrl_enable[this->commModule.TX_PACKET_LEN] = {0u};
         torquectrl_enable[0] = 4u;
         this->commModule.sendPacket(torquectrl_enable, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->speedRequestFcn = [this]() {
-        uint8_t speed_request[this->commModule.TX_PACKET_LEN];
+        uint8_t speed_request[this->commModule.TX_PACKET_LEN] = {0u};
         speed_request[0] = 5u;
         this->controlPanel->getDesiredSpeed_int16(&speed_request[1]);
         this->commModule.sendPacket(speed_request, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->torqueRequestFcn = [this]() {
-        uint8_t torque_request[this->commModule.TX_PACKET_LEN];
+        uint8_t torque_request[this->commModule.TX_PACKET_LEN] = {0u};
         torque_request[0] = 6u;
         this->controlPanel->getDesiredTorque_q4_12(&torque_request[1]);
         this->commModule.sendPacket(torque_request, this->commModule.TX_PACKET_LEN);

@@ -8,6 +8,7 @@
 #include <FL/Fl_Group.H>
 #include <functional>
 #include <vector>
+#include <string>
 
 #include "serialib.h"
 

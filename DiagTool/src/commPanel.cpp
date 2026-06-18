@@ -5,6 +5,7 @@
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Group.H>
+#include <string>
 
 #include "commPanel.h"
 
