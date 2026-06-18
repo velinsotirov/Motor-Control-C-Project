@@ -9,7 +9,7 @@ INCLUDES = -I src -I src/common
 APPINCLUDES = -I DiagTool -I DiagTool/seriallib
 APPSRC = DiagTool/src/main.cpp DiagTool/seriallib/serialib.cpp \
 		DiagTool/src/mainWindow.cpp DiagTool/src/commPanel.cpp \
-		DiagTool/src/commModule.cpp DiagTool/src/controlPanel.cpp
+		DiagTool/src/commModule.cpp DiagTool/src/controlPanel.cpp DiagTool/src/statusPanel.cpp
 
 APPEXE = DiagTool/DiagTool.exe
 APPLIBS = -L DiagTool \

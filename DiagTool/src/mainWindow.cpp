@@ -7,12 +7,13 @@
 #include "commModule.h"
 #include "commPanel.h"
 #include "controlPanel.h"
+#include "statusPanel.h"
 
 // constructor, calls Fl_Window constructor before it runs the custom constructor code 
 MainWindow::MainWindow() : Fl_Window(800, 600, "MotorDiagTool") {
     commPanel = new CommPanel(0,0,800,100);
     controlPanel = new ControlPanel(0,100,800,200);
-    //statusPanel = new StatusPanel(0,300,800,300);
+    statusPanel = new StatusPanel(0,300,800,300);
 
     // assign callbacks
     attachCommPanelCallbacks();
@@ -21,9 +22,23 @@ MainWindow::MainWindow() : Fl_Window(800, 600, "MotorDiagTool") {
     // get COM ports and set in GUI
     commPanel->setAvailablePorts(commModule.getAvailablePorts());
 
+    // add 500ms task
+    Fl::add_timeout(STATUS_UPDATE_TIME_S, task_500ms, this);
+
     // close the window so everything defined till now is a child, and show the window
     end();
     show();
+}
+
+void MainWindow::task_500ms(void *userdata) {
+    auto *win = static_cast<MainWindow*> (userdata);
+
+    // fetch data from commModule and pass to statusPanel
+    win->commModule.getLastReceivedPacket(win->exchangePacket, 8u);
+    win->statusPanel->updateStatusPanel(win->exchangePacket, 8u);
+
+    // reschedule task
+    Fl::repeat_timeout(win->STATUS_UPDATE_TIME_S, task_500ms, userdata);
 }
 
 void MainWindow::attachCommPanelCallbacks() {
@@ -42,6 +57,7 @@ void MainWindow::attachCommPanelCallbacks() {
         this->commPanel->setConnectLabel("DISCONNECTED");
     };
 }
+
 void MainWindow::attachControlPanelCallbacks() {
     controlPanel->powerstageEnableFcn = [this]() {
         uint8_t pwrstage_enable[this->commModule.TX_PACKET_LEN];
