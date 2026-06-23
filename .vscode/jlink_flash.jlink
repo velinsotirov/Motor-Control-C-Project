@@ -1,0 +1,6 @@
+r
+h
+loadfile build/main_stm32.elf
+r
+g
+q

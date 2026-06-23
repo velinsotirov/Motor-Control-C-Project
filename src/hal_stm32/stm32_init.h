@@ -9,5 +9,6 @@ void boardInit(void);
 void Error_Handler(void);
 void SystemClock_Config(void);
 void setupADC(void);
+void enableInterrupts(void);
 
 #endif /* STM32_INIT_H */

@@ -60,11 +60,11 @@ void check_transitions() {
             (measuredCurrent > max_current || measuredCurrent < -max_current)) {
                 controller_state = STATE_ERROR;
             }
-            break;
 
             if (!powerstage_mode) {
                 controller_state = STATE_IDLE;
             }
+            break;
         case STATE_ERROR:
             // exit from error requires HW reset
             break;
@@ -77,7 +77,7 @@ void entry_actions() {
             case STATE_IDLE:
                 // reset idle counter and detach controller
                 // duty cycle and integrators are reset within detach function
-                detach_controller();
+                detach_controller(); // causes a HARD FAULT if PWM is not initialized!
                 idle_counter = 0;
                 break;
             case STATE_RUNNING:
@@ -148,6 +148,7 @@ void state_actions() {
 
             // running controller in torque or speed mode
             state_subactions();
+            break;
         case STATE_ERROR:
             // do nothing for now
             break;
@@ -158,6 +159,10 @@ void state_actions() {
 
 // run entire FSM
 void run_system() {
+    // save state and mode before any transitions, so we detect changes
+    controller_prev_state = controller_state;
+    controller_prev_mode = controller_mode;
+
     // update system requests using diag requests
     speed_mode = returnDiagModeRequest();
     powerstage_mode = returnDiagPowerStageRequest();

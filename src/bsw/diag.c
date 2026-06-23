@@ -74,7 +74,9 @@ void diag_step_100ms() {
     }
 }
 
-void diag_step_1000ms() {
+void diag_step_500ms() {
+    static int8_t counter = 0u; // for debugging speed
+
     // controller mode and state
     uint8_t controller_state = (uint8_t) get_controller_state();
     bool controller_mode = (bool) get_controller_mode();
@@ -82,12 +84,14 @@ void diag_step_1000ms() {
     uint8_t combined_state_var = controller_state | (controller_mode << 7);
 
     // fetch remaining data
-    q4_12_t current = measureCurrent();
-    q4_12_t torque = q4_12_mul(current, K_times_Psi_q4_12);
-    int16_t speed = get_motor_speed_est();
-    int8_t duty = Q8_8_TO_INT(get_motor_duty());
+    q4_12_t current = counter * 410; //measureCurrent();
+    q4_12_t torque = counter * 4; //q4_12_mul(current, K_times_Psi_q4_12);
+    int16_t speed = counter * 10; //get_motor_speed_est();
+    counter++; // for debugging
+    int8_t duty = counter; //Q8_8_TO_INT(get_motor_duty());
 
-    // push all but 1st tx packets into tx rb
+    // push all tx packets into tx rb
+    ringbuffer_write(&tx_rb, combined_state_var);
     ringbuffer_write(&tx_rb, (current >> 8));
     ringbuffer_write(&tx_rb, (current & 255u));
     ringbuffer_write(&tx_rb, (torque >> 8));
@@ -96,8 +100,8 @@ void diag_step_1000ms() {
     ringbuffer_write(&tx_rb, (speed & 255u));
     ringbuffer_write(&tx_rb, duty);
 
-    // load first byte into register and enable tx interrupt
-    writeToUSART(&combined_state_var);
+    // enable tx interrupt to send out all the data in the tx ring buffer
+    // this interrupt will disable itself once the tx ring buffer is empty
     enableTxInterrupt();
 }
 

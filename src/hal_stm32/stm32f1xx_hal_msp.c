@@ -68,12 +68,13 @@ void HAL_MspInit(void)
 
   __HAL_RCC_AFIO_CLK_ENABLE();
   __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_AFIO_REMAP_SWJ_NOJTAG(); // Disables JTAG pins, firmly locks SWD pins (PA13/PA14) to active debugging states
 
   /* System interrupt init*/
 
   /** DISABLE: JTAG-DP Disabled and SW-DP Disabled
   */
-  __HAL_AFIO_REMAP_SWJ_DISABLE();
+  //__HAL_AFIO_REMAP_SWJ_DISABLE();
 
   /* USER CODE BEGIN MspInit 1 */
 

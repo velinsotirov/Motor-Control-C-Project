@@ -1,0 +1,32 @@
+{ 
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Flash via ST-Link",
+            "type": "shell",
+            "command": "STM32_Programmer_CLI.exe",
+            "args": [
+                "-c", "port=SWD", "mode=UR", "reset=HWRst",
+                "-w", "${workspaceFolder}/build/main_stm32.elf",
+                "-v",
+                "-g"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash via J-Link",
+            "type": "shell",
+            "command": "JLink.exe",
+            "args": [
+                "-device", "STM32F103C8",
+                "-if", "SWD",
+                "-speed", "4000",
+                "-autoconnect", "1",
+                "-CommanderScript", "${workspaceFolder}/.vscode/jlink_flash.jlink"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}

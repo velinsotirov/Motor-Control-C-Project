@@ -26,7 +26,7 @@ typedef enum {
 } diag_command_t;
 
 void diag_step_100ms(void);
-void diag_step_1000ms(void);
+void diag_step_500ms(void);
 
 bool returnDiagModeRequest(void);
 bool returnDiagPowerStageRequest(void);

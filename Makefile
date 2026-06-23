@@ -30,9 +30,10 @@ TARGETSRC = src/bsw/current.c src/bsw/diag.c src/bsw/encoder.c src/main.c \
 ATMEGASRC = src/hal_atmega328p/atmega328p_hal.c src/hal_atmega328p/atmega328p_init.c \
 	src/hal_atmega328p/atmega328p_pwm.c src/hal_atmega328p/atmega328p_uart.c \
 	src/hal_atmega328p/atmega328p_adc.c
-STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32f1xx_hal_msp.c src/hal_stm32/stm32f1xx_it.c \
+STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32_gpio.c \
 	src/hal_stm32/system_stm32f1xx.c src/hal_stm32/stm32_hal.c src/hal_stm32/stm32_pwm.c \
 	src/hal_stm32/stm32_uart.c src/hal_stm32/stm32_adc.c src/hal_stm32/stm32_syscalls.c \
+	src/hal_stm32/stm32f1xx_hal_msp.c src/hal_stm32/stm32f1xx_it.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c \
@@ -43,8 +44,7 @@ STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32f1xx_hal_msp.c src/hal_st
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
 	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c \
-	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
-	startup_stm32f103c8tx.s
+	src/hal_stm32/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
 
 ATMEGAEXE = build/main_atmega328p.elf
 STMEXE = build/main_stm32.elf
@@ -81,6 +81,7 @@ target_stm: $(STMEXE)
 $(STMEXE) : $(COMMONSRC) $(TARGETSRC) $(STMSRC)
 	$(STMCC) $(COMMONSRC) $(TARGETSRC) $(STMSRC) \
 	$(INCLUDES) $(TARGETINCLUDES) $(STMINCLUDES) \
+	-x assembler-with-cpp startup_stm32f103c8tx.s -x none \
 	$(COMMONFLAGS) -o $(STMEXE) -TSTM32F103C8TX_FLASH.ld \
 	-ffunction-sections -fdata-sections -Wl,--gc-sections \
 	-mcpu=cortex-m3 -Wl,-Map=build/main_stm32.map \

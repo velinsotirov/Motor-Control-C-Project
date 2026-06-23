@@ -93,8 +93,9 @@ void boardInit() {
   // setup uart and adc
   setupADC();
   setupUART();
-  
-  // enable interrupts
+}
+
+void enableInterrupts() {
   sei();
 }
 

@@ -28,25 +28,29 @@ void disableTxInterrupt() {
 void setupUART() {
     // Enable USART1 clock
     __HAL_RCC_USART1_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    //__HAL_RCC_AFIO_CLK_ENABLE(); already called in HAL_Init
 
     // Configure GPIO pins for USART1
-    // PA9 = USART1_TX
-    // PA10 = USART1_RX
+    // PB6 = USART1_TX
+    // PB7 = USART1_RX
     GPIO_InitTypeDef GPIO_InitStruct = {0};
-    GPIO_InitStruct.Pin = GPIO_PIN_9;
+    GPIO_InitStruct.Pin = GPIO_PIN_6;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = GPIO_PIN_10;
+    GPIO_InitStruct.Pin = GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    // needed since we remap UART to B6/7 instead of default A9/10
+    __HAL_AFIO_REMAP_USART1_ENABLE();
 
     // Configure UART1
     huart1.Instance = USART1;
-    huart1.Init.BaudRate = 9600;
+    huart1.Init.BaudRate = 115200;
     huart1.Init.WordLength = UART_WORDLENGTH_8B;
     huart1.Init.StopBits = UART_STOPBITS_1;
     huart1.Init.Parity = UART_PARITY_NONE;

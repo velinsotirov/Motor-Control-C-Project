@@ -38,7 +38,7 @@ void set_duty_cycle(q8_8_t duty) {
 void setupPWMTimer() {
     __HAL_RCC_TIM1_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
+    //__HAL_RCC_GPIOB_CLK_ENABLE(); already called in setupUART
 
     // PWM pinout
     // PA8  = TIM1_CH1  (high side drive)
@@ -68,6 +68,7 @@ void setupPWMTimer() {
     // timer config
     // 72MHz, prescaler 0 (divide by 1), count to 1800 then down
     // -> 72MHz / 1800 / 2 = 20kHz
+    // TODO: adapt so we use 64kHz since we use the internal oscillator!
     htim1.Instance = TIM1;
     htim1.Init.Prescaler = 0; // 72Mhz / (0+1)
     htim1.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
@@ -102,8 +103,9 @@ void setupPWMTimer() {
     deadtimeConfig.OffStateRunMode = TIM_OSSR_ENABLE; // do we set pin states to idle when channel is disabled
     deadtimeConfig.OffStateIDLEMode = TIM_OSSI_ENABLE; // do we set pin states to idle when timer is disabled
     deadtimeConfig.LockLevel = TIM_LOCKLEVEL_1; // lock safety critical registers after first write
-    deadtimeConfig.DeadTime = 36; // 500ns with 72MHz clock
-    deadtimeConfig.BreakState = TIM_BREAK_ENABLE; // trigger break state when a pin changes state unexpectedly
+    deadtimeConfig.DeadTime = 32; // 500ns with 64MHz clock
+    // TODO: switch to ENABLE once motor is connected
+    deadtimeConfig.BreakState = TIM_BREAK_DISABLE; // trigger break state when a pin changes state unexpectedly
     deadtimeConfig.BreakPolarity = TIM_BREAKPOLARITY_LOW; // wunexpected state change is HIGH to LOW
     deadtimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE; // once BRK state goes away, stay disabled
     if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &deadtimeConfig) != HAL_OK) {
@@ -112,6 +114,7 @@ void setupPWMTimer() {
 
     // ADC starts sampling around middle of PWM period, and with a freq of 14MHz and prescaler 8, takes 1.5 cycles to sample,
     // which is 14MHz/8 = 1.75MHz, so 1.5 periods is 0.857us. this limits max duty to 94%
+    // TODO: check if going to 64MHz changed anything!
     TIM_OC_InitTypeDef channelConfig2;
     channelConfig2.Pulse = 1692;
     channelConfig2.OCMode = TIM_OCMODE_TIMING;
@@ -138,7 +141,8 @@ void setupPWMTimer() {
     HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 
     // Start Timer base with Interrupt generation enabled
-    HAL_TIM_Base_Start_IT(&htim1);
+    //HAL_TIM_Base_Start_IT(&htim1); hard fault fix suggestion from claude
+    HAL_TIM_Base_Start(&htim1);
 }
 
 // cc interrupt which starts ADC conversion

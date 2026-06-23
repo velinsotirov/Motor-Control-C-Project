@@ -12,8 +12,9 @@
 #include "atmega328p_init.h"
 #include "atmega328p_hal.h"
 #elif defined(__ARM_CortexM3__)
-#include "stm32_init.h"
 #include "stm32_hal.h"
+#include "stm32_gpio.h"
+#include "stm32_init.h"
 #endif
 
 // last execution of controller, diag rx and tx
@@ -29,20 +30,24 @@ int main()
   boardInit();
 
   // start watchdog
-  setupWatchdog();
+  //setupWatchdog();
+
+  // enable interrupts
+  enableInterrupts();
 
   // main loop
   while(1) {
     // 32 bit needed even though avr timer is 16bit, because stm systick is 32bit
     uint32_t current_timer_val = getTimerVal();
 
+    /**/
     // check if controller should be executed
     if (current_timer_val - controller_lastExec >= t_step_controller) {
       controller_lastExec = current_timer_val;
       run_system();
 
       // reset watchdog during the fastest task
-      resetWatchdog();
+      //resetWatchdog();
     }
 
     // check if diag rx should be executed
@@ -50,10 +55,12 @@ int main()
       diag_rx_lastExec = current_timer_val;
       diag_step_100ms();
     }
+    
 
     if (current_timer_val - diag_tx_lastExec >= t_step_tx) {
       diag_tx_lastExec = current_timer_val;
-      diag_step_1000ms();
+      diag_step_500ms();
+      toggleLED();
     }
   }
 }

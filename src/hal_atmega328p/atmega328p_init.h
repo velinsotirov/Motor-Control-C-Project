@@ -9,5 +9,6 @@ void boardInit(void);
 void setupWatchdog(void);
 void setupPWMTimer(void);
 void setupTimeCounter(void);
+void enableInterrupts(void);
 
 #endif // ATMEGA328P_INIT_H
