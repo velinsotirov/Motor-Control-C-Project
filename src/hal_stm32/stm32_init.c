@@ -19,8 +19,8 @@ void boardInit() {
   initGPIO();
   setupUART();
   setupADC(); // must be called before PWM init!
-  //setupPWMTimer(); // causes a HARD FAULT currently!
-  //setupEncoder();
+  setupPWMTimer();
+  setupEncoder();
 }
 
 void enableInterrupts() {

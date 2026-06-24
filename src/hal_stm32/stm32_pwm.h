@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 
+#include "stm32f1xx_hal.h"
 #include "fixed_point.h"
 
 void setupPWMTimer(void);

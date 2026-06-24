@@ -49,7 +49,7 @@ STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32_gpio.c \
 ATMEGAEXE = build/main_atmega328p.elf
 STMEXE = build/main_stm32.elf
 
-COMMONFLAGS = -Wall -Wextra -Og
+COMMONFLAGS = -Wall -Wextra -Og -g3
 
 app: $(APPEXE)
 

@@ -76,6 +76,9 @@ void setupPWMTimer() {
     htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE; // not needed, as PWM frequency is always constant
     htim1.Init.RepetitionCounter = 0; // fires every (1 + RepetitionCounter) interrupts, we wanna fire every time so we set to 0
+    
+    // initialize advanced timer instead of normal, since with normal timer,
+    // activating the complementary PIN causes a hard fault
     if (HAL_TIM_PWM_Init(&htim1) != HAL_OK) {
         Error_Handler();
     }
@@ -120,7 +123,6 @@ void setupPWMTimer() {
     channelConfig2.OCMode = TIM_OCMODE_TIMING;
     channelConfig2.OCPolarity = TIM_OCPOLARITY_HIGH; // irrelevant since we arent toggling a pin with this channel
     channelConfig2.OCFastMode = TIM_OCFAST_DISABLE; // same as above
-    HAL_TIM_PWM_ConfigChannel(&htim1, &channelConfig2, TIM_CHANNEL_3);
     if (HAL_TIM_PWM_ConfigChannel(&htim1, &channelConfig2, TIM_CHANNEL_3) != HAL_OK) {
         Error_Handler();
     }
@@ -138,7 +140,7 @@ void setupPWMTimer() {
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2); // now THIS causes a hard fault
 
     // Start Timer base with Interrupt generation enabled
     //HAL_TIM_Base_Start_IT(&htim1); hard fault fix suggestion from claude
@@ -150,6 +152,10 @@ void TIM1_CC_IRQHandler(void) {
     // fires for eevry channel, so we need to check if channel 3 triggered AND if we're upcounting
     // dir = 1 is downcounting, so we wanna execute when dir = 0
     if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC3) && !(TIM1->CR1 & TIM_CR1_DIR)) {
+        // 1. Clear the hardware timer flag so it doesn't fire again immediately!
+        __HAL_TIM_CLEAR_IT(&htim1, TIM_IT_CC3); 
+        
+        // 2. Clear ADC flags and launch sampling
         __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
         HAL_ADC_Start_IT(&hadc1);
     }

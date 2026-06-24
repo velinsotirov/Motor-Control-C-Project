@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Flash via ST-Link",
+            "label": "Flash ST-Link",
             "type": "shell",
             "command": "STM32_Programmer_CLI.exe",
             "args": [
@@ -15,7 +15,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Flash via J-Link",
+            "label": "Flash J-Link",
             "type": "shell",
             "command": "JLink.exe",
             "args": [
@@ -23,9 +23,27 @@
                 "-if", "SWD",
                 "-speed", "4000",
                 "-autoconnect", "1",
-                "-CommanderScript", "${workspaceFolder}/.vscode/jlink_flash.jlink"
+                "-CommanderScript", "${workspaceFolder}/.vscode/jlink/jlink_flash.jlink"
             ],
             "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Power ON",
+            "type": "shell",
+            "command": "JLink.exe",
+            "args": [
+                "-CommanderScript", "${workspaceFolder}/.vscode/jlink/power-on.jlink"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Power OFF",
+            "type": "shell",
+            "command": "JLink.exe",
+            "args": [
+                "-CommanderScript", "${workspaceFolder}/.vscode/jlink/power-off.jlink"
+            ],
             "problemMatcher": []
         }
     ]

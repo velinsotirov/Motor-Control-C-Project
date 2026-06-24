@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+        "name": "JLink: Debug Application",
+        "cwd": "${workspaceFolder}/src",
+        "executable": "${workspaceFolder}/build/main_stm32.elf",
+        "serverpath": "C:\\Users\\velin\\SEGGER\\JLink_V952\\JLinkGDBServerCL.exe",
+        "servertype": "jlink",
+        "request": "launch",
+        "type": "cortex-debug",
+        "device": "STM32F103C8",
+        "runToEntryPoint": "main",
+        "gdbPath": "F:\\Uni\\gcc_arn_none_eabi_10_3_2021_10\\bin\\arm-none-eabi-gdb.exe",
+        "interface": "swd",
+        "showDevDebugOutput": "raw",
+        "gdbTarget": "127.0.0.1:50000"
+        },
+        {
+        "name": "JLink: Attach to Application",
+        "cwd": "${workspaceFolder}/src",
+        "executable": "${workspaceFolder}/build/main_stm32.elf",
+        "serverpath": "C:\\Users\\velin\\SEGGER\\JLink_V952\\JLinkGDBServerCL.exe",
+        "servertype": "jlink",
+        "request": "attach",
+        "type": "cortex-debug",
+        "device": "STM32F103C8",
+        "runToEntryPoint": "main",
+        "gdbPath": "F:\\Uni\\gcc_arn_none_eabi_10_3_2021_10\\bin\\arm-none-eabi-gdb.exe",
+        "interface": "swd",
+        "showDevDebugOutput": "raw",
+        "gdbTarget": "127.0.0.1:50000"
+        }
+    ]
+}

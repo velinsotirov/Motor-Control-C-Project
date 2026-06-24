@@ -60,6 +60,10 @@ void setupADC() {
 // interrupt triggers when ADC conversion is complete and sends the value to the ASW
 void ADC1_2_IRQHandler(void) {
     if (__HAL_ADC_GET_FLAG(&hadc1, ADC_FLAG_EOC)) { // why?
+        // 1. Fetch your raw 12-bit motor current ticks
         currentADCticks = HAL_ADC_GetValue(&hadc1);
+        
+        // 2. CRUCIAL: Clear the hardware flag so the interrupt stops firing!
+        __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
     }
 }
