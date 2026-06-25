@@ -16,12 +16,17 @@ ControlPanel::ControlPanel(int x, int y, int w, int h) : Fl_Group(x, y, w, h) {
     // create buttons
     powerstageEnableBtn = new Fl_Button(30,130,150,40, "Powerstage ON");
     powerstageDisableBtn = new Fl_Button(210,130,150,40, "Powerstage OFF");
-    torqueControlEnableBtn = new Fl_Button(390,130,150,40, "Torque CONTROL");
-    speedControlEnableBtn = new Fl_Button(570,130,150,40, "Speed CONTROL");
-    desiredTorqueIpt = new Fl_Input(90,230,100,40, "Torque:");
-    torqueReqBtn = new Fl_Button(220,230,120,40, "Torque REQ");
-    desiredSpeedIpt = new Fl_Input(420,230,100,40, "Speed:");
-    speedReqBtn = new Fl_Button(550,230,120,40, "Speed REQ");
+    torqueControlEnableBtn = new Fl_Button(390,130,150,40, "Control TORQUE");
+    speedControlEnableBtn = new Fl_Button(570,130,150,40, "Control SPEED");
+
+    dutyControlEnableBtn = new Fl_Button(30,230,150,40, "Control DUTY");
+    desiredDutyIpt = new Fl_Input(250,230,100,40, "Duty:");
+    dutyReqBtn = new Fl_Button(380,230,120,40, "Duty REQ");
+
+    desiredTorqueIpt = new Fl_Input(90,330,100,40, "Torque:");
+    torqueReqBtn = new Fl_Button(220,330,120,40, "Torque REQ");
+    desiredSpeedIpt = new Fl_Input(420,330,100,40, "Speed:");
+    speedReqBtn = new Fl_Button(550,330,120,40, "Speed REQ");
     setupControlCallbacks();
 
     // call end, but why?
@@ -54,6 +59,16 @@ void ControlPanel::onControlBtnClick(Fl_Widget *w, void *userdata) {
             controlPanel->speedControlEnableFcn();
         }
     }
+    else if(w == controlPanel->dutyControlEnableBtn) {
+        if (controlPanel->dutyControlEnableFcn) { // ensure function pointer has been set before calling
+            controlPanel->dutyControlEnableFcn();
+        }
+    }
+    else if(w == controlPanel->dutyReqBtn) {
+        if (controlPanel->dutyRequestFcn) { // ensure function pointer has been set before calling
+            controlPanel->dutyRequestFcn();
+        }
+    }
     else if(w == controlPanel->torqueReqBtn) {
         if (controlPanel->torqueRequestFcn) { // ensure function pointer has been set before calling
             controlPanel->torqueRequestFcn();
@@ -72,8 +87,10 @@ void ControlPanel::setupControlCallbacks() {
     powerstageDisableBtn->callback(onControlBtnClick, this);
     torqueControlEnableBtn->callback(onControlBtnClick, this);
     speedControlEnableBtn->callback(onControlBtnClick, this);
+    dutyControlEnableBtn->callback(onControlBtnClick, this);
     torqueReqBtn->callback(onControlBtnClick, this);
     speedReqBtn->callback(onControlBtnClick, this);
+    dutyReqBtn->callback(onControlBtnClick, this);
 }
 
 void ControlPanel::getDesiredTorque_q4_12(uint8_t* bytes) {
@@ -88,4 +105,11 @@ void ControlPanel::getDesiredSpeed_int16(uint8_t* bytes) {
     int16_t speedVal_int16 = (int16_t) speedVal;
     bytes[0] = (uint8_t) (speedVal_int16 >> 8);
     bytes[1] = (uint8_t) (speedVal_int16 & 255u);
+}
+
+void ControlPanel::getDesiredDuty_q8_8(uint8_t* bytes) {
+    float dutyVal = std::atof(desiredDutyIpt->value());
+    int16_t dutyVal_Q8_8 = (int16_t) (dutyVal * (1 << 8));
+    bytes[0] = (uint8_t) (dutyVal_Q8_8 >> 8);
+    bytes[1] = (uint8_t) (dutyVal_Q8_8 & 255u);
 }

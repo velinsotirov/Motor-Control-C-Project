@@ -25,8 +25,12 @@
 // states are hidden from other modules
 static controller_state_t controller_state = STATE_IDLE;
 static controller_state_t controller_prev_state = STATE_IDLE;
-static controller_mode_t controller_mode = STATE_TORQUE;
-static controller_mode_t controller_prev_mode = STATE_TORQUE;
+static controller_mode_t controller_mode = STATE_SPEED;
+static controller_mode_t controller_prev_mode = STATE_SPEED;
+
+// requested states by diag
+static controller_mode_t controller_mode_req = STATE_SPEED;
+static bool powerstage_mode_req = false;
 
 // internal counter
 static uint8_t idle_counter = 0;
@@ -37,17 +41,16 @@ static int8_t measuredCurrent = 0;
 
 // system state requests, controller accesses them directly
 // changed by diag module when outside requests arrive
-bool speed_mode = false;
-bool powerstage_mode = false;
 q4_12_t torque_ref = 0;
 int16_t speed_ref = 0;
+q8_8_t duty_ref = 0;
 
 void check_transitions() {
     switch (controller_state) {
         // transitions from idle
         case STATE_IDLE:
             // go to running if powerstage is requested and we have been in idle for some time
-            if (powerstage_mode && idle_counter > 10) {
+            if (powerstage_mode_req && idle_counter > 10) {
                 controller_state = STATE_RUNNING;
             }
             break;
@@ -63,7 +66,7 @@ void check_transitions() {
             }
             */
 
-            if (!powerstage_mode) {
+            if (!powerstage_mode_req) {
                 controller_state = STATE_IDLE;
             }
             break;
@@ -98,13 +101,27 @@ void entry_actions() {
 void check_subtransitions() {
     switch (controller_mode) {
         case STATE_TORQUE:
-            if (speed_mode) {
+            if (controller_mode_req == STATE_SPEED) {
                 controller_mode = STATE_SPEED;
+            }
+            else if (controller_mode_req == STATE_PWM) {
+                controller_mode = STATE_PWM;
             }
             break;
         case STATE_SPEED:
-            if (!speed_mode) {
+            if (controller_mode_req == STATE_TORQUE) {
                 controller_mode = STATE_TORQUE;
+            }
+            else if (controller_mode_req == STATE_PWM) {
+                controller_mode = STATE_PWM;
+            }
+            break;
+        case STATE_PWM:
+            if (controller_mode_req == STATE_TORQUE) {
+                controller_mode = STATE_TORQUE;
+            }
+            else if (controller_mode_req == STATE_SPEED) {
+                controller_mode = STATE_SPEED;
             }
             break;
     }
@@ -121,6 +138,11 @@ void entry_subactions() {
                 // when we enter speed, reset current integrator
                 resetCurrentIntegrator();
                 break;
+            case STATE_PWM:
+                // when we enter PWM, reset both integrators
+                resetCurrentIntegrator();
+                resetSpeedIntegrator();
+                break;
         }
     }
 }
@@ -133,6 +155,9 @@ void state_subactions() {
             break;
         case STATE_TORQUE:
             torque_controller_step();
+            break;
+        case STATE_PWM:
+            pwm_controller_step();
             break;
     }
 }
@@ -166,10 +191,11 @@ void run_system() {
     controller_prev_mode = controller_mode;
 
     // update system requests using diag requests
-    speed_mode = returnDiagModeRequest();
-    powerstage_mode = returnDiagPowerStageRequest();
+    controller_mode_req = returnDiagModeRequest();
+    powerstage_mode_req = returnDiagPowerStageRequest();
     torque_ref = returnDiagTorqueRequest();
     speed_ref = returnDiagSpeedRequest();
+    duty_ref = returnDiagPWMRequest();
 
     // run FSM
     check_transitions();

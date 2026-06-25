@@ -27,10 +27,11 @@ const uint16_t t_step_tx = TX_COUNT; // when counter has moved this much, its ti
 const uint16_t t_step_rx = RX_COUNT; // when counter has moved this much, its time to execute rx
 uint16_t intermediary_ref_value = 0;
 
-bool diag_speed_mode_req = false;
+uint8_t diag_controller_mode_req = 0u;
 bool diag_powerstage_req = false;
 q4_12_t torque_diag_ref = 0;
 uint16_t speed_diag_ref = 0;
+q8_8_t duty_diag_ref = 0;
 
 uint8_t received_msg[RX_PACKET_LEN] = {};
 uint8_t outgoing_msg[TX_PACKET_LEN] = {};
@@ -44,11 +45,15 @@ void diag_step_100ms() {
         switch (received_msg[0]) {
             case COMMAND_TORQUE_MODE:
                 // switch mode only, the next two bytes are ignored
-                diag_speed_mode_req = false;
+                diag_controller_mode_req = STATE_TORQUE;
                 break;
             case COMMAND_SPEED_MODE:
                 // switch mode only, the next two bytes are ignored
-                diag_speed_mode_req = true;
+                diag_controller_mode_req = STATE_SPEED;
+                break;
+            case COMMAND_DUTY_MODE:
+                // switch mode only, the next two bytes are ignored
+                diag_controller_mode_req = STATE_PWM;
                 break;
             case COMMAND_TORQUE_REF:
                 // fetch two bytes into intermediary value
@@ -64,6 +69,13 @@ void diag_step_100ms() {
                 // convert and set request
                 speed_diag_ref = intermediary_ref_value;
                 break;
+            case COMMAND_DUTY_REF:
+                // fetch two bytes into intermediary value
+                intermediary_ref_value = (received_msg[1] << 8 | received_msg[2]);
+
+                // convert and set request
+                duty_diag_ref = intermediary_ref_value;
+                break;
             case COMMAND_RUN:
                 diag_powerstage_req = true;
                 break;
@@ -75,20 +87,22 @@ void diag_step_100ms() {
 }
 
 void diag_step_500ms() {
-    static int8_t counter = 0u; // for debugging speed
+    //static int8_t counter = 0u; // for debugging
 
     // controller mode and state
     uint8_t controller_state = (uint8_t) get_controller_state();
-    bool controller_mode = (bool) get_controller_mode();
-    // put into one uint_t frame
-    uint8_t combined_state_var = controller_state | (controller_mode << 7);
+    uint8_t controller_mode = (uint8_t) get_controller_mode();
+
+    // put into one uint8_t frame
+    uint8_t combined_state_var = controller_state | ((uint8_t) (controller_mode << 4));
 
     // fetch remaining data
-    q4_12_t current = counter * 410; //measureCurrent();
-    q4_12_t torque = counter * 4; //q4_12_mul(current, K_times_Psi_q4_12);
+    q4_12_t current = measureCurrent(); // counter * 410; //
+    q4_12_t torque = q4_12_mul(current, K_times_Psi_q4_12); // counter * 4; //
     int16_t speed = get_motor_speed_est();
-    counter++; // for debugging
-    int8_t duty = counter; //Q8_8_TO_INT(get_motor_duty());
+    int8_t duty = Q8_8_TO_INT(get_motor_duty()); // counter;
+
+    //counter++; // for debugging
 
     // push all tx packets into tx rb
     ringbuffer_write(&tx_rb, combined_state_var);
@@ -105,8 +119,8 @@ void diag_step_500ms() {
     enableTxInterrupt();
 }
 
-bool returnDiagModeRequest(void) {
-    return diag_speed_mode_req;
+uint8_t returnDiagModeRequest(void) {
+    return diag_controller_mode_req;
 }
 bool returnDiagPowerStageRequest(void) {
     return diag_powerstage_req;
@@ -116,4 +130,7 @@ q4_12_t returnDiagTorqueRequest(void) {
 }
 int16_t returnDiagSpeedRequest(void) {
     return speed_diag_ref;
+}
+q8_8_t returnDiagPWMRequest(void) {
+    return duty_diag_ref;
 }

@@ -8,8 +8,9 @@
 extern const uint16_t t_step_controller;
 extern q8_8_t duty;
 
-void speed_controller_step();
-void torque_controller_step();
+void speed_controller_step(void);
+void torque_controller_step(void);
+void pwm_controller_step(void);
 
 typedef int16_t (*GetMotorSpeed) (void);
 typedef q4_12_t (*GetMotorCurrent) (void);

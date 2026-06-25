@@ -12,8 +12,8 @@
 // constructor, calls Fl_Window constructor before it runs the custom constructor code 
 MainWindow::MainWindow() : Fl_Window(800, 600, "MotorDiagTool") {
     commPanel = new CommPanel(0,0,800,100);
-    controlPanel = new ControlPanel(0,100,800,200);
-    statusPanel = new StatusPanel(0,300,800,300);
+    controlPanel = new ControlPanel(0,100,800,300);
+    statusPanel = new StatusPanel(0,300,800,200);
 
     // assign callbacks
     attachCommPanelCallbacks();
@@ -79,16 +79,27 @@ void MainWindow::attachControlPanelCallbacks() {
         torquectrl_enable[0] = 4u;
         this->commModule.sendPacket(torquectrl_enable, this->commModule.TX_PACKET_LEN);
     };
+    controlPanel->dutyControlEnableFcn = [this]() {
+        uint8_t dutyctrl_enable[this->commModule.TX_PACKET_LEN] = {0u};
+        dutyctrl_enable[0] = 5u;
+        this->commModule.sendPacket(dutyctrl_enable, this->commModule.TX_PACKET_LEN);
+    };
     controlPanel->speedRequestFcn = [this]() {
         uint8_t speed_request[this->commModule.TX_PACKET_LEN] = {0u};
-        speed_request[0] = 5u;
+        speed_request[0] = 6u;
         this->controlPanel->getDesiredSpeed_int16(&speed_request[1]);
         this->commModule.sendPacket(speed_request, this->commModule.TX_PACKET_LEN);
     };
     controlPanel->torqueRequestFcn = [this]() {
         uint8_t torque_request[this->commModule.TX_PACKET_LEN] = {0u};
-        torque_request[0] = 6u;
+        torque_request[0] = 7u;
         this->controlPanel->getDesiredTorque_q4_12(&torque_request[1]);
         this->commModule.sendPacket(torque_request, this->commModule.TX_PACKET_LEN);
+    };
+    controlPanel->dutyRequestFcn = [this]() {
+        uint8_t duty_request[this->commModule.TX_PACKET_LEN] = {0u};
+        duty_request[0] = 8u;
+        this->controlPanel->getDesiredDuty_q8_8(&duty_request[1]);
+        this->commModule.sendPacket(duty_request, this->commModule.TX_PACKET_LEN);
     };
 }

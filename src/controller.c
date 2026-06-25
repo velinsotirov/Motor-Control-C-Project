@@ -69,7 +69,7 @@ void speed_controller_step() {
     if (motorSpeed_get == NULL || dutyCycle_set == NULL) return;
 
     // get encoder speed estimate
-    int16_t speed_meas = motorSpeed_get();
+    int16_t speed_meas = 0; // motorSpeed_get(); TODO: activate once speed measurement works!
 
     // calculate control error
     int16_t speed_error = speed_ref - speed_meas;
@@ -88,8 +88,8 @@ void speed_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    // TODO: REVERT!
-    duty = INT_TO_Q8_8(-10);//duty_unlim;
+    // TODO: attach once speed measurement works!
+    duty = INT_TO_Q8_8(0); //duty_unlim;
 
     // set duty cycle
     dutyCycle_set(duty);
@@ -99,7 +99,7 @@ void torque_controller_step() {
     if (motorCurrent_get == NULL || dutyCycle_set == NULL) return;
 
     // measured current
-    q4_12_t current_meas = motorCurrent_get();
+    q4_12_t current_meas = 0u; // motorCurrent_get(); TODO: activate once current measurement works!
 
     // calculate desired current using torque ref
     q4_12_t current_ref = q4_12_div(torque_ref, K_times_Psi_q4_12);
@@ -121,8 +121,25 @@ void torque_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    // TODO: REVERT!
-    duty = INT_TO_Q8_8(50u);//duty_unlim;
+
+    // TODO: attach once current measurement works!
+    duty = INT_TO_Q8_8(0u); //duty_unlim;
+
+    // set duty cycle
+    dutyCycle_set(duty);
+}
+
+void pwm_controller_step() {
+    q8_8_t duty_unlim = duty_ref;
+
+    // limit duty cycle
+    if (duty_unlim > duty_max) {
+        duty_unlim = duty_max;
+    }
+    else if (duty_unlim < duty_min) {
+        duty_unlim = duty_min;
+    }
+    duty = duty_unlim;
 
     // set duty cycle
     dutyCycle_set(duty);

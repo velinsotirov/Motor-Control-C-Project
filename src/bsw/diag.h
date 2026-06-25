@@ -21,16 +21,19 @@ typedef enum {
     COMMAND_STOP,
     COMMAND_SPEED_MODE,
     COMMAND_TORQUE_MODE,
+    COMMAND_DUTY_MODE,
     COMMAND_SPEED_REF,
-    COMMAND_TORQUE_REF
+    COMMAND_TORQUE_REF,
+    COMMAND_DUTY_REF
 } diag_command_t;
 
 void diag_step_100ms(void);
 void diag_step_500ms(void);
 
-bool returnDiagModeRequest(void);
+uint8_t returnDiagModeRequest(void);
 bool returnDiagPowerStageRequest(void);
 q4_12_t returnDiagTorqueRequest(void);
 int16_t returnDiagSpeedRequest(void);
+q8_8_t returnDiagPWMRequest(void);
 
 #endif // DIAG_H

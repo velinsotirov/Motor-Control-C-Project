@@ -11,12 +11,14 @@ typedef enum {
 
 typedef enum {
     STATE_SPEED,
-    STATE_TORQUE
+    STATE_TORQUE,
+    STATE_PWM
 } controller_mode_t;
 
 extern bool speed_mode;
 extern q4_12_t torque_ref;
 extern int16_t speed_ref;
+extern q8_8_t duty_ref;
 
 void run_system();
 

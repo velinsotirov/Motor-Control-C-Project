@@ -7,20 +7,20 @@
 
 // constructor of communication panel, calls group constructor to create group with given size
 StatusPanel::StatusPanel(int x, int y, int w, int h) : Fl_Group(x, y, w, h) {
-    powerstageLabel = new Fl_Box(30,330,120,40, "Powerstage:");
-    powerstageStatus = new Fl_Box(180,330,40,40, "OFF");
-    controlModeLabel = new Fl_Box(250,330,120,40, "ControlMode:");
-    controlModeStatus = new Fl_Box(400,330,70,40, "SPEED");
+    powerstageLabel = new Fl_Box(30,430,120,40, "Powerstage:");
+    powerstageStatus = new Fl_Box(180,430,40,40, "OFF");
+    controlModeLabel = new Fl_Box(30,530,120,40, "ControlMode:");
+    controlModeStatus = new Fl_Box(160,530,70,40, "SPEED");
 
-    torqueLabel = new Fl_Box(30,430,80,40, "Torque:");
-    torqueStatus = new Fl_Box(140,430,100,40, "0");
-    speedLabel = new Fl_Box(270,430,80,40, "Speed:");
-    speedStatus = new Fl_Box(380,430,100,40, "0");
+    torqueLabel = new Fl_Box(250,430,80,40, "Torque:");
+    torqueStatus = new Fl_Box(360,430,100,40, "0");
+    speedLabel = new Fl_Box(490,430,80,40, "Speed:");
+    speedStatus = new Fl_Box(600,430,100,40, "0");
 
-    currentLabel = new Fl_Box(30,530,80,40, "Current:");
-    currentStatus = new Fl_Box(140,530,100,40, "0");
-    dutyLabel = new Fl_Box(270,530,80,40, "Duty:");
-    dutyStatus = new Fl_Box(380,530,100,40, "0");
+    currentLabel = new Fl_Box(250,530,80,40, "Current:");
+    currentStatus = new Fl_Box(360,530,100,40, "0");
+    dutyLabel = new Fl_Box(490,530,80,40, "Duty:");
+    dutyStatus = new Fl_Box(600,530,100,40, "0");
 
     // call end, but why?
     end();
@@ -28,14 +28,18 @@ StatusPanel::StatusPanel(int x, int y, int w, int h) : Fl_Group(x, y, w, h) {
 
 void StatusPanel::updateStatusPanel(uint8_t *packet, uint8_t len) {
     // powerstage status
-    uint8_t pwrStageStatus = (packet[0] & 0b1);
-    (pwrStageStatus) ? pwrStageLabel = "ON" : pwrStageLabel = "OFF";
+    uint8_t pwrStageStatus = (packet[0] & 0b11);
+    if (pwrStageStatus == 0u) { pwrStageLabel = "OFF"; }
+    else if (pwrStageStatus == 1u) { pwrStageLabel = "ON"; }
+    else if (pwrStageStatus == 3u) { pwrStageLabel = "ERR"; }
     powerstageStatus->label(pwrStageLabel.c_str());
     powerstageStatus->redraw();
 
     // control mode status
-    uint8_t ctrlModeStatus = (packet[0] & (0b1 << 7));
-    (ctrlModeStatus) ? ctrlModeLabel = "TORQUE" : ctrlModeLabel = "SPEED";
+    uint8_t ctrlModeStatus = (packet[0] >> 4);
+    if (ctrlModeStatus == 0u) { ctrlModeLabel = "SPEED"; }
+    else if (ctrlModeStatus == 1u) { ctrlModeLabel = "TORQUE"; }
+    else if (ctrlModeStatus == 2u) { ctrlModeLabel = "DUTY"; }
     controlModeStatus->label(ctrlModeLabel.c_str());
     controlModeStatus->redraw();
 

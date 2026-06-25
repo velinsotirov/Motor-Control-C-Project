@@ -21,10 +21,14 @@ class ControlPanel: public Fl_Group {
 
         void getDesiredSpeed_int16(uint8_t*);
 
+        void getDesiredDuty_q8_8(uint8_t*);
+
         std::function<void()> powerstageEnableFcn;
         std::function<void()> powerstageDisableFcn;
+        std::function<void()> dutyControlEnableFcn;
         std::function<void()> torqueControlEnableFcn;
         std::function<void()> speedControlEnableFcn;
+        std::function<void()> dutyRequestFcn;
         std::function<void()> speedRequestFcn;
         std::function<void()> torqueRequestFcn;
 
@@ -33,8 +37,11 @@ class ControlPanel: public Fl_Group {
         Fl_Button *powerstageDisableBtn;
         Fl_Button *torqueControlEnableBtn;
         Fl_Button *speedControlEnableBtn;
+        Fl_Button *dutyControlEnableBtn;
+        Fl_Input *desiredDutyIpt;
         Fl_Input *desiredTorqueIpt;
         Fl_Input *desiredSpeedIpt;
+        Fl_Button *dutyReqBtn;
         Fl_Button *torqueReqBtn;
         Fl_Button *speedReqBtn;
 };

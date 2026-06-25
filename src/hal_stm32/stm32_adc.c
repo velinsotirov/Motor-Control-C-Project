@@ -28,7 +28,7 @@ void setupADC() {
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     // ADC clock
-    __HAL_RCC_ADC_CONFIG(RCC_CFGR_ADCPRE_DIV8); // 9MHz
+    __HAL_RCC_ADC_CONFIG(RCC_CFGR_ADCPRE_DIV6); // 10.67MHz
 
     // ADC base config
     hadc1.Instance = ADC1;
@@ -46,7 +46,7 @@ void setupADC() {
     ADC_ChannelConfTypeDef adcChannelConfig = {0};
     adcChannelConfig.Channel = ADC_CHANNEL_0;
     adcChannelConfig.Rank = ADC_REGULAR_RANK_1; // first in sequence
-    adcChannelConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5; // with 9MHz ADC clock, this gives us 3.16us, similar to AVR's 3us
+    adcChannelConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5; // with 10.67MHz ADC clock, this gives us 2.67us, similar to AVR's 3us
     if (HAL_ADC_ConfigChannel(&hadc1, &adcChannelConfig) != HAL_OK) {
         Error_Handler();
     }

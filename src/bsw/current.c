@@ -19,12 +19,14 @@ static const q4_12_t adcScaleFactorDiscrete = FLOAT_TO_Q4_12(0.00054306505f); //
 volatile uint16_t currentADCticks = 0u; 
 
 q4_12_t measureCurrent() {
+    // TODO: compare to q8_8 scaled value?
     if (duty >= 0) {
         // positive current
-        return q4_12_mul(currentADCticks, adcScaleFactorDiscrete);
+        return ((q4_12_t) (currentADCticks * adcScaleFactorDiscrete));
     }
     else {
         // negative current, invert value
-        return q4_12_mul((~currentADCticks)+1u, adcScaleFactorDiscrete);
+        // TODO: invert value when negative duty
+        return ((q4_12_t) (currentADCticks * adcScaleFactorDiscrete));
     }
 }
