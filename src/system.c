@@ -55,11 +55,13 @@ void check_transitions() {
         case STATE_RUNNING:
             current_speed = get_motor_speed_est();
             measuredCurrent = 0;
+            /*
             // go to error if we have a high speed or overcurrent
             if ((current_speed > max_speed || current_speed < -max_speed) || \
             (measuredCurrent > max_current || measuredCurrent < -max_current)) {
                 controller_state = STATE_ERROR;
             }
+            */
 
             if (!powerstage_mode) {
                 controller_state = STATE_IDLE;

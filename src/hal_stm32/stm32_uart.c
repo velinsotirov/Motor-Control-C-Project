@@ -8,6 +8,9 @@
 #include "stm32_uart.h"
 #include "stm32f1xx_hal.h"
 
+// for profiling
+static uint32_t uartinterrupt_lastExecTicks = 0u;
+
 // UART handle for USART1
 static UART_HandleTypeDef huart1;
 
@@ -70,6 +73,8 @@ void setupUART() {
 
 // UART interrupt handler
 void USART1_IRQHandler(void) {
+    uint32_t start = get_cycles();
+
     uint8_t data = 0;
     if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_RXNE)) {
         data = (uint8_t)(huart1.Instance->DR & 0xFF);
@@ -84,4 +89,6 @@ void USART1_IRQHandler(void) {
             disableTxInterrupt();
         }
     }
+    uint32_t time =  get_cycles() - start;
+    if (time > uartinterrupt_lastExecTicks) { uartinterrupt_lastExecTicks = time; } // for profiling
 }

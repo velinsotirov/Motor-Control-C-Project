@@ -1,4 +1,8 @@
 
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "stm32_hal.h"
 #include "stm32_pwm.h"
 #include "stm32_adc.h"
 #include "stm32_init.h"
@@ -8,30 +12,75 @@
 // Timer handle for PWM
 static TIM_HandleTypeDef htim1;
 
+static volatile bool upcounting = true;
+
+// for profiling
+static volatile uint32_t tim1interrupt_lastExecTicks = 0u;
+static volatile uint32_t tim1_execCounter = 0u;
+
+static void force_pwm_outputs_off(void) {
+    /*
+     * Stop the timer and explicitly disable the output channels so the next enable
+     * can start from a known, clean state. This is important because the HAL PWM
+     * start/stop routines track channel state internally and re-enable must see the
+     * channels in READY state.
+     */
+    __HAL_TIM_DISABLE(&htim1);
+    htim1.Instance->CCER &= ~(TIM_CCER_CC1E | TIM_CCER_CC1NE | TIM_CCER_CC2E | TIM_CCER_CC2NE);
+    __HAL_TIM_MOE_DISABLE_UNCONDITIONALLY(&htim1);
+    htim1.Instance->CCR1 = 0u;
+    htim1.Instance->CCR2 = 0u;
+    __HAL_TIM_SET_COUNTER(&htim1, 0u);
+
+    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+    HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+    HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+}
+
 // enable PWM via main output enable
 void enable_pwm() {
-    TIM1->BDTR |= TIM_BDTR_MOE;
+    force_pwm_outputs_off();
+
+    if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) != HAL_OK) {
+        Error_Handler();
+    }
+    if (HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1) != HAL_OK) {
+        Error_Handler();
+    }
+    if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK) {
+        Error_Handler();
+    }
+    if (HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2) != HAL_OK) {
+        Error_Handler();
+    }
+
+    __HAL_TIM_MOE_ENABLE(&htim1);
+    __HAL_TIM_ENABLE(&htim1);
 }
 
 // disable PWM via main output enable
-// this automatically switches pins to idle state config (HS floating, LS closed)
+// this forces the bridge to its safe inactive state without changing pin configuration
 void disable_pwm() {
-    __HAL_TIM_DISABLE(&htim1);
+    force_pwm_outputs_off();
 }
 
 void set_duty_cycle(q8_8_t duty) {
   // is duty positive
-  uint32_t duty_abs;
+  uint16_t duty_abs;
   if (duty >= 0) {
-    duty_abs = (uint32_t) duty;
-    // we count to 1800, so 100% duty is 1800
-    TIM1->CCR1 = (uint16_t) ((duty_abs * 1800) >> 8);
-    TIM1->CCR2 = 0u;
+    duty_abs = (uint16_t) duty;
+    // we count to 1600, so 100% duty is 1600
+    // we receive duty as q8_8, so its 256 times larger than the actual duty %
+    // we count to 1600, which is 16x larger than 100
+    // therefore we must divide by 16 to get the proper count value
+    htim1.Instance->CCR1 = (uint16_t) (duty_abs / 16);
+    htim1.Instance->CCR2 = 0u;
   }
   else {
-    duty_abs = (uint32_t) (-duty);
-    TIM1->CCR1 = 0u;
-    TIM1->CCR2 = (uint16_t) ((duty_abs * 1800) >> 8);
+    duty_abs = (uint16_t) (-duty);
+    htim1.Instance->CCR1 = 0u;
+    htim1.Instance->CCR2 = (uint16_t) (duty_abs / 16);
   }
 }
 
@@ -66,18 +115,18 @@ void setupPWMTimer() {
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     // timer config
-    // 72MHz, prescaler 0 (divide by 1), count to 1800 then down
-    // -> 72MHz / 1800 / 2 = 20kHz
-    // TODO: adapt so we use 64kHz since we use the internal oscillator!
+    // 64MHz, prescaler 0 (divide by 1), count to 1600 then down
+    // -> 64MHz / 1600 / 2 = 20kHz
     htim1.Instance = TIM1;
-    htim1.Init.Prescaler = 0; // 72Mhz / (0+1)
+    // TODO: remove once testing is completed!
+    htim1.Init.Prescaler = 19999; // 64Mhz / (0+1) // 20000 for testing so we can see an LED with PWM!
     htim1.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
-    htim1.Init.Period = 1800;
+    htim1.Init.Period = 1600; // used to be 1800 with 72MHz
     htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE; // not needed, as PWM frequency is always constant
     htim1.Init.RepetitionCounter = 0; // fires every (1 + RepetitionCounter) interrupts, we wanna fire every time so we set to 0
     
-    // initialize advanced timer instead of normal, since with normal timer,
+    // initialize PWM timer instead of normal, since with normal timer,
     // activating the complementary PIN causes a hard fault
     if (HAL_TIM_PWM_Init(&htim1) != HAL_OK) {
         Error_Handler();
@@ -103,8 +152,8 @@ void setupPWMTimer() {
 
     // dead time config
     TIM_BreakDeadTimeConfigTypeDef deadtimeConfig = {0};
-    deadtimeConfig.OffStateRunMode = TIM_OSSR_ENABLE; // do we set pin states to idle when channel is disabled
-    deadtimeConfig.OffStateIDLEMode = TIM_OSSI_ENABLE; // do we set pin states to idle when timer is disabled
+    deadtimeConfig.OffStateRunMode = TIM_OSSR_ENABLE; // force the configured idle state when the timer stops
+    deadtimeConfig.OffStateIDLEMode = TIM_OSSI_ENABLE; // force the configured idle state when the MCU enters idle
     deadtimeConfig.LockLevel = TIM_LOCKLEVEL_1; // lock safety critical registers after first write
     deadtimeConfig.DeadTime = 32; // 500ns with 64MHz clock
     // TODO: switch to ENABLE once motor is connected
@@ -119,7 +168,7 @@ void setupPWMTimer() {
     // which is 14MHz/8 = 1.75MHz, so 1.5 periods is 0.857us. this limits max duty to 94%
     // TODO: check if going to 64MHz changed anything!
     TIM_OC_InitTypeDef channelConfig2;
-    channelConfig2.Pulse = 1692;
+    channelConfig2.Pulse = 1504; // used to be 1692 with 72MHz
     channelConfig2.OCMode = TIM_OCMODE_TIMING;
     channelConfig2.OCPolarity = TIM_OCPOLARITY_HIGH; // irrelevant since we arent toggling a pin with this channel
     channelConfig2.OCFastMode = TIM_OCFAST_DISABLE; // same as above
@@ -130,38 +179,61 @@ void setupPWMTimer() {
     // Enable NVIC interrupt channel
     HAL_NVIC_SetPriority(TIM1_CC_IRQn, 0, 0); // capture and compare
     HAL_NVIC_EnableIRQ(TIM1_CC_IRQn);
-    HAL_NVIC_SetPriority(TIM1_BRK_IRQn, 0, 0); // capture and compare
-    HAL_NVIC_EnableIRQ(TIM1_BRK_IRQn); // break input
+
+    HAL_NVIC_SetPriority(TIM1_BRK_IRQn, 0, 0); // break input
+    HAL_NVIC_EnableIRQ(TIM1_BRK_IRQn);
+
+    HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn, 0, 0); // roll over
+    HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);
 
     // enable interrupts
     __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_CC3);
+    __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_UPDATE);
 
-    // enable pwm
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2); // now THIS causes a hard fault
-
-    // Start Timer base with Interrupt generation enabled
-    //HAL_TIM_Base_Start_IT(&htim1); hard fault fix suggestion from claude
-    HAL_TIM_Base_Start(&htim1);
+    // leave outputs disabled until the controller explicitly enables the powerstage
+    force_pwm_outputs_off();
 }
 
 // cc interrupt which starts ADC conversion
 void TIM1_CC_IRQHandler(void) {
-    // fires for eevry channel, so we need to check if channel 3 triggered AND if we're upcounting
-    // dir = 1 is downcounting, so we wanna execute when dir = 0
-    if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC3) && !(TIM1->CR1 & TIM_CR1_DIR)) {
+    tim1_execCounter++;
+    uint32_t start = get_cycles(); // for profiling
+
+    //bool upcounting = !(htim1.Instance->CR1 & TIM_CR1_DIR);
+
+    // fires for every channel, so we need to check if channel 3 triggered
+    if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_CC3)) {
         // 1. Clear the hardware timer flag so it doesn't fire again immediately!
         __HAL_TIM_CLEAR_IT(&htim1, TIM_IT_CC3); 
         
-        // 2. Clear ADC flags and launch sampling
-        __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
-        HAL_ADC_Start_IT(&hadc1);
+        // we are upcounting
+        if (upcounting) {
+            // 2. Clear ADC flags and launch sampling
+            __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
+            HAL_ADC_Start_IT(&hadc1);
+
+            upcounting = false;
+        }
+    }
+
+    uint32_t time =  get_cycles() - start;
+    if (time > tim1interrupt_lastExecTicks) { tim1interrupt_lastExecTicks = time; } // for profiling
+}
+
+// Define the Update interrupt handler to catch when the counter completes a cycle
+void TIM1_UP_TIM10_IRQHandler(void) {
+    // Check if the Update Interrupt Flag caused the event
+    if (__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE)) {
+        // 1. CRUCIAL: Instantly clear the flag so it doesn't trigger an interrupt storm!
+        __HAL_TIM_CLEAR_IT(&htim1, TIM_IT_UPDATE);
+        
+        // 2. Set our tracker flag to TRUE because the timer has hit 0 and is starting to count UP
+        upcounting = true;
     }
 }
 
 // break interrupt
 void TIM1_BRK_IRQHandler(void) {
     // hw has already driven us to safe state, here we only update a flag to notify the SW
+    // TODO: add this flag!
 }

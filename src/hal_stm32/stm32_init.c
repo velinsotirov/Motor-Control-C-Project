@@ -3,10 +3,11 @@
 #include "stm32_uart.h"
 #include "stm32_init.h"
 #include "stm32_gpio.h"
+#include "stm32_hal.h"
 #include "stm32f1xx_hal.h"
 
 // Timer handles
-static TIM_HandleTypeDef htim3;
+//static TIM_HandleTypeDef htim3;
 
 void boardInit() {
   // configures system tick
@@ -14,6 +15,9 @@ void boardInit() {
 
   /* Configure the system clock */
   SystemClock_Config();
+
+  // for debugging execution times
+  init_cycle_counter();
 
   // configure PWM timer and PWM pins, GPIO, encoder and ADC
   initGPIO();
@@ -29,42 +33,49 @@ void enableInterrupts() {
 
 // setup encoder
 void setupEncoder() {
-  // encoder pinout
-  // PA6  = TIM3_CH1
-  // PA7  = TIM3_CH2
+  __HAL_RCC_TIM3_CLK_ENABLE();
+  __HAL_DBGMCU_UNFREEZE_TIM3();
+  __HAL_RCC_AFIO_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  // PA6: rising-edge interrupt input
+  // PA7: direction input (read in ISR)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT; // encoder input
-  GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
-  GPIO_InitStruct.Pull = GPIO_PULLUP; // encoder pulls to GND during a pulse
+  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  // setup timer
-  __HAL_RCC_TIM3_CLK_ENABLE();
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*
+  // TIM3 is not used as the encoder peripheral anymore; keep it clocked and reset.
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0; // count every edge
+  htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 0xFFFF; // max 16bit value
+  htim3.Init.Period = 0xFFFF;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-
-  // setup encoder
-  TIM_Encoder_InitTypeDef encoderConfig = {0};
-  encoderConfig.EncoderMode = TIM_ENCODERMODE_TI1; // count A only for simplicuty and so counter doesnt overflow as easily
-  encoderConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
-  encoderConfig.IC2Polarity = TIM_ICPOLARITY_RISING; // count rising edges
-  encoderConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
-  encoderConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI; // why, what is this?
-  encoderConfig.IC1Prescaler = TIM_ICPSC_DIV1;
-  encoderConfig.IC2Prescaler = TIM_ICPSC_DIV1; // what is this?
-  encoderConfig.IC1Filter = 0x7;
-  encoderConfig.IC2Filter = 0x7; // medium filter
-  if (HAL_TIM_Encoder_Init(&htim3, &encoderConfig) != HAL_OK) {
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK) {
     Error_Handler();
   }
+  __HAL_TIM_SET_COUNTER(&htim3, 0);
+  HAL_TIM_Base_Start(&htim3);
+  */
 
-  // start encoder
-  HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_2);
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+  if (GPIO_Pin == GPIO_PIN_6) {
+    encoderEdgeInterruptHandler();
+  }
 }
 
 void SystemClock_Config(void)
@@ -104,6 +115,7 @@ void SystemClock_Config(void)
 
   // force update as suggested by CubeMX to avoid issues with SystemCoreClock not being updated
   SystemCoreClockUpdate();
+  HAL_InitTick(TICK_INT_PRIORITY); // ensure systick is 1ms because we changed the clock cycle
 }
 
 /**

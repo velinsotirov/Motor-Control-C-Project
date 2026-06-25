@@ -5,13 +5,14 @@
 
 #define GEAR_RATIO 35u
 #define PPR 11u
-#define ENCODER_CONV_FACT (GEAR_RATIO * PPR * 60u / 100u)
+#define ENCODER_CONV_FACT ((int16_t) (GEAR_RATIO * PPR * 60u / 100u))
 // if we wanted a higher accuracy, we could count encoder B pulses as well!
+
+// encoder count incremented by encoder interrupt
+volatile int16_t encoder_cnt = 0;
 
 #ifdef __AVR_ATmega328P__
 #include "atmega328p_hal.h"
-// encoder count incremented by encoder interrupt
-volatile int16_t encoder_cnt = 0;
 #elif defined(__ARM_CortexM3__)
 #include "stm32_hal.h"
 #endif

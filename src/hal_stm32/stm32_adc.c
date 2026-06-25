@@ -9,6 +9,10 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx_hal_adc.h"
 
+// for profiling
+static volatile uint32_t adcinterrupt_lastExecTicks = 0u;
+static volatile uint32_t adc_execCounter = 0u;
+
 // ADC handle
 ADC_HandleTypeDef hadc1;
 
@@ -59,11 +63,15 @@ void setupADC() {
 
 // interrupt triggers when ADC conversion is complete and sends the value to the ASW
 void ADC1_2_IRQHandler(void) {
-    if (__HAL_ADC_GET_FLAG(&hadc1, ADC_FLAG_EOC)) { // why?
+    adc_execCounter++;
+    uint32_t start = get_cycles();
+    if (__HAL_ADC_GET_FLAG(&hadc1, ADC_FLAG_EOC)) {
         // 1. Fetch your raw 12-bit motor current ticks
         currentADCticks = HAL_ADC_GetValue(&hadc1);
         
         // 2. CRUCIAL: Clear the hardware flag so the interrupt stops firing!
         __HAL_ADC_CLEAR_FLAG(&hadc1, ADC_FLAG_EOC);
     }
+    uint32_t time =  get_cycles() - start;
+    if (time > adcinterrupt_lastExecTicks) { adcinterrupt_lastExecTicks = time; } // for profiling
 }

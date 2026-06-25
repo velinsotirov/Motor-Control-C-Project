@@ -88,7 +88,8 @@ void speed_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    duty = duty_unlim;
+    // TODO: REVERT!
+    duty = INT_TO_Q8_8(-10);//duty_unlim;
 
     // set duty cycle
     dutyCycle_set(duty);
@@ -120,7 +121,8 @@ void torque_controller_step() {
     else if (duty_unlim < duty_min) {
         duty_unlim = duty_min;
     }
-    duty = duty_unlim;
+    // TODO: REVERT!
+    duty = INT_TO_Q8_8(50u);//duty_unlim;
 
     // set duty cycle
     dutyCycle_set(duty);

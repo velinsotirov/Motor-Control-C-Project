@@ -200,5 +200,15 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
+#include "stm32_hal.h"
+
+static uint32_t externalinterrupt_lastExecTicks = 0u;
+
+void EXTI9_5_IRQHandler(void)
+{
+  uint32_t start = get_cycles(); // for profiling
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
+  externalinterrupt_lastExecTicks = get_cycles() - start; // for profiling
+}
 
 /* USER CODE END 1 */

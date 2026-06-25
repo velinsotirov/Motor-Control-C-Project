@@ -86,7 +86,7 @@ void diag_step_500ms() {
     // fetch remaining data
     q4_12_t current = counter * 410; //measureCurrent();
     q4_12_t torque = counter * 4; //q4_12_mul(current, K_times_Psi_q4_12);
-    int16_t speed = counter * 10; //get_motor_speed_est();
+    int16_t speed = get_motor_speed_est();
     counter++; // for debugging
     int8_t duty = counter; //Q8_8_TO_INT(get_motor_duty());
 
