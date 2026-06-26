@@ -38,7 +38,7 @@ ISR(TIMER0_COMPB_vect) {
 // interrupt triggers when ADC conversion is complete
 ISR(ADC_vect) {
     // fetch ADC value
-    currentADCticks = ADC;
+    leftADCticks = ADC;
 
     // if we wanted the motor control to trigger at 20kHz, we would set a flag here
 }
