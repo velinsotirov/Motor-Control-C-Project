@@ -19,44 +19,11 @@ static volatile uint32_t tim1interrupt_lastExecTicks = 0u;
 static volatile uint32_t tim1_execCounter = 0u;
 
 static void force_pwm_outputs_off(void) {
-    /*
-     * Stop the timer and explicitly disable the output channels so the next enable
-     * can start from a known, clean state. This is important because the HAL PWM
-     * start/stop routines track channel state internally and re-enable must see the
-     * channels in READY state.
-     */
-    __HAL_TIM_DISABLE(&htim1);
-    htim1.Instance->CCER &= ~(TIM_CCER_CC1E | TIM_CCER_CC1NE | TIM_CCER_CC2E | TIM_CCER_CC2NE);
-    __HAL_TIM_MOE_DISABLE_UNCONDITIONALLY(&htim1);
-    htim1.Instance->CCR1 = 0u;
-    htim1.Instance->CCR2 = 0u;
-    __HAL_TIM_SET_COUNTER(&htim1, 0u);
-
-    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-    HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
-    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
-    HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+    /**/
 }
 
-// enable PWM via main output enable
 void enable_pwm() {
-    force_pwm_outputs_off();
-
-    if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) != HAL_OK) {
-        Error_Handler();
-    }
-    if (HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1) != HAL_OK) {
-        Error_Handler();
-    }
-    if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK) {
-        Error_Handler();
-    }
-    if (HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2) != HAL_OK) {
-        Error_Handler();
-    }
-
-    __HAL_TIM_MOE_ENABLE(&htim1);
-    __HAL_TIM_ENABLE(&htim1);
+    /**/
 }
 
 // disable PWM via main output enable
@@ -65,11 +32,11 @@ void disable_pwm() {
     force_pwm_outputs_off();
 }
 
-void set_duty_cycle(q8_8_t duty) {
+void set_duty_cycle(q8_8_t duty_new) {
   // is duty positive
   uint16_t duty_abs;
-  if (duty >= 0) {
-    duty_abs = (uint16_t) duty;
+  if (duty_new >= 0) {
+    duty_abs = (uint16_t) duty_new;
     // we count to 1600, so 100% duty is 1600
     // we receive duty as q8_8, so its 256 times larger than the actual duty %
     // we count to 1600, which is 16x larger than 100
@@ -78,7 +45,7 @@ void set_duty_cycle(q8_8_t duty) {
     htim1.Instance->CCR2 = 0u;
   }
   else {
-    duty_abs = (uint16_t) (-duty);
+    duty_abs = (uint16_t) (-duty_new);
     htim1.Instance->CCR1 = 0u;
     htim1.Instance->CCR2 = (uint16_t) (duty_abs / 16);
   }
@@ -119,7 +86,7 @@ void setupPWMTimer() {
     // -> 64MHz / 1600 / 2 = 20kHz
     htim1.Instance = TIM1;
     // TODO: remove once testing is completed!
-    htim1.Init.Prescaler = 19999; // 64Mhz / (0+1) // 20000 for testing so we can see an LED with PWM!
+    htim1.Init.Prescaler = 0; // 64Mhz / (0+1) // 20000 for testing so we can see an LED with PWM!
     htim1.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
     htim1.Init.Period = 1600; // used to be 1800 with 72MHz
     htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -152,10 +119,10 @@ void setupPWMTimer() {
 
     // dead time config
     TIM_BreakDeadTimeConfigTypeDef deadtimeConfig = {0};
-    deadtimeConfig.OffStateRunMode = TIM_OSSR_ENABLE; // force the configured idle state when the timer stops
-    deadtimeConfig.OffStateIDLEMode = TIM_OSSI_ENABLE; // force the configured idle state when the MCU enters idle
+    deadtimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+    deadtimeConfig.OffStateIDLEMode = TIM_OSSR_DISABLE;
     deadtimeConfig.LockLevel = TIM_LOCKLEVEL_1; // lock safety critical registers after first write
-    deadtimeConfig.DeadTime = 32; // 500ns with 64MHz clock
+    deadtimeConfig.DeadTime = 128; // us with 64MHz clock, powrstage shows 1.1us delay when closing LS on breadboard 
     // TODO: switch to ENABLE once motor is connected
     deadtimeConfig.BreakState = TIM_BREAK_DISABLE; // trigger break state when a pin changes state unexpectedly
     deadtimeConfig.BreakPolarity = TIM_BREAKPOLARITY_LOW; // wunexpected state change is HIGH to LOW
@@ -189,6 +156,19 @@ void setupPWMTimer() {
     // enable interrupts
     __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_CC3);
     __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_UPDATE);
+
+    // Launch the software channel states once on boot so the HAL maps the structures
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+
+    // Force enable the timer clock base
+    __HAL_TIM_ENABLE(&htim1);
+
+    // Flip the Main Output Enable (MOE) bit back on!
+    // The hardware will instantly transition your pins back into active duty cycles safely.
+    __HAL_TIM_MOE_ENABLE(&htim1); 
 
     // leave outputs disabled until the controller explicitly enables the powerstage
     force_pwm_outputs_off();

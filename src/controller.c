@@ -151,6 +151,7 @@ q8_8_t get_motor_duty(void) {
 
 void reset_duty(void) {
     duty = 0u;
+    set_duty_cycle(duty);
 }
 
 void resetSpeedIntegrator() {
