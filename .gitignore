@@ -4,3 +4,4 @@ application/src/hal_stm32/STM32F1xx_HAL_Driver
 DiagTool/FL
 DiagTool/seriallib
 *.su
+*.o
