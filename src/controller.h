@@ -23,5 +23,6 @@ q8_8_t get_motor_duty(void);
 void reset_duty(void);
 void resetSpeedIntegrator(void);
 void resetCurrentIntegrator(void);
+q8_8_t limitDutyCycle(q8_8_t);
 
 #endif // CONTROLLER_H

@@ -131,11 +131,11 @@ void setupPWMTimer() {
         Error_Handler();
     }
 
-    // ADC starts sampling around middle of PWM period, and with a freq of 14MHz and prescaler 8, takes 1.5 cycles to sample,
-    // which is 14MHz/8 = 1.75MHz, so 1.5 periods is 0.857us. this limits max duty to 94%
-    // TODO: check if going to 64MHz changed anything!
     TIM_OC_InitTypeDef channelConfig2;
-    channelConfig2.Pulse = 1504; // used to be 1692 with 72MHz
+    // start adc sampling 128/1600*1/(20kHz)/2 = 2us after start of PWM period
+    // this is needed since 2us dead time and 0.5us hs close time mean at 10% duty, the HS actually closes
+    // right at the start of a new PWM period! and the adc needs to start sampling a bit later, e.g. 2us later
+    channelConfig2.Pulse = 128; // used to be 1504 when we wanted to sample at middle of PWM period
     channelConfig2.OCMode = TIM_OCMODE_TIMING;
     channelConfig2.OCPolarity = TIM_OCPOLARITY_HIGH; // irrelevant since we arent toggling a pin with this channel
     channelConfig2.OCFastMode = TIM_OCFAST_DISABLE; // same as above

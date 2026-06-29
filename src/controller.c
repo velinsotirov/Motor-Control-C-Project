@@ -81,15 +81,11 @@ void speed_controller_step() {
     q22_10_t controller_I = q22_10_mul(integrator_speed,Ki_speed);
     q8_8_t duty_unlim = Q22_10_TO_Q8_8(controller_P + controller_I);
 
-    // limit duty cycle
-    if (duty_unlim > duty_max) {
-        duty_unlim = duty_max;
-    }
-    else if (duty_unlim < duty_min) {
-        duty_unlim = duty_min;
-    }
+    // limit duty cycle to [-85,-15] and [15,85]
+    q8_8_t duty_lim = limitDutyCycle(duty_unlim);
+
     // TODO: attach once speed measurement works!
-    duty = INT_TO_Q8_8(0); //duty_unlim;
+    duty = INT_TO_Q8_8(0); //duty_lim;
 
     // set duty cycle
     dutyCycle_set(duty);
@@ -114,16 +110,11 @@ void torque_controller_step() {
     q16_16_t controller_I = q16_16_mul(integrator_current,Ki_current);
     q8_8_t duty_unlim = Q16_16_TO_Q8_8(controller_P + controller_I);
     
-    // limit duty cycle
-    if (duty_unlim > duty_max) {
-        duty_unlim = duty_max;
-    }
-    else if (duty_unlim < duty_min) {
-        duty_unlim = duty_min;
-    }
+    // limit duty cycle to [-85,-15] and [15,85]
+    q8_8_t duty_lim = limitDutyCycle(duty_unlim);
 
     // TODO: attach once current measurement works!
-    duty = INT_TO_Q8_8(0u); //duty_unlim;
+    duty = INT_TO_Q8_8(0u); //duty_lim;
 
     // set duty cycle
     dutyCycle_set(duty);
@@ -132,17 +123,37 @@ void torque_controller_step() {
 void pwm_controller_step() {
     q8_8_t duty_unlim = duty_ref;
 
-    // limit duty cycle
-    if (duty_unlim > duty_max) {
-        duty_unlim = duty_max;
-    }
-    else if (duty_unlim < duty_min) {
-        duty_unlim = duty_min;
-    }
-    duty = duty_unlim;
+    // limit duty cycle to [-85,-15] and [15,85]
+    q8_8_t duty_lim = limitDutyCycle(duty_unlim);
+
+    // send out command
+    duty = duty_lim;
 
     // set duty cycle
     dutyCycle_set(duty);
+}
+
+q8_8_t limitDutyCycle(q8_8_t duty_unlim) {
+    if (duty_unlim == 0) {
+        return duty_unlim;
+    }
+    else if (duty_unlim > 0) {
+        if (duty_unlim > duty_max) {
+            duty_unlim = duty_max;
+        }
+        else if (duty_unlim < duty_min) {
+            duty_unlim = duty_min;
+        }
+    }
+    else {
+        if (duty_unlim < -duty_max) {
+            duty_unlim = -duty_max;
+        }
+        else if (duty_unlim > -duty_min) {
+            duty_unlim = -duty_min;
+        }
+    }
+    return duty_unlim;
 }
 
 q8_8_t get_motor_duty(void) {

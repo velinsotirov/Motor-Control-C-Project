@@ -8,6 +8,6 @@
 q4_12_t measureCurrent(void);
 
 extern volatile uint16_t leftADCticks;
-extern volatile uint16_t rightADCticks;
+//extern volatile uint16_t rightADCticks;
 
 #endif // CURRENT_H

@@ -7,23 +7,18 @@
 #include "fixed_point.h"
 
 // current measurement constants
-//const float ampGain = 18.0f;
-//const float shuntR = 0.5f;
-//const float voltageGain = (float) 5 / (float) 1023;
-// adcScaleFactor = voltageGain/(ampGain*shuntR)
-//const float adcScaleFactor = 0.00054306505f;
-//measuredCurrent = (float) (currentADCticks*voltageGain/(ampGain*shuntR));
-
-static const q4_12_t adcScaleFactorDiscrete = FLOAT_TO_Q4_12(0.00054306505f); //10% error!
+// we have 0.5Ohm shunt and no OP AMP. assuming 1A flow, shunt voltage is 0.5V, which means 620.45 ADC ticks
+// therefore, to get the 1A current using the ticks, we have to multiply with 1/620.45 = 0.00161173341
+static const q4_12_t adcScaleFactorDiscrete = FLOAT_TO_Q4_12(0.00161173341f); // 6% error caused by quantization!
 
 volatile uint16_t leftADCticks = 0u;
-volatile uint16_t rightADCticks = 0u;
+//volatile uint16_t rightADCticks = 0u;
 
 q4_12_t measureCurrent() {
     // TODO: compare to q8_8 scaled value?
     if (duty >= 0) {
         // positive current
-        return ((q4_12_t) (rightADCticks * adcScaleFactorDiscrete));
+        return ((q4_12_t) (leftADCticks * adcScaleFactorDiscrete));
     }
     else {
         // negative current, invert value

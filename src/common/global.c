@@ -19,5 +19,5 @@ const q4_12_t K_times_Psi_q4_12 = FLOAT_TO_Q4_12(K_TIMES_PSI_VAL);
 
 // duty parameters
 const int8_t duty_mean = 100u;
-const q8_8_t duty_min = INT_TO_Q8_8(-94);
-const q8_8_t duty_max = INT_TO_Q8_8(94);
+const q8_8_t duty_min = INT_TO_Q8_8(15);
+const q8_8_t duty_max = INT_TO_Q8_8(85);
