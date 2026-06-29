@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "F:/Uni/avr8-gnu-toolchain-4.0.0.52-win32.any.x86_64/avr8-gnu-toolchain-win32_x86_64/avr/include/",
-                "F:/Uni/gcc_arn_none_eabi_10_3_2021_10/arm-none-eabi/include/"
+                "C:/Users/SOV1SI/Desktop/Install/gcc-arm-none-eabi-10.3-2021.10-win32/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include"
             ],
             "defines": [
                 "_DEBUG",

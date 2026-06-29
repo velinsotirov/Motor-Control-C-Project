@@ -10,15 +10,16 @@
 #include "system.h"
 #include "fixed_point.h"
 
-bool speedModeReq = true;
+uint8_t modeReq = STATE_SPEED;
 static bool powerStageReq = false;
 static int16_t speedRef = 0;
 static q4_12_t torqueRef = 0;
+static q8_8_t dutyRef = 0;
 
 static float time = 0.0f;
 
-bool returnDiagModeRequest() {
-    return speedModeReq;
+uint8_t returnDiagModeRequest() {
+    return modeReq;
 };
 bool returnDiagPowerStageRequest() {
     return powerStageReq;
@@ -28,6 +29,9 @@ q4_12_t returnDiagTorqueRequest() {
 }
 int16_t returnDiagSpeedRequest() {
     return speedRef;
+}
+q8_8_t returnDiagPWMRequest() {
+    return dutyRef;
 }
 
 int main() {
@@ -78,7 +82,7 @@ int main() {
         }
         // if time > 0.6s, go to torque request
         if (time > 0.6f) {
-            speedModeReq = false;
+            modeReq = STATE_TORQUE;
         }
         // if time > 0.8s, set  torque request
         if (time > 0.8f) {

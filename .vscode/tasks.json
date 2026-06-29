@@ -7,7 +7,7 @@
             "command": "STM32_Programmer_CLI.exe",
             "args": [
                 "-c", "port=SWD", "mode=UR", "reset=HWRst",
-                "-w", "${workspaceFolder}/build/main_stm32.elf",
+                "-w", "${workspaceFolder}/application/build/main_stm32.elf",
                 "-v",
                 "-g"
             ],

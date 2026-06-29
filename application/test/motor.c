@@ -1,5 +1,6 @@
 
 #include "global.h"
+#include "system.h"
 #include "motor.h"
 #include "stdbool.h"
 #include "controller.h"
@@ -32,7 +33,7 @@ void step_motor(float uBat, float speedSlope) {
     static float i_prev = 0.0f;
 
     // speed is controlled using torque
-    if (speedModeReq) {
+    if (modeReq == STATE_SPEED) {
         // get controller duty cycle and calculate motor voltage
         float duty = Q8_8_TO_FLOAT(get_motor_duty());
         float voltage = duty / (float) duty_mean * uBat;

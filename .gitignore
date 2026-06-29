@@ -1,6 +1,6 @@
 .VSCodeCounter/
-src/hal_stm32/CMSIS
-src/hal_stm32/STM32F1xx_HAL_Driver
+application/src/hal_stm32/CMSIS
+application/src/hal_stm32/STM32F1xx_HAL_Driver
 DiagTool/FL
 DiagTool/seriallib
 *.su

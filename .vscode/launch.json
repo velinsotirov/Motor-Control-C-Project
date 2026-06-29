@@ -2,8 +2,8 @@
     "configurations": [
         {
         "name": "JLink: Debug Application",
-        "cwd": "${workspaceFolder}/src",
-        "executable": "${workspaceFolder}/build/main_stm32.elf",
+        "cwd": "${workspaceFolder}/application/src",
+        "executable": "${workspaceFolder}/application/build/main_stm32.elf",
         "serverpath": "C:\\Users\\velin\\SEGGER\\JLink_V952\\JLinkGDBServerCL.exe",
         "servertype": "jlink",
         "request": "launch",
@@ -17,8 +17,8 @@
         },
         {
         "name": "JLink: Attach to Application",
-        "cwd": "${workspaceFolder}/src",
-        "executable": "${workspaceFolder}/build/main_stm32.elf",
+        "cwd": "${workspaceFolder}/application/src",
+        "executable": "${workspaceFolder}/application/build/main_stm32.elf",
         "serverpath": "C:\\Users\\velin\\SEGGER\\JLink_V952\\JLinkGDBServerCL.exe",
         "servertype": "jlink",
         "request": "attach",

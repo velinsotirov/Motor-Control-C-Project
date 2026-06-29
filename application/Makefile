@@ -1,20 +1,9 @@
 TESTCC = gcc
-APPCC = g++
 ATMEGACC = avr-gcc
 STMCC = arm-none-eabi-gcc
 
 COMMONSRC = src/common/global.c src/controller.c src/system.c
 INCLUDES = -I src -I src/common
-
-APPINCLUDES = -I DiagTool -I DiagTool/seriallib
-APPSRC = DiagTool/src/main.cpp DiagTool/seriallib/serialib.cpp \
-		DiagTool/src/mainWindow.cpp DiagTool/src/commPanel.cpp \
-		DiagTool/src/commModule.cpp DiagTool/src/controlPanel.cpp DiagTool/src/statusPanel.cpp
-
-APPEXE = DiagTool/DiagTool.exe
-APPLIBS = -L DiagTool \
-			-lfltk -lgdi32 -lgdiplus -lole32 -luuid \
-			-lcomctl32 -lcomdlg32 -lws2_32 -lwinspool -mwindows
 
 TESTINCLUDES = -I test
 TESTSRC = test/run_simulation.c test/motor.c test/test_abstraction.c
@@ -51,12 +40,8 @@ STMEXE = build/main_stm32.elf
 
 COMMONFLAGS = -Wall -Wextra -Og -g3
 
-app: $(APPEXE)
-
-$(APPEXE): $(APPSRC)
-	$(APPCC) $(APPSRC) $(APPLIBS) \
-	$(APPINCLUDES) -o $(APPEXE) \
-	-std=c++11
+$(info Running from: $(CURDIR))
+$(info Looking for: $(firstword $(STMSRC)))
 
 test: $(TESTEXE)
 
