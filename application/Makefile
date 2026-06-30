@@ -44,15 +44,16 @@ STMSRC = src/hal_stm32/stm32_init.c src/hal_stm32/stm32_gpio.c \
 STMOBJ = $(STMSRC:%.c=build/stm/%.o)
 STMOBJ += $(COMMONSRC:%.c=build/stm/%.o)
 STMOBJ += $(TARGETSRC:%.c=build/stm/%.o)
+STMOBJ += build/stm/startup_stm32f103c8tx.o
 
 # atmega objects to link
-ATMEGAOBJ = $(ATMEGASRC:%.c=build/stm/%.o)
-ATMEGAOBJ += $(COMMONSRC:%.c=build/stm/%.o)
-ATMEGAOBJ += $(TARGETSRC:%.c=build/stm/%.o)
+ATMEGAOBJ = $(ATMEGASRC:%.c=build/avr/%.o)
+ATMEGAOBJ += $(COMMONSRC:%.c=build/avr/%.o)
+ATMEGAOBJ += $(TARGETSRC:%.c=build/avr/%.o)
 
 # test objects to link
-TESTOBJ = $(COMMONSRC:%.c=build/stm/%.o)
-TESTOBJ += $(TESTSRC:%.c=build/stm/%.o)
+TESTOBJ = $(COMMONSRC:%.c=build/test/%.o)
+TESTOBJ += $(TESTSRC:%.c=build/test/%.o)
 
 # results of compilation
 TESTEXE = build/test/run_simulation.exe
