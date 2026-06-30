@@ -3,6 +3,7 @@
 TESTCC = gcc
 ATMEGACC = avr-gcc
 STMCC = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
 
 # includes
 INCLUDES = -I src -I src/common
@@ -45,6 +46,7 @@ STMOBJ = $(STMSRC:%.c=build/stm/%.o)
 STMOBJ += $(COMMONSRC:%.c=build/stm/%.o)
 STMOBJ += $(TARGETSRC:%.c=build/stm/%.o)
 STMOBJ += build/stm/startup_stm32f103c8tx.o
+STMOBJ += build/stm/bootloader.o
 
 # atmega objects to link
 ATMEGAOBJ = $(ATMEGASRC:%.c=build/avr/%.o)
@@ -59,6 +61,7 @@ TESTOBJ += $(TESTSRC:%.c=build/test/%.o)
 TESTEXE = build/test/run_simulation.exe
 ATMEGAEXE = build/avr/main_atmega328p.elf
 STMEXE = build/stm/main_stm32.elf
+BINEXE = build/stm/main_stm32.bin
 
 # compiler flags
 COMMONFLAGS = -Wall -Wextra -Og -g3
@@ -106,3 +109,7 @@ $(STMEXE) : $(STMOBJ)
 	-TSTM32F103C8TX_FLASH.ld \
 	-Wl,--gc-sections -Wl,-Map=build/stm/main_stm32.map
 	arm-none-eabi-size build/stm/main_stm32.elf
+	$(OBJCOPY) -O binary $(STMEXE) $(BINEXE)
+#arm-none-eabi-objdump -h build/stm/main_stm32.elf > build/stm/stm_dump.txt
+#$(OBJCOPY) -O binary $(STMEXE) $(BINEXE)
+#arm-none-eabi-size build/stm/main_stm32.elf

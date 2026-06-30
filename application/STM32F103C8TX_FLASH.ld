@@ -45,12 +45,20 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 20K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 128K
+  BOOT     (rx)    : ORIGIN = 0x8000000,   LENGTH = 12K
+  FLASH    (rx)    : ORIGIN = 0x8003000,   LENGTH = 116K
 }
 
 /* Sections */
 SECTIONS
 {
+  /* Bootloader */
+  .bootloader :
+  {
+    . = ALIGN(4);
+    KEEP(*(.bootloader)) /* Startup code */
+    . = ALIGN(4);
+  } >BOOT AT> BOOT
 
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
